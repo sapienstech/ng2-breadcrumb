@@ -1,0 +1,206 @@
+@hoverColor: #78e2eb;
+.ui-breadcrumb {
+  margin: 0;
+  //padding: .3em;
+  //width: 100%;
+  background-color: #0cb6e7;
+}
+
+
+.ui-button {
+  display: inline-block;
+  padding: 5px;
+  margin-left: 5px;
+  text-decoration: none !important;
+  line-height: 1;
+  border-radius: 50%;
+  width: 26px;
+  height: 26px;
+  border: solid 1px gray;
+  color: #0cb6e7;
+
+  -webkit-transition: 0.5s ease-in-out;
+  -moz-transition: 0.5s ease-in-out;
+  -o-transition: 0.5s ease-in-out;
+
+  &:hover{
+    color:whitesmoke;
+    background-color: @hoverColor;
+    transform: rotate(90deg);
+    border: solid 1px white;
+  }
+  &:focus{
+    outline: -webkit-focus-ring-color auto 0px;
+  }
+}
+
+.breadcrumb {
+  /*centering*/
+  display: inline-block;
+  box-shadow: 0 0 15px 1px rgba(0, 0, 0, 0.35);
+  //overflow: hidden;
+  border-radius: 5px;
+  & div{
+    display: block;
+    float: left;
+    //font-size: 12px;
+    line-height: 36px;
+    color: white;
+    /*need more margin on the left of links to accomodate the numbers*/
+    padding: 0 10px 0 20px;
+    background: #666;
+    background: linear-gradient(#666, #333);
+    position: relative;
+
+    & .icon{
+      //border-radius: 50%;
+      //border: solid 2px gray;
+    }
+    /*since the first link does not have a triangle before it we can reduce the left padding to make it look consistent with other links*/
+    &:first-child {
+      padding-left: 0;
+      border-radius: 5px 0 0 5px; /*to match with the parent's radius*/
+      &:before {
+        left: 14px;
+      }
+    }
+    &:last-child {
+      border-radius: 0 5px 5px 0; /*this was to prevent glitches on hover*/
+      padding-right: 20px;
+      /*we dont need an arrow after the last link*/
+      &:after {
+        content: none;
+      }
+
+    }
+    /*adding the arrows for the breadcrumbRoutes using rotated pseudo elements*/
+    &:after {
+      content: '';
+      position: absolute;
+      top: 0;
+      right: -18px; /*half of square's length*/
+      /*same dimension as the line-height of .breadcrumbDropDown a */
+      width: 36px;
+      height: 36px;
+      /*as you see the rotated square takes a larger height. which makes it tough to position it properly. So we are going to scale it down so that the diagonals become equal to the line-height of the link. We scale it to 70.7% because if square's:
+      length = 1; diagonal = (1^2 + 1^2)^0.5 = 1.414 (pythagoras theorem)
+      if diagonal required = 1; length = 1/1.414 = 0.707*/
+      transform: scale(0.707) rotate(45deg);
+      /*we need to prevent the arrows from getting buried under the next link*/
+      z-index: 1;
+      /*background same as links but the gradient will be rotated to compensate with the transform applied*/
+      background: #666;
+      background: linear-gradient(135deg, #666, #333);
+      /*stylish arrow design using box shadow*/
+      box-shadow:
+                2px -2px 0 2px rgba(0, 0, 0, 0.4),
+                3px -3px 0 2px rgba(255, 255, 255, 0.1);
+      /*
+          5px - for rounded arrows and
+          50px - to prevent hover glitches on the border created using shadows*/
+      border-radius: 0 5px 0 50px;
+    }
+    > a {
+      text-decoration: none;
+      outline: none;
+      padding: 10px 0 10px 30px;
+    }
+  }
+}
+
+
+/*hover/active styles*/
+.breadcrumb div.active, .breadcrumb div:hover{
+  background: #333;
+  background: linear-gradient(#333, #000);
+}
+.breadcrumb div.active:after, .breadcrumb div:hover:after {
+  background: #333;
+  background: linear-gradient(135deg, #333, #000);
+}
+
+
+.flat div, .flat div:after {
+  background: #0cb6e7;
+  color: red;
+  transition: all 0.5s;
+}
+
+.flat a,
+.flat a:hover {
+  color: white;
+}
+
+//.flat div:before {
+//  background: white;
+//  box-shadow: 0 0 0 1px #ccc;
+//}
+
+.flat div:hover, .flat div.active,
+.flat div:hover:after, .flat div.active:after{
+  background: @hoverColor;
+  border-bottom-color: #e7d921;
+  border-bottom-width: 12px;
+}
+
+
+
+
+/* The actual popover */
+.popover .breadcrumbPopup {
+  visibility: visible;
+  //width: 160px;
+  background-color: @hoverColor;
+  color: #fff;
+  text-align: center;
+  border-radius: 6px;
+  padding: 8px 0;
+  position: absolute;
+  z-index: 1;
+  top: 100%;
+  left: 50%;
+  margin-left: -80px;
+}
+
+/* Popup container - can be anything you want */
+//.popover {
+//  position: relative;
+//  display: inline-block;
+//  cursor: pointer;
+//  -webkit-user-select: none;
+//  -moz-user-select: none;
+//  -ms-user-select: none;
+//  user-select: none;
+//}
+/* popover arrow */
+.popup .breadcrumbPopup::after {
+  content: " ";
+  position: absolute;
+  bottom: 100%;  /* At the top of the tooltip */
+  left: 50%;
+  margin-left: -5px;
+  border-width: 5px;
+  border-style: solid;
+  border-color: transparent transparent black transparent;
+}
+
+
+/* Toggle this class - hide and show the popover */
+.popover .show {
+  visibility: visible;
+  -webkit-animation: fadeIn 1s;
+  animation: fadeIn 1s;
+}
+
+/* Add animation (fade in the popover) */
+@-webkit-keyframes fadeIn {
+  from {opacity: 0;}
+  to {opacity: 1;}
+}
+
+@keyframes fadeIn {
+  from {opacity: 0;}
+  to {opacity:1 ;}
+}
+
+

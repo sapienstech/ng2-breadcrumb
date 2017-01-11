@@ -13,7 +13,7 @@ import "rxjs/add/operator/switch";
   styleUrls: ["./searchbox.component.css"],
   template: `
         <div class="searchBox">
-            <input #input type="text" 
+            <input #input type="search" 
                 [value]="filterText" 
                 (input)="filterText = $event.target.value"
                 class="inputClass" 

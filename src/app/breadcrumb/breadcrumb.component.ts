@@ -1,4 +1,4 @@
-import {Component, OnInit} from "@angular/core";
+import {Component, OnInit, TemplateRef, ContentChild} from "@angular/core";
 import {Router, ActivatedRoute, NavigationEnd} from "@angular/router";
 import "rxjs/add/operator/filter";
 import {BreadcrumbService} from "./breadcrumb.service";
@@ -17,8 +17,7 @@ import {BreadcrumbRoute} from "./breadcrumb-model";
                      <i class="icon-place-holder-icon icon"></i>
                      Home
                 </a></div>
-            <div *ngFor="let route of breadcrumbRoutes">
-
+            <div *ngFor="let route of breadcrumbRoutes;" >              
                 <a [routerLink]="[route.url, route.params]">
                      <i  *ngIf="route.breadcrumb.icon" class="{{route.breadcrumb.icon}} icon" ></i>                     
                      {{route.breadcrumb.label}}

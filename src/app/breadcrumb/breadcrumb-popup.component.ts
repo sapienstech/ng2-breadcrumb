@@ -1,4 +1,4 @@
-import {Component, Input} from "@angular/core";
+import {Component, Input, ElementRef} from "@angular/core";
 import {Observable} from "rxjs/Observable";
 import "rxjs/add/observable/of";
 import {BreadcrumbDropDown, BreadcrumbDropDownItem} from "./breadcrumb-model";
@@ -9,7 +9,7 @@ import {BreadcrumbDropDown, BreadcrumbDropDownItem} from "./breadcrumb-model";
   styleUrls: ["./breadcrumb.component.css"],
   template: `
             <span *ngIf="isShowBreadcrumbDropDown" >                    
-                    <button #btn3  class="ui-button" (click)="setInitialFilter(breadcrumb)">
+                    <button #btn3  class="ui-button" (click)="setInitialFilter($event)">
                         &#10148;
                     </button>
                     <div class="popover" *ngIf="showPopup">
@@ -41,20 +41,39 @@ export class BreadcrumbPopupComponent {
   breadcrumbDropDown: BreadcrumbDropDown;
   filteredItems: BreadcrumbDropDownItem[];
 
-  showPopup = false;
+  _showPopup = false;
+  get showPopup() {
+    return this._showPopup;
+  }
 
-  constructor() {
+  set showPopup(isShow: boolean) {
+    this._showPopup = isShow;
+    if (!isShow) {
+      this.removeListeners();
+    }
+    else {
+      this.addListeners();
+    }
+  }
+
+  constructor(private elementRef: ElementRef) {
     this.search = this.search.bind(this);
     this.onKeyDown = this.onKeyDown.bind(this);
     this.onClick = this.onClick.bind(this);
+    console.log("create");
   }
 
-  ngOnInit() {
+  ngOnDestroy() {
+    console.log("destory")
+    this.removeListeners();
+  }
+
+  private addListeners() {
     document.addEventListener("keydown", this.onKeyDown);
     document.addEventListener("click", this.onClick);
   }
 
-  ngOnDestroy() {
+  private removeListeners() {
     document.removeEventListener("keydown", this.onKeyDown);
     document.removeEventListener("click", this.onClick);
   }
@@ -72,11 +91,10 @@ export class BreadcrumbPopupComponent {
     }
   }
 
-  onClick() {
-    console.log("DDDDDDDD");
-    // if (this.showPopup) {
-    //   this.showPopup = false;
-    // }
+  onClick(event: MouseEvent) {
+    if (!this.elementRef.nativeElement.contains(event.target)) {
+      this.showPopup = false;
+    }
   }
 
   search(query: string, maxResult: number): Observable<any[]> {
@@ -85,7 +103,9 @@ export class BreadcrumbPopupComponent {
     return Observable.of(result);
   }
 
-  setInitialFilter() {
+  setInitialFilter(event: MouseEvent) {
+    event.stopPropagation();
+
     this.filteredItems = this.items;
     this.showPopup = !this.showPopup;
   }

@@ -1,0 +1,65 @@
+@hover-background-color: #899ee7;
+@item-background-color: #3bc3ff;
+@text-color: #e0e78a;
+.ui-breadcrumb {
+  margin: 0;
+  padding: .3em;
+  width: 100%;
+  background-color: @item-background-color; //red;//#0cb6e7;
+}
+
+.flat div,
+.flat div,
+.flat div:after {
+  background: @item-background-color;
+  line-height: 1.5;
+  //background: linear-gradient(#0cb6e7, #2651e7);
+  //color: red;
+  transition: all 0.5s;
+
+
+}
+
+.flat a,
+.flat a:hover {
+  color: @text-color;
+  padding-left: 8px;
+
+}
+
+.flat div:hover,
+.flat div.active,
+.flat div:hover:after,
+.flat div.active:after {
+  background: @hover-background-color;
+  line-height: 2;
+}
+
+.ui-button {
+  display: inline-block;
+  padding: 5px;
+  margin-left: 5px;
+  text-decoration: none !important;
+  line-height: 1;
+  border-radius: 50%;
+  width: 26px;
+  height: 26px;
+  border: solid 1px gray;
+  color: #0cb6e7;
+
+  //-webkit-transition: 0.5s ease-in-out;
+  //-moz-transition: 0.5s ease-in-out;
+  //-o-transition: 0.5s ease-in-out;
+  transition: all 0.5s;
+
+  &:hover {
+    color: whitesmoke;
+    background-color: @hover-background-color;
+    transform: rotate(90deg);
+    border: solid 1px white;
+  }
+  &:focus {
+    outline: -webkit-focus-ring-color auto 0px;
+  }
+}
+

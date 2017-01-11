@@ -1,0 +1,47 @@
+.ui-breadcrumb {
+  margin: 0;
+  padding: .3em;
+  width: 100%;
+  background-color: #3bc3ff;
+}
+.flat div,
+.flat div,
+.flat div:after {
+  background: #3bc3ff;
+  line-height: 1.5;
+  transition: all 0.5s;
+}
+.flat a,
+.flat a:hover {
+  color: #e0e78a;
+  padding-left: 8px;
+}
+.flat div:hover,
+.flat div.active,
+.flat div:hover:after,
+.flat div.active:after {
+  background: #899ee7;
+  line-height: 2;
+}
+.ui-button {
+  display: inline-block;
+  padding: 5px;
+  margin-left: 5px;
+  text-decoration: none !important;
+  line-height: 1;
+  border-radius: 50%;
+  width: 26px;
+  height: 26px;
+  border: solid 1px gray;
+  color: #0cb6e7;
+  transition: all 0.5s;
+}
+.ui-button:hover {
+  color: whitesmoke;
+  background-color: #899ee7;
+  transform: rotate(90deg);
+  border: solid 1px white;
+}
+.ui-button:focus {
+  outline: -webkit-focus-ring-color auto 0px;
+}

@@ -22,8 +22,8 @@ import {BreadcrumbDropDown, BreadcrumbDropDownItem} from "./breadcrumb-model";
                             >              
                         </dcn-search-box>
 
-                        <div style="max-height: 150px;overflow: auto">
-                            <div *ngFor="let nextLink of filteredItems" >
+                        <div style="max-height: 150px;overflow: auto" >
+                            <div *ngFor="let nextLink of filteredItems"  class="next-link">
                     
                                 <a [routerLink]="[nextLink.url, nextLink.params?nextLink.params:{}]" >
                                 <i  *ngIf="nextLink.icon" class="{{nextLink.icon}} icon" ></i>

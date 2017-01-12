@@ -4,6 +4,13 @@
   line-height: 1.5;
   transition: all 0.5s;
 }
+.winter div .breadcrumbPopup {
+  background-color: red;
+}
+.winter div .breadcrumbPopup.next-link {
+  background-color: gray;
+  color: white;
+}
 .winter a,
 .winter a:hover {
   color: yellow;
@@ -22,6 +29,13 @@
   line-height: 1.5;
   transition: all 0.5s;
 }
+.decision div .breadcrumbPopup {
+  background-color: #0cb6e7;
+}
+.decision div .breadcrumbPopup.next-link {
+  background-color: gray;
+  color: white;
+}
 .decision a,
 .decision a:hover {
   color: white;
@@ -39,6 +53,13 @@
   background: #899ee7;
   line-height: 1.5;
   transition: all 0.5s;
+}
+.summer div .breadcrumbPopup {
+  background-color: #899ee7;
+}
+.summer div .breadcrumbPopup.next-link {
+  background-color: gray;
+  color: white;
 }
 .summer a,
 .summer a:hover {

@@ -20,6 +20,15 @@
     transition: all 0.5s;
 
   }
+  div {
+    & .breadcrumbPopup {
+      background-color: @item-background-color;
+      &.next-link {
+        background-color: gray;
+        color: white;
+      }
+    }
+  }
 
   a,
   a:hover {

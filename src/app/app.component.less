@@ -1,51 +1,67 @@
+
 .winter {
-  .breadcrumb-colors(red, yellow, blue);
+  .breadcrumb-colors(red, yellow, blue, green);
 }
 
 .decision {
-  .breadcrumb-colors(#0cb6e7, white, #78e2eb)
+  .breadcrumb-colors(#0cb6e7, white, #78e2eb, white)
 }
 
 .summer {
-  .breadcrumb-colors(#899ee7, #e0e78a, #3bc3ff);
+  .breadcrumb-colors(#899ee7, #e0e78a, #3bc3ff, red);
 }
 
-.breadcrumb-colors(@item-background-color,@text-color,@hover-background-color) {
-  div,
-  div:after {
-    background: @item-background-color;
-    line-height: 1.5;
-    //background: linear-gradient(#0cb6e7, #2651e7);
-    //color: red;
-    transition: all 0.5s;
+.breadcrumb-colors(
+  @item-background-color,
+  @text-color, @hover-background-color
+  @arrow-color)
+{
+div,
+div:after {
+  background: @item-background-color;
+  line-height: 1.5;
+  transition: all 0.5s;
 
-  }
-  div {
-    & .breadcrumbPopup {
-      background-color: @item-background-color;
-      &.next-link {
-        background-color: gray;
-        color: white;
-      }
+}
+
+div {
+  & .breadcrumbPopup {
+    background-color: @item-background-color;
+    &.next-link {
+      background-color: gray;
+      color: white;
     }
   }
+}
 
-  a,
-  a:hover {
-    color: @text-color;
-    padding-left: 8px;
-
-  }
-
-  div:hover,
-  div.active,
-  div:hover:after,
-  div.active:after {
-    background: @hover-background-color;
-    line-height: 2;
-  }
+a,
+a:hover {
+  text-decoration: none;
+  color: @text-color;
+  padding-left: 8px;
 
 }
+
+div:hover,
+div.active,
+div:hover:after,
+div.active:after {
+  background: @hover-background-color;
+  line-height: 2;
+}
+
+div.searchBox {
+  width: 300px;
+  background-color: transparent;
+  line-height: 1;
+  & .inputClass {
+    background: white;//@hover-background-color;
+  }
+}
+.searchBox .inputClass {
+  width: 300px;
+}
+
 
 .ui-button {
   display: inline-block;
@@ -56,22 +72,20 @@
   border-radius: 50%;
   width: 26px;
   height: 26px;
-  border: solid 1px gray;
-  color: #0cb6e7;
+  border: solid 0px gray;
+  background-color: transparent;
+  color: @arrow-color;
 
-  //-webkit-transition: 0.5s ease-in-out;
-  //-moz-transition: 0.5s ease-in-out;
-  //-o-transition: 0.5s ease-in-out;
-  transition: all 0.5s;
+  -webkit-transition: 0.5s ease-in-out;
+  -moz-transition: 0.5s ease-in-out;
+  -o-transition: 0.5s ease-in-out;
 
   &:hover {
     color: whitesmoke;
-    background-color: gray; //@hover-background-color;
+    background-color: transparent;
     transform: rotate(90deg);
-    border: solid 1px white;
-  }
-  &:focus {
-    outline: -webkit-focus-ring-color auto 0px;
+    border: solid 0px white;
   }
 }
 
+}

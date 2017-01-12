@@ -8,18 +8,16 @@ import "rxjs/add/operator/debounceTime";
 import "rxjs/add/operator/switch";
 
 @Component({
-  //moduleId: module.id,
   selector: 'dcn-search-box',
   styleUrls: ["./searchbox.component.css"],
   template: `
         <div class="searchBox">
-            <input #input type="search" 
+            <input #input type="search"
                 [value]="filterText" 
                 (input)="filterText = $event.target.value"
                 class="inputClass" 
-                placeholder="Search" 
-                autofocus/>
-            <span #removeButton class="removeButton" (click)="input.focus()">&times;</span>
+                placeholder="search" 
+                 />
         </div>
   `
 })
@@ -40,7 +38,6 @@ export class SearchBoxComponent implements OnInit {
   private filterText: string = "";
 
 
-  @ViewChild('removeButton') removeButton: ElementRef;
   @ViewChild('input') input: ElementRef;
 
   constructor(private el: ElementRef) {
@@ -49,21 +46,20 @@ export class SearchBoxComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    let keyup = Observable.fromEvent(this.input.nativeElement, 'keyup')
+    let keyUp = Observable.fromEvent(this.input.nativeElement, 'keyup')
       .map((e: any) => e.target.value)
       .filter((text: string) => text.length >= this.minLength)
       .debounceTime(250);
 
-    let buttonClick = Observable.fromEvent(this.removeButton.nativeElement, "click")
+    let search = Observable.fromEvent(this.input.nativeElement, "search")
       .do(() => this.filterText = "")
       .map(e => "");
 
 
-    Observable.merge(keyup, buttonClick)
+    Observable.merge(keyUp, search)
       .do(() => this.loading.next(true))
       .map((query: string) =>
-        this.searchData ? this.searchData(query, this.maxResults) : Observable.of([])
-      )
+        this.searchData(query, this.maxResults))
       .switch()
       .subscribe(
         (results: any[]) => {

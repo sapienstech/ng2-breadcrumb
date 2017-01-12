@@ -1,4 +1,4 @@
-import {Component, OnInit, TemplateRef, ContentChild, Input} from "@angular/core";
+import {Component, OnInit, TemplateRef, ContentChild, Input, ViewEncapsulation} from "@angular/core";
 import {Router, ActivatedRoute, NavigationEnd} from "@angular/router";
 import "rxjs/add/operator/filter";
 import {BreadcrumbService} from "./breadcrumb.service";
@@ -9,9 +9,10 @@ import {BreadcrumbRoute} from "./breadcrumb-model";
   //moduleId: module.id,
   selector: "dcn-breadcrumb",
   styleUrls: ["./breadcrumb.component.css"],
+  //encapsulation: ViewEncapsulation.None,
   template: `
     <div class="ui-breadcrumb">
-        <div class="breadcrumb {{theme}}">
+        <div ngClass="breadcrumb {{theme}}">
             <div>
                 <a routerLink="">
                      <i class="icon-place-holder-icon icon"></i>
@@ -30,15 +31,26 @@ import {BreadcrumbRoute} from "./breadcrumb-model";
 })
 export class BreadcrumbComponent implements OnInit {
 
+  _theme: string;
   @Input()
-  theme: string;
+  set theme(theme: string) {
+    this._theme = theme;
+  }
+
+  get theme() {
+    if (!this._theme) {
+      return "decisionTheme";
+    }
+    return this._theme;
+  }
+
   public breadcrumbRoutes: BreadcrumbRoute[];
 
   constructor(private breadcrumbService: BreadcrumbService,
               private activatedRoute: ActivatedRoute,
               private router: Router) {
     this.breadcrumbRoutes = [];
-    this.theme="abc";
+    this.theme = "decision";
   }
 
   ngOnInit() {

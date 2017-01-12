@@ -13,6 +13,7 @@
 }
 .winter a,
 .winter a:hover {
+  text-decoration: none;
   color: yellow;
   padding-left: 8px;
 }
@@ -22,6 +23,39 @@
 .winter div.active:after {
   background: blue;
   line-height: 2;
+}
+.winter div.searchBox {
+  width: 300px;
+  background-color: transparent;
+  line-height: 1;
+}
+.winter div.searchBox .inputClass {
+  background: white;
+}
+.winter .searchBox .inputClass {
+  width: 300px;
+}
+.winter .ui-button {
+  display: inline-block;
+  padding: 5px;
+  margin-left: 5px;
+  text-decoration: none !important;
+  line-height: 1;
+  border-radius: 50%;
+  width: 26px;
+  height: 26px;
+  border: solid 0px gray;
+  background-color: transparent;
+  color: green;
+  -webkit-transition: 0.5s ease-in-out;
+  -moz-transition: 0.5s ease-in-out;
+  -o-transition: 0.5s ease-in-out;
+}
+.winter .ui-button:hover {
+  color: whitesmoke;
+  background-color: transparent;
+  transform: rotate(90deg);
+  border: solid 0px white;
 }
 .decision div,
 .decision div:after {
@@ -38,6 +72,7 @@
 }
 .decision a,
 .decision a:hover {
+  text-decoration: none;
   color: white;
   padding-left: 8px;
 }
@@ -47,6 +82,39 @@
 .decision div.active:after {
   background: #78e2eb;
   line-height: 2;
+}
+.decision div.searchBox {
+  width: 300px;
+  background-color: transparent;
+  line-height: 1;
+}
+.decision div.searchBox .inputClass {
+  background: white;
+}
+.decision .searchBox .inputClass {
+  width: 300px;
+}
+.decision .ui-button {
+  display: inline-block;
+  padding: 5px;
+  margin-left: 5px;
+  text-decoration: none !important;
+  line-height: 1;
+  border-radius: 50%;
+  width: 26px;
+  height: 26px;
+  border: solid 0px gray;
+  background-color: transparent;
+  color: white;
+  -webkit-transition: 0.5s ease-in-out;
+  -moz-transition: 0.5s ease-in-out;
+  -o-transition: 0.5s ease-in-out;
+}
+.decision .ui-button:hover {
+  color: whitesmoke;
+  background-color: transparent;
+  transform: rotate(90deg);
+  border: solid 0px white;
 }
 .summer div,
 .summer div:after {
@@ -63,6 +131,7 @@
 }
 .summer a,
 .summer a:hover {
+  text-decoration: none;
   color: #e0e78a;
   padding-left: 8px;
 }
@@ -73,7 +142,18 @@
   background: #3bc3ff;
   line-height: 2;
 }
-.ui-button {
+.summer div.searchBox {
+  width: 300px;
+  background-color: transparent;
+  line-height: 1;
+}
+.summer div.searchBox .inputClass {
+  background: white;
+}
+.summer .searchBox .inputClass {
+  width: 300px;
+}
+.summer .ui-button {
   display: inline-block;
   padding: 5px;
   margin-left: 5px;
@@ -82,16 +162,16 @@
   border-radius: 50%;
   width: 26px;
   height: 26px;
-  border: solid 1px gray;
-  color: #0cb6e7;
-  transition: all 0.5s;
+  border: solid 0px gray;
+  background-color: transparent;
+  color: red;
+  -webkit-transition: 0.5s ease-in-out;
+  -moz-transition: 0.5s ease-in-out;
+  -o-transition: 0.5s ease-in-out;
 }
-.ui-button:hover {
+.summer .ui-button:hover {
   color: whitesmoke;
-  background-color: gray;
+  background-color: transparent;
   transform: rotate(90deg);
-  border: solid 1px white;
-}
-.ui-button:focus {
-  outline: -webkit-focus-ring-color auto 0px;
+  border: solid 0px white;
 }

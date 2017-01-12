@@ -1,26 +1,55 @@
-.ui-breadcrumb {
-  margin: 0;
-  padding: .3em;
-  width: 100%;
-  background-color: #3bc3ff;
-}
-.flat div,
-.flat div,
-.flat div:after {
-  background: #3bc3ff;
+.winter div,
+.winter div:after {
+  background: red;
   line-height: 1.5;
   transition: all 0.5s;
 }
-.flat a,
-.flat a:hover {
+.winter a,
+.winter a:hover {
+  color: yellow;
+  padding-left: 8px;
+}
+.winter div:hover,
+.winter div.active,
+.winter div:hover:after,
+.winter div.active:after {
+  background: blue;
+  line-height: 2;
+}
+.decision div,
+.decision div:after {
+  background: #0cb6e7;
+  line-height: 1.5;
+  transition: all 0.5s;
+}
+.decision a,
+.decision a:hover {
+  color: white;
+  padding-left: 8px;
+}
+.decision div:hover,
+.decision div.active,
+.decision div:hover:after,
+.decision div.active:after {
+  background: #78e2eb;
+  line-height: 2;
+}
+.summer div,
+.summer div:after {
+  background: #899ee7;
+  line-height: 1.5;
+  transition: all 0.5s;
+}
+.summer a,
+.summer a:hover {
   color: #e0e78a;
   padding-left: 8px;
 }
-.flat div:hover,
-.flat div.active,
-.flat div:hover:after,
-.flat div.active:after {
-  background: #899ee7;
+.summer div:hover,
+.summer div.active,
+.summer div:hover:after,
+.summer div.active:after {
+  background: #3bc3ff;
   line-height: 2;
 }
 .ui-button {
@@ -38,7 +67,7 @@
 }
 .ui-button:hover {
   color: whitesmoke;
-  background-color: #899ee7;
+  background-color: gray;
   transform: rotate(90deg);
   border: solid 1px white;
 }

@@ -1,9 +1,13 @@
+<dcn-breadcrumb theme="{{selectedTheme}}"></dcn-breadcrumb>
 
-<dcn-breadcrumb style="position: relative" breadcrumb>
-  <div class="FIRST" >breadcrumb. FIRST</div>
-  <div class="SECOND">SECOND</div>
-</dcn-breadcrumb>
 <h1>
   {{title}}
-  <router-outlet></router-outlet>
 </h1>
+
+select theme:
+<select [(ngModel)]="selectedTheme">
+  <option *ngFor="let theme of themes" [value]=theme (select)="selectedTheme=$event">{{theme}}</option>
+</select>
+
+<router-outlet></router-outlet>
+

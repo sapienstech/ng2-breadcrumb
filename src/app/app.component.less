@@ -1,38 +1,41 @@
-@hover-background-color: #899ee7;
-@item-background-color: #3bc3ff;
-@text-color: #e0e78a;
-.ui-breadcrumb {
-  margin: 0;
-  padding: .3em;
-  width: 100%;
-  background-color: @item-background-color; //red;//#0cb6e7;
+.winter {
+  .breadcrumb-colors(red, yellow, blue);
 }
 
-.flat div,
-.flat div,
-.flat div:after {
-  background: @item-background-color;
-  line-height: 1.5;
-  //background: linear-gradient(#0cb6e7, #2651e7);
-  //color: red;
-  transition: all 0.5s;
-
-
+.decision {
+  .breadcrumb-colors(#0cb6e7, white, #78e2eb)
 }
 
-.flat a,
-.flat a:hover {
-  color: @text-color;
-  padding-left: 8px;
-
+.summer {
+  .breadcrumb-colors(#899ee7, #e0e78a, #3bc3ff);
 }
 
-.flat div:hover,
-.flat div.active,
-.flat div:hover:after,
-.flat div.active:after {
-  background: @hover-background-color;
-  line-height: 2;
+.breadcrumb-colors(@item-background-color,@text-color,@hover-background-color) {
+  div,
+  div:after {
+    background: @item-background-color;
+    line-height: 1.5;
+    //background: linear-gradient(#0cb6e7, #2651e7);
+    //color: red;
+    transition: all 0.5s;
+
+  }
+
+  a,
+  a:hover {
+    color: @text-color;
+    padding-left: 8px;
+
+  }
+
+  div:hover,
+  div.active,
+  div:hover:after,
+  div.active:after {
+    background: @hover-background-color;
+    line-height: 2;
+  }
+
 }
 
 .ui-button {
@@ -54,7 +57,7 @@
 
   &:hover {
     color: whitesmoke;
-    background-color: @hover-background-color;
+    background-color: gray; //@hover-background-color;
     transform: rotate(90deg);
     border: solid 1px white;
   }

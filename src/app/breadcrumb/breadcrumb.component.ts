@@ -11,13 +11,13 @@ import {BreadcrumbRoute} from "./breadcrumb-model";
   styleUrls: ["./breadcrumb.component.css"],
   //encapsulation: ViewEncapsulation.None,
   template: `
-    <div class="ui-breadcrumb">
-        <div ngClass="breadcrumb {{theme}}">
+        <div ngClass="breadcrumb">
             <div>
                 <a routerLink="">
                      <i class="icon-place-holder-icon icon"></i>
                      Home
-                </a></div>
+                </a>
+            </div>
             <div *ngFor="let route of breadcrumbRoutes;" >              
                 <a [routerLink]="[route.url, route.params]">
                      <i  *ngIf="route.breadcrumb.icon" class="{{route.breadcrumb.icon}} icon" ></i>                     
@@ -26,7 +26,6 @@ import {BreadcrumbRoute} from "./breadcrumb-model";
                 <dcn-breadcrumb-popup [breadcrumbDropDown]="route.breadcrumb.dropDown"></dcn-breadcrumb-popup>                
             </div>        
         </div>
-    </div>
   `
 })
 export class BreadcrumbComponent implements OnInit {

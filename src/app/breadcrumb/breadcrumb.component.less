@@ -1,9 +1,15 @@
+@item-background-color :lightgreen;
+@text-color :white;
+@hover-background-color:#78e2eb;
+@arrow-color:lightpink;
+
 .breadcrumb {
   /*centering*/
   display: inline-block;
   box-shadow: 0 0 15px 1px rgba(0, 0, 0, 0.35);
   //overflow: hidden;
   border-radius: 5px;
+
   div {
     display: block;
     float: left;
@@ -11,14 +17,15 @@
     line-height: 36px;
     color: white;
     padding: 0 10px 0 20px;
-    //background: #666;
-    //background: linear-gradient(#666, #333);
+//    background: #666;
+ //   background: linear-gradient(#666, #333);
     position: relative;
 
     .icon {
       //border-radius: 50%;
       //border: solid 2px gray;
     }
+
     &:first-child {
       padding-left: 0;
       border-radius: 5px 0 0 5px;
@@ -26,6 +33,7 @@
         left: 14px;
       }
     }
+
     &:last-child {
       border-radius: 0 5px 5px 0; /*this was to prevent glitches on hover*/
       padding-right: 20px;
@@ -35,6 +43,7 @@
       }
 
     }
+
     /*adding the arrows for the breadcrumbRoutes using rotated pseudo elements*/
     &:after {
       content: '';
@@ -61,6 +70,7 @@
           50px - to prevent hover glitches on the border created using shadows*/
       border-radius: 0 5px 0 50px;
     }
+
     > a {
       text-decoration: none;
       outline: none;
@@ -112,84 +122,114 @@
   }
 }
 
-.decisionTheme {
-  .breadcrumb-colors(lightgreen, white, #78e2eb, red)
-}
 
-.breadcrumb-colors(
-  @item-background-color,
-  @text-color,
-  @hover-background-color @arrow-color)  {
-div,
-div:after {
-  background: @item-background-color;
-  //line-height: 1.5;
-  transition: all 0.5s;
 
-}
+//.decisionTheme {
+//  .breadcrumb-colors(lightgreen, white, #78e2eb, red)
+//}
+//.breadcrumb-colors(
+//  @item-background-color,
+//  @text-color,
+//  @hover-background-color @arrow-color)
+//{
+//  div,
+//  div:after {
+//    background: @item-background-color;
+//    //line-height: 1.5;
+//    transition: all 0.5s;
+//
+//  }
+//
+//  div {
+//    &.popover span.breadcrumbPopup {
+//      background-color: @item-background-color;
+//      &.next-link {
+//        background-color: gray;
+//        color: white;
+//      }
+//    }
+//  }
+//
+//  a,
+//  a:hover {
+//    text-decoration: none;
+//    color: @text-color;
+//    padding-left: 8px;
+//
+//  }
+//
+//  div:hover,
+//  div.active,
+//  div:hover:after,
+//  div.active:after {
+//    background-color: @hover-background-color;
+//    //line-height: 2;
+//  }
+//
+//  div.searchBox {
+//    width: 300px;
+//    background-color: transparent;
+//    line-height: 1;
+//    & .inputClass {
+//      background: white; //@hover-background-color;
+//    }
+//  }
+//
+//  .searchBox .inputClass {
+//    width: 300px;
+//  }
+//
+//  .ui-button {
+//    display: inline-block;
+//    padding: 5px;
+//    margin-left: 5px;
+//    text-decoration: none !important;
+//    line-height: 1;
+//    border-radius: 50%;
+//    width: 26px;
+//    height: 26px;
+//    border: solid 0px gray;
+//    background-color: transparent;
+//    color: @arrow-color;
+//
+//    -webkit-transition: 0.5s ease-in-out;
+//    -moz-transition: 0.5s ease-in-out;
+//    -o-transition: 0.5s ease-in-out;
+//
+//    &:hover {
+//      color: whitesmoke;
+//      background-color: transparent;
+//      transform: rotate(90deg);
+//      border: solid 0px white;
+//    }
+//  }
 
-div {
-  &.popover span.breadcrumbPopup {
-    background-color: @item-background-color;
-    &.next-link {
-      background-color: gray;
-      color: white;
-    }
-  }
-}
+//}
 
-a,
-a:hover {
-  text-decoration: none;
-  color: @text-color;
-  padding-left: 8px;
 
-}
 
-div:hover,
-div.active,
-div:hover:after,
-div.active:after {
-  background-color: @hover-background-color;
-  //line-height: 2;
-}
-
-div.searchBox {
-  width: 300px;
-  background-color: transparent;
-  line-height: 1;
-  & .inputClass {
-    background: white; //@hover-background-color;
-  }
-}
-
-.searchBox .inputClass {
-  width: 300px;
-}
-
-.ui-button {
-  display: inline-block;
-  padding: 5px;
-  margin-left: 5px;
-  text-decoration: none !important;
-  line-height: 1;
-  border-radius: 50%;
-  width: 26px;
-  height: 26px;
-  border: solid 0px gray;
-  background-color: transparent;
-  color: @arrow-color;
-
-  -webkit-transition: 0.5s ease-in-out;
-  -moz-transition: 0.5s ease-in-out;
-  -o-transition: 0.5s ease-in-out;
-
-  &:hover {
-    color: whitesmoke;
-    background-color: transparent;
-    transform: rotate(90deg);
-    border: solid 0px white;
-  }
-}
-
-}
+//
+//.ui-button {
+//  display: inline-block;
+//  padding: 5px;
+//  margin-left: 5px;
+//  text-decoration: none !important;
+//  line-height: 1;
+//  border-radius: 50%;
+//  width: 26px;
+//  height: 26px;
+//  border: solid 0px gray;
+//  background-color: transparent;
+//  color: @arrow-color;
+//
+//  -webkit-transition: 0.5s ease-in-out;
+//  -moz-transition: 0.5s ease-in-out;
+//  -o-transition: 0.5s ease-in-out;
+//
+//  &:hover {
+//    color: whitesmoke;
+//    background-color: transparent;
+//    transform: rotate(90deg);
+//    border: solid 0px white;
+//  }
+//}

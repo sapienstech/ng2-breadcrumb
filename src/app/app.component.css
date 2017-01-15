@@ -1,41 +1,100 @@
-.winter div,
-.winter div:after {
-  background: red;
+.breadcrumb div,
+.breadcrumb div:after {
+  background: lightgreen;
   line-height: 1.5;
   transition: all 0.5s;
 }
-.winter div .breadcrumbPopup {
-  background-color: red;
+.breadcrumb div .breadcrumbPopup {
+  background-color: lightgreen;
 }
-.winter div .breadcrumbPopup.next-link {
+.breadcrumb div .breadcrumbPopup.next-link {
   background-color: gray;
   color: white;
 }
-.winter a,
-.winter a:hover {
+.breadcrumb a,
+.breadcrumb a:hover {
   text-decoration: none;
-  color: yellow;
+  color: white;
   padding-left: 8px;
 }
-.winter div:hover,
-.winter div.active,
-.winter div:hover:after,
-.winter div.active:after {
-  background: blue;
+.breadcrumb div:hover,
+.breadcrumb div.active,
+.breadcrumb div:hover:after,
+.breadcrumb div.active:after {
+  background: #78e2eb;
   line-height: 2;
 }
-.winter div.searchBox {
+.breadcrumb div.searchBox {
   width: 300px;
   background-color: transparent;
   line-height: 1;
 }
-.winter div.searchBox .inputClass {
+.breadcrumb div.searchBox .inputClass {
   background: white;
 }
-.winter .searchBox .inputClass {
+.breadcrumb .searchBox .inputClass {
   width: 300px;
 }
-.winter .ui-button {
+.breadcrumb .ui-button {
+  display: inline-block;
+  padding: 5px;
+  margin-left: 5px;
+  text-decoration: none !important;
+  line-height: 1;
+  border-radius: 50%;
+  width: 26px;
+  height: 26px;
+  border: solid 0px gray;
+  background-color: transparent;
+  color: red;
+  -webkit-transition: 0.5s ease-in-out;
+  -moz-transition: 0.5s ease-in-out;
+  -o-transition: 0.5s ease-in-out;
+}
+.breadcrumb .ui-button:hover {
+  color: whitesmoke;
+  background-color: transparent;
+  transform: rotate(90deg);
+  border: solid 0px white;
+}
+.winter .breadcrumb div,
+.winter .breadcrumb div:after {
+  background: red;
+  line-height: 1.5;
+  transition: all 0.5s;
+}
+.winter .breadcrumb div .breadcrumbPopup {
+  background-color: red;
+}
+.winter .breadcrumb div .breadcrumbPopup.next-link {
+  background-color: gray;
+  color: white;
+}
+.winter .breadcrumb a,
+.winter .breadcrumb a:hover {
+  text-decoration: none;
+  color: yellow;
+  padding-left: 8px;
+}
+.winter .breadcrumb div:hover,
+.winter .breadcrumb div.active,
+.winter .breadcrumb div:hover:after,
+.winter .breadcrumb div.active:after {
+  background: blue;
+  line-height: 2;
+}
+.winter .breadcrumb div.searchBox {
+  width: 300px;
+  background-color: transparent;
+  line-height: 1;
+}
+.winter .breadcrumb div.searchBox .inputClass {
+  background: white;
+}
+.winter .breadcrumb .searchBox .inputClass {
+  width: 300px;
+}
+.winter .breadcrumb .ui-button {
   display: inline-block;
   padding: 5px;
   margin-left: 5px;
@@ -51,50 +110,50 @@
   -moz-transition: 0.5s ease-in-out;
   -o-transition: 0.5s ease-in-out;
 }
-.winter .ui-button:hover {
+.winter .breadcrumb .ui-button:hover {
   color: whitesmoke;
   background-color: transparent;
   transform: rotate(90deg);
   border: solid 0px white;
 }
-.decision div,
-.decision div:after {
+dcn-breadcrumb.decision div,
+dcn-breadcrumb.decision div:after {
   background: #0cb6e7;
   line-height: 1.5;
   transition: all 0.5s;
 }
-.decision div .breadcrumbPopup {
+dcn-breadcrumb.decision div .breadcrumbPopup {
   background-color: #0cb6e7;
 }
-.decision div .breadcrumbPopup.next-link {
+dcn-breadcrumb.decision div .breadcrumbPopup.next-link {
   background-color: gray;
   color: white;
 }
-.decision a,
-.decision a:hover {
+dcn-breadcrumb.decision a,
+dcn-breadcrumb.decision a:hover {
   text-decoration: none;
   color: white;
   padding-left: 8px;
 }
-.decision div:hover,
-.decision div.active,
-.decision div:hover:after,
-.decision div.active:after {
+dcn-breadcrumb.decision div:hover,
+dcn-breadcrumb.decision div.active,
+dcn-breadcrumb.decision div:hover:after,
+dcn-breadcrumb.decision div.active:after {
   background: #78e2eb;
   line-height: 2;
 }
-.decision div.searchBox {
+dcn-breadcrumb.decision div.searchBox {
   width: 300px;
   background-color: transparent;
   line-height: 1;
 }
-.decision div.searchBox .inputClass {
+dcn-breadcrumb.decision div.searchBox .inputClass {
   background: white;
 }
-.decision .searchBox .inputClass {
+dcn-breadcrumb.decision .searchBox .inputClass {
   width: 300px;
 }
-.decision .ui-button {
+dcn-breadcrumb.decision .ui-button {
   display: inline-block;
   padding: 5px;
   margin-left: 5px;
@@ -110,7 +169,7 @@
   -moz-transition: 0.5s ease-in-out;
   -o-transition: 0.5s ease-in-out;
 }
-.decision .ui-button:hover {
+dcn-breadcrumb.decision .ui-button:hover {
   color: whitesmoke;
   background-color: transparent;
   transform: rotate(90deg);

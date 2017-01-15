@@ -7,9 +7,10 @@ import {
     RouterOutletStubComponent,
     ActivatedRouteStub,
     RouterStub
-} from "../../testing/router-stub";
-import {BreadcrumbRoute, BreadcrumbService, BreadcrumbDropDown} from "./breadcrumb.service";
+} from "./router-stub";
 import {By} from "@angular/platform-browser";
+import {BreadcrumbService} from "./breadcrumb.service";
+import {BreadcrumbRoute, BreadcrumbDropDown} from "./breadcrumb-model";
 
 
 describe("breadcrumbComponent", () => {

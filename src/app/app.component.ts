@@ -8,6 +8,6 @@ import {Component, ViewEncapsulation} from '@angular/core';
 })
 export class AppComponent {
   title = 'app works!';
-  themes = ["winter", "summer", "decision", "decisionTheme"];
+  themes = ["winter", "summer", "spring", "decisionTheme"];
   selectedTheme: "NO_THEME";
 }

@@ -1,11 +1,11 @@
 .breadcrumb div,
 .breadcrumb div:after {
-  background: lightgreen;
+  background: #0cb6e7;
   line-height: 1.5;
   transition: all 0.5s;
 }
 .breadcrumb div .breadcrumbPopup {
-  background-color: lightgreen;
+  background-color: #0cb6e7;
 }
 .breadcrumb div .breadcrumbPopup.next-link {
   background-color: gray;
@@ -46,7 +46,7 @@
   height: 26px;
   border: solid 0px gray;
   background-color: transparent;
-  color: red;
+  color: white;
   -webkit-transition: 0.5s ease-in-out;
   -moz-transition: 0.5s ease-in-out;
   -o-transition: 0.5s ease-in-out;
@@ -57,44 +57,44 @@
   transform: rotate(90deg);
   border: solid 0px white;
 }
-.winter .breadcrumb div,
-.winter .breadcrumb div:after {
+dcn-breadcrumb.winter div,
+dcn-breadcrumb.winter div:after {
   background: red;
   line-height: 1.5;
   transition: all 0.5s;
 }
-.winter .breadcrumb div .breadcrumbPopup {
+dcn-breadcrumb.winter div .breadcrumbPopup {
   background-color: red;
 }
-.winter .breadcrumb div .breadcrumbPopup.next-link {
+dcn-breadcrumb.winter div .breadcrumbPopup.next-link {
   background-color: gray;
   color: white;
 }
-.winter .breadcrumb a,
-.winter .breadcrumb a:hover {
+dcn-breadcrumb.winter a,
+dcn-breadcrumb.winter a:hover {
   text-decoration: none;
   color: yellow;
   padding-left: 8px;
 }
-.winter .breadcrumb div:hover,
-.winter .breadcrumb div.active,
-.winter .breadcrumb div:hover:after,
-.winter .breadcrumb div.active:after {
+dcn-breadcrumb.winter div:hover,
+dcn-breadcrumb.winter div.active,
+dcn-breadcrumb.winter div:hover:after,
+dcn-breadcrumb.winter div.active:after {
   background: blue;
   line-height: 2;
 }
-.winter .breadcrumb div.searchBox {
+dcn-breadcrumb.winter div.searchBox {
   width: 300px;
   background-color: transparent;
   line-height: 1;
 }
-.winter .breadcrumb div.searchBox .inputClass {
+dcn-breadcrumb.winter div.searchBox .inputClass {
   background: white;
 }
-.winter .breadcrumb .searchBox .inputClass {
+dcn-breadcrumb.winter .searchBox .inputClass {
   width: 300px;
 }
-.winter .breadcrumb .ui-button {
+dcn-breadcrumb.winter .ui-button {
   display: inline-block;
   padding: 5px;
   margin-left: 5px;
@@ -110,109 +110,50 @@
   -moz-transition: 0.5s ease-in-out;
   -o-transition: 0.5s ease-in-out;
 }
-.winter .breadcrumb .ui-button:hover {
+dcn-breadcrumb.winter .ui-button:hover {
   color: whitesmoke;
   background-color: transparent;
   transform: rotate(90deg);
   border: solid 0px white;
 }
-dcn-breadcrumb.decision div,
-dcn-breadcrumb.decision div:after {
-  background: #0cb6e7;
+dcn-breadcrumb.spring div,
+dcn-breadcrumb.spring div:after {
+  background: lightgreen;
   line-height: 1.5;
   transition: all 0.5s;
 }
-dcn-breadcrumb.decision div .breadcrumbPopup {
-  background-color: #0cb6e7;
+dcn-breadcrumb.spring div .breadcrumbPopup {
+  background-color: lightgreen;
 }
-dcn-breadcrumb.decision div .breadcrumbPopup.next-link {
+dcn-breadcrumb.spring div .breadcrumbPopup.next-link {
   background-color: gray;
   color: white;
 }
-dcn-breadcrumb.decision a,
-dcn-breadcrumb.decision a:hover {
+dcn-breadcrumb.spring a,
+dcn-breadcrumb.spring a:hover {
   text-decoration: none;
   color: white;
   padding-left: 8px;
 }
-dcn-breadcrumb.decision div:hover,
-dcn-breadcrumb.decision div.active,
-dcn-breadcrumb.decision div:hover:after,
-dcn-breadcrumb.decision div.active:after {
+dcn-breadcrumb.spring div:hover,
+dcn-breadcrumb.spring div.active,
+dcn-breadcrumb.spring div:hover:after,
+dcn-breadcrumb.spring div.active:after {
   background: #78e2eb;
   line-height: 2;
 }
-dcn-breadcrumb.decision div.searchBox {
+dcn-breadcrumb.spring div.searchBox {
   width: 300px;
   background-color: transparent;
   line-height: 1;
 }
-dcn-breadcrumb.decision div.searchBox .inputClass {
+dcn-breadcrumb.spring div.searchBox .inputClass {
   background: white;
 }
-dcn-breadcrumb.decision .searchBox .inputClass {
+dcn-breadcrumb.spring .searchBox .inputClass {
   width: 300px;
 }
-dcn-breadcrumb.decision .ui-button {
-  display: inline-block;
-  padding: 5px;
-  margin-left: 5px;
-  text-decoration: none !important;
-  line-height: 1;
-  border-radius: 50%;
-  width: 26px;
-  height: 26px;
-  border: solid 0px gray;
-  background-color: transparent;
-  color: white;
-  -webkit-transition: 0.5s ease-in-out;
-  -moz-transition: 0.5s ease-in-out;
-  -o-transition: 0.5s ease-in-out;
-}
-dcn-breadcrumb.decision .ui-button:hover {
-  color: whitesmoke;
-  background-color: transparent;
-  transform: rotate(90deg);
-  border: solid 0px white;
-}
-.summer div,
-.summer div:after {
-  background: #899ee7;
-  line-height: 1.5;
-  transition: all 0.5s;
-}
-.summer div .breadcrumbPopup {
-  background-color: #899ee7;
-}
-.summer div .breadcrumbPopup.next-link {
-  background-color: gray;
-  color: white;
-}
-.summer a,
-.summer a:hover {
-  text-decoration: none;
-  color: #e0e78a;
-  padding-left: 8px;
-}
-.summer div:hover,
-.summer div.active,
-.summer div:hover:after,
-.summer div.active:after {
-  background: #3bc3ff;
-  line-height: 2;
-}
-.summer div.searchBox {
-  width: 300px;
-  background-color: transparent;
-  line-height: 1;
-}
-.summer div.searchBox .inputClass {
-  background: white;
-}
-.summer .searchBox .inputClass {
-  width: 300px;
-}
-.summer .ui-button {
+dcn-breadcrumb.spring .ui-button {
   display: inline-block;
   padding: 5px;
   margin-left: 5px;
@@ -228,7 +169,66 @@ dcn-breadcrumb.decision .ui-button:hover {
   -moz-transition: 0.5s ease-in-out;
   -o-transition: 0.5s ease-in-out;
 }
-.summer .ui-button:hover {
+dcn-breadcrumb.spring .ui-button:hover {
+  color: whitesmoke;
+  background-color: transparent;
+  transform: rotate(90deg);
+  border: solid 0px white;
+}
+dcn-breadcrumb.summer div,
+dcn-breadcrumb.summer div:after {
+  background: #899ee7;
+  line-height: 1.5;
+  transition: all 0.5s;
+}
+dcn-breadcrumb.summer div .breadcrumbPopup {
+  background-color: #899ee7;
+}
+dcn-breadcrumb.summer div .breadcrumbPopup.next-link {
+  background-color: gray;
+  color: white;
+}
+dcn-breadcrumb.summer a,
+dcn-breadcrumb.summer a:hover {
+  text-decoration: none;
+  color: #e0e78a;
+  padding-left: 8px;
+}
+dcn-breadcrumb.summer div:hover,
+dcn-breadcrumb.summer div.active,
+dcn-breadcrumb.summer div:hover:after,
+dcn-breadcrumb.summer div.active:after {
+  background: #3bc3ff;
+  line-height: 2;
+}
+dcn-breadcrumb.summer div.searchBox {
+  width: 300px;
+  background-color: transparent;
+  line-height: 1;
+}
+dcn-breadcrumb.summer div.searchBox .inputClass {
+  background: white;
+}
+dcn-breadcrumb.summer .searchBox .inputClass {
+  width: 300px;
+}
+dcn-breadcrumb.summer .ui-button {
+  display: inline-block;
+  padding: 5px;
+  margin-left: 5px;
+  text-decoration: none !important;
+  line-height: 1;
+  border-radius: 50%;
+  width: 26px;
+  height: 26px;
+  border: solid 0px gray;
+  background-color: transparent;
+  color: red;
+  -webkit-transition: 0.5s ease-in-out;
+  -moz-transition: 0.5s ease-in-out;
+  -o-transition: 0.5s ease-in-out;
+}
+dcn-breadcrumb.summer .ui-button:hover {
   color: whitesmoke;
   background-color: transparent;
   transform: rotate(90deg);

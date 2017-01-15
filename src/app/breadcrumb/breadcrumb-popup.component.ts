@@ -60,11 +60,9 @@ export class BreadcrumbPopupComponent {
     this.search = this.search.bind(this);
     this.onKeyDown = this.onKeyDown.bind(this);
     this.onClick = this.onClick.bind(this);
-    console.log("create");
   }
 
   ngOnDestroy() {
-    console.log("destory")
     this.removeListeners();
   }
 

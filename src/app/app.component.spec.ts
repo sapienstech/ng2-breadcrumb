@@ -2,10 +2,12 @@
 
 import { TestBed, async } from '@angular/core/testing';
 import { AppComponent } from './app.component';
+import {BreadcrumbModule} from "./breadcrumb/breadcrumb.module";
 
 describe('AppComponent', () => {
   beforeEach(() => {
     TestBed.configureTestingModule({
+      imports:[BreadcrumbModule],
       declarations: [
         AppComponent
       ],

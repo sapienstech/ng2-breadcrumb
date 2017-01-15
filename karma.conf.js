@@ -32,7 +32,7 @@ module.exports = function (config) {
     },
     reporters: config.angularCli && config.angularCli.codeCoverage
               ? ['progress', 'karma-remap-istanbul']
-              : ['progress', 'junit'],
+              : ['progress'],
     junitReporter: {
       outputDir: './target/testresults',
       outputFile: 'TEST-karma-' + root + '.xml',

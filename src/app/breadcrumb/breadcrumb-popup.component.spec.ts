@@ -3,8 +3,8 @@ import {TestBed, async, ComponentFixture, fakeAsync, tick} from "@angular/core/t
 import {By} from "@angular/platform-browser";
 import {BreadcrumbPopupComponent} from "./breadcrumb-popup.component";
 import {SearchBoxComponent} from "./searchbox.component";
-import {BreadcrumbDropDown} from "./BreadcrumbDropDown";
 import {RouterLinkStubDirective} from "./router-stub";
+import {BreadcrumbDropDown, BreadcrumbDropDownItem} from "./breadcrumb-model";
 
 describe("Breadcrumb Popup Component", () => {
   describe('the UI part', () => {
@@ -59,7 +59,7 @@ describe("Breadcrumb Popup Component", () => {
       });
     });
     describe('when there is a valid breadcrumbDropDown data', () => {
-      beforeEach(async() => {
+      beforeEach(async(() => {
         inputBreadcrumb.items = [
           {
             label: "first label",
@@ -77,13 +77,14 @@ describe("Breadcrumb Popup Component", () => {
         ];
         testCmp.testBreadCrumb = inputBreadcrumb;
         fixture.detectChanges();
-      });
-      it('should have a popup', () => {
-        expect(page.popup).toBeDefined();
+      }));
+      it('should NOT have a popup', () => {
+        expect(page.popup).toBeUndefined();
       });
 
       describe('when the user click on the button', () => {
         beforeEach(async(() => {
+
           click(page.dropDownButton);
           detectChanges(fixture).then(() => {
           });
@@ -150,6 +151,11 @@ describe("Breadcrumb Popup Component", () => {
       });
     });
 
+    function detectChanges(fixture) {
+      fixture.autoDetectChanges();
+      return fixture.whenStable();
+    }
+
     function createComponent() {
       fixture = TestBed.createComponent(TestComponent);
       testCmp = fixture.debugElement.componentInstance;
@@ -198,7 +204,7 @@ describe("Breadcrumb Popup Component", () => {
           params: [{id: 2}]
         }
       ];
-      let breadcrumbPopupComponent = new BreadcrumbPopupComponent();
+      let breadcrumbPopupComponent = new BreadcrumbPopupComponent(null);
       breadcrumbPopupComponent.breadcrumbDropDown = inputBreadcrumb;
       breadcrumbDropDownData = breadcrumbPopupComponent.items;
     });
@@ -240,8 +246,8 @@ class Page {
       .map(de => de.injector.get(RouterLinkStubDirective) as RouterLinkStubDirective);
   }
 
-  get popup(): WjPopup {
-    const debugElement = this.fixture.debugElement.query(By.directive(WjPopup));
+  get popup() {
+    const debugElement = this.fixture.debugElement.query(By.css(".breadcrumbPopup"));
     return debugElement ? debugElement.componentInstance : undefined;
   }
 
@@ -273,7 +279,8 @@ export function click(el: DebugElement | HTMLElement, eventObj: any = ButtonClic
   if (el instanceof HTMLElement) {
     el.click();
   } else {
-    el.triggerEventHandler('click', eventObj);
+    el.triggerEventHandler("click",{stopPropagation:()=>{}});
+   // el.triggerEventHandler('click', eventObj);
   }
 }
 //region test components

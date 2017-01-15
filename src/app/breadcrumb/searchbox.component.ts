@@ -9,7 +9,6 @@ import "rxjs/add/operator/switch";
 
 @Component({
   selector: 'dcn-search-box',
-  styleUrls: ["./searchbox.component.css"],
   template: `
         <div class="searchBox">
             <input #input type="search"

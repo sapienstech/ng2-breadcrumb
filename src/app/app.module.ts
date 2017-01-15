@@ -19,19 +19,6 @@ const community_routes: Routes = [
         dropDown: {
           items: [
             {label: "product1", url: "products/product1"},
-            {label: "product1", url: "products/product1"},
-            {label: "product1", url: "products/product1"},
-            {label: "product1", url: "products/product1"},
-            {label: "product1", url: "products/product1"},
-            {label: "product1", url: "products/product1"},
-            {label: "product1", url: "products/product1"},
-            {label: "product1", url: "products/product1"},
-            {label: "product1", url: "products/product1"},
-            {label: "product1", url: "products/product1"},
-            {label: "product1", url: "products/product1"},
-            {label: "product1", url: "products/product1"},
-            {label: "product1", url: "products/product1"},
-            {label: "product1", url: "products/product1"},
             {label: "product2", url: "products/product2"}
           ]
         }

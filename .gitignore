@@ -1,2 +1,5 @@
 **/src/**/*.js
 **/src/**/*.css
+.idea
+dist
+node_modules

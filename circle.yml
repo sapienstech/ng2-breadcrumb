@@ -10,7 +10,7 @@ dependencies:
     - npm install
 test:
   override:
-      - ng test:
+      - ng test -w false:
           timeout: 60 # fail if command has no output for 1 minute
   post:
     - find . -name "TEST-*.xml" -exec cp {} $CIRCLE_TEST_REPORTS \;

@@ -21,8 +21,8 @@ import {Observable} from "rxjs/observable";
                 <a 
                 [routerLink]="[route.url, route.params]">
                      <i *ngIf="route.breadcrumb.icon" class="{{route.breadcrumb.icon}} icon" ></i>                     
-                     <i *ngIf="!isString(route.breadcrumb.label)">{{route.breadcrumb.label |async}}</i>
-                     <i *ngIf="isString(route.breadcrumb.label)">{{route.breadcrumb.label}}</i>
+                     <span *ngIf="!isString(route.breadcrumb.label)">{{route.breadcrumb.label |async}}</span>
+                     <span *ngIf="isString(route.breadcrumb.label)">{{route.breadcrumb.label}}</span>
                 </a>       
                 <dcn-breadcrumb-popup [breadcrumbDropDown]="route.breadcrumb.dropDown"></dcn-breadcrumb-popup>                
             </div>        

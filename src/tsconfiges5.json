@@ -1,0 +1,23 @@
+{
+  "compilerOptions": {
+    "target": "es5",
+    "declaration": true,
+    "module": "commonjs",
+    "emitDecoratorMetadata": true,
+    "experimentalDecorators": true,
+    "listFiles": false,
+    "inlineSourceMap": false,
+    "inlineSources": false,
+    "noLib": false,
+    "moduleResolution": "node",
+    "outDir": "../dist/out-es5",
+    "rootDir": "./"
+  },
+  "typeRoots": [
+    "../node_modules/@types"
+  ],
+
+  "exclude": [
+    "target"
+  ]
+}

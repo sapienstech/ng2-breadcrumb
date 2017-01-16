@@ -1,0 +1,25 @@
+{
+  "name": "breadcrumb",
+  "version": "1.0.0",
+  "description": "use ad breadcrumb and as an optional navigator for angular 2",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/sapienstech/ng2-breadcrumb.git"
+  },
+  "keywords": [
+    "breadcrumb",
+    "navigator",
+    "angular",
+    "2"
+  ],
+  "author": "Uriel Twito",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/sapienstech/ng2-breadcrumb/issues"
+  },
+  "homepage": "https://github.com/sapienstech/ng2-breadcrumb#readme"
+}

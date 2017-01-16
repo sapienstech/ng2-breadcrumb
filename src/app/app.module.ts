@@ -13,17 +13,17 @@ const community_routes: Routes = [
   {
     path: 'products',
     //component: DemoComponent,
-    data: {
-      breadcrumb: {
-        label: "I am demo",
-        dropDown: {
-          items: [
-            {label: "product1", url: "products/product1"},
-            {label: "product2", url: "products/product2"}
-          ]
-        }
-      }
-    },
+    // data: {
+    //   // breadcrumb: {
+    //   //   label: "I am demo",
+    //   //   dropDown: {
+    //   //     items: [
+    //   //       {label: "product1", url: "products/product1"},
+    //   //       {label: "product2", url: "products/product2"}
+    //   //     ]
+    //   //   }
+    //   // }
+    // },
     children: [
       {path: '', redirectTo: "product1", pathMatch: "full", data: {breadcrumb: {}}},
       {path: "product1", component: DemoComponent, data: {breadcrumb: {label: "product1"}}},

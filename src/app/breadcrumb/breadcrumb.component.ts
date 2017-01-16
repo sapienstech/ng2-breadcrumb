@@ -3,6 +3,7 @@ import {Router, ActivatedRoute, NavigationEnd} from "@angular/router";
 import "rxjs/add/operator/filter";
 import {BreadcrumbService} from "./breadcrumb.service";
 import {BreadcrumbRoute} from "./breadcrumb-model";
+import {Observable} from "rxjs/observable";
 
 
 @Component({
@@ -16,10 +17,12 @@ import {BreadcrumbRoute} from "./breadcrumb-model";
                 <a routerLink="">
                      <i class="icon-h icon"></i>
             </a></div>
-            <div *ngFor="let route of breadcrumbRoutes;" >              
-                <a [routerLink]="[route.url, route.params]">
-                     <i  *ngIf="route.breadcrumb.icon" class="{{route.breadcrumb.icon}} icon" ></i>                     
-                     {{route.breadcrumb.label}}
+            <div *ngFor="let route of breadcrumbRoutes; let i = index" >              
+                <a 
+                [routerLink]="[route.url, route.params]">
+                     <i *ngIf="route.breadcrumb.icon" class="{{route.breadcrumb.icon}} icon" ></i>                     
+                     <i *ngIf="!isString(route.breadcrumb.label)">{{route.breadcrumb.label |async}}</i>
+                     <i *ngIf="isString(route.breadcrumb.label)">{{route.breadcrumb.label}}</i>
                 </a>       
                 <dcn-breadcrumb-popup [breadcrumbDropDown]="route.breadcrumb.dropDown"></dcn-breadcrumb-popup>                
             </div>        
@@ -39,6 +42,10 @@ export class BreadcrumbComponent implements OnInit {
       return "decisionTheme";
     }
     return this._theme;
+  }
+
+  isString(val: string|Observable<string>) {
+    return typeof val == "string";
   }
 
   public breadcrumbRoutes: BreadcrumbRoute[];

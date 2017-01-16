@@ -1,1 +1,332 @@
-/* You can add global styles to this file, and also import other style files */
+.breadcrumb {
+  /*centering*/
+  display: inline-block;
+  box-shadow: 0 0 15px 1px rgba(0, 0, 0, 0.35);
+  border-radius: 5px;
+}
+.breadcrumb div {
+  display: block;
+  float: left;
+  line-height: 36px;
+  color: white;
+  padding: 0 10px 0 20px;
+  position: relative;
+  /*adding the arrows for the breadcrumbRoutes using rotated pseudo elements*/
+}
+.breadcrumb div:first-child {
+  padding-left: 0;
+  border-radius: 5px 0 0 5px;
+}
+.breadcrumb div:first-child:before {
+  left: 14px;
+}
+.breadcrumb div:last-child {
+  border-radius: 0 5px 5px 0;
+  /*this was to prevent glitches on hover*/
+  padding-right: 20px;
+  /*we dont need an arrow after the last link*/
+}
+.breadcrumb div:last-child:after {
+  content: none;
+}
+.breadcrumb div:after {
+  content: '';
+  position: absolute;
+  top: 0;
+  right: -18px;
+  /*half of square's length*/
+  /*same dimension as the line-height of .breadcrumbDropDown a */
+  width: 36px;
+  height: 36px;
+  /*as you see the rotated square takes a larger height. which makes it tough to position it properly. So we are going to scale it down so that the diagonals become equal to the line-height of the link. We scale it to 70.7% because if square's:
+      length = 1; diagonal = (1^2 + 1^2)^0.5 = 1.414 (pythagoras theorem)
+      if diagonal required = 1; length = 1/1.414 = 0.707*/
+  transform: scale(0.707) rotate(45deg);
+  /*we need to prevent the arrows from getting buried under the next link*/
+  z-index: 1;
+  /*background same as links but the gradient will be rotated to compensate with the transform applied*/
+  /*stylish arrow design using box shadow*/
+  box-shadow: 2px -2px 0 2px rgba(0, 0, 0, 0.4), 3px -3px 0 2px rgba(255, 255, 255, 0.1);
+  /*
+          5px - for rounded arrows and
+          50px - to prevent hover glitches on the border created using shadows*/
+  border-radius: 0 5px 0 50px;
+}
+.breadcrumb div > a {
+  text-decoration: none;
+  outline: none;
+  padding: 10px 0 10px 30px;
+}
+/* The actual popover */
+.popover .breadcrumbPopup {
+  visibility: visible;
+  box-shadow: 4px 3px 5px 1px black;
+  padding: 10px;
+  color: #fff;
+  text-align: left;
+  border-radius: 6px;
+  position: absolute;
+  z-index: 1;
+  top: 100%;
+  left: 50%;
+  margin-left: -80px;
+}
+/* Toggle this class - hide and show the popover */
+.popover .show {
+  visibility: visible;
+  -webkit-animation: fadeIn 1s;
+  animation: fadeIn 1s;
+}
+/* Add animation (fade in the popover) */
+@-webkit-keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+.breadcrumb div,
+.breadcrumb div:after {
+  background: #0cb6e7;
+  line-height: 1.5;
+  transition: all 0.5s;
+}
+.breadcrumb div .breadcrumbPopup {
+  background-color: #0cb6e7;
+}
+.breadcrumb div .breadcrumbPopup.next-link {
+  background-color: gray;
+  color: white;
+}
+.breadcrumb a,
+.breadcrumb a:hover {
+  text-decoration: none;
+  color: white;
+  padding-left: 8px;
+}
+.breadcrumb div:hover,
+.breadcrumb div.active,
+.breadcrumb div:hover:after,
+.breadcrumb div.active:after {
+  background: #78e2eb;
+  line-height: 2;
+}
+.breadcrumb div.searchBox {
+  width: 300px;
+  background-color: transparent;
+  line-height: 1;
+}
+.breadcrumb div.searchBox .inputClass {
+  background: white;
+}
+.breadcrumb .searchBox .inputClass {
+  width: 300px;
+}
+.breadcrumb .ui-button {
+  display: inline-block;
+  padding: 5px;
+  margin-left: 5px;
+  text-decoration: none !important;
+  line-height: 1;
+  border-radius: 50%;
+  width: 26px;
+  height: 26px;
+  border: solid 0px gray;
+  background-color: transparent;
+  color: white;
+  -webkit-transition: 0.5s ease-in-out;
+  -moz-transition: 0.5s ease-in-out;
+  -o-transition: 0.5s ease-in-out;
+}
+.breadcrumb .ui-button:hover {
+  color: whitesmoke;
+  background-color: transparent;
+  transform: rotate(90deg);
+  border: solid 0px white;
+}
+dcn-breadcrumb.winter div,
+dcn-breadcrumb.winter div:after {
+  background: red;
+  line-height: 1.5;
+  transition: all 0.5s;
+}
+dcn-breadcrumb.winter div .breadcrumbPopup {
+  background-color: red;
+}
+dcn-breadcrumb.winter div .breadcrumbPopup.next-link {
+  background-color: gray;
+  color: white;
+}
+dcn-breadcrumb.winter a,
+dcn-breadcrumb.winter a:hover {
+  text-decoration: none;
+  color: yellow;
+  padding-left: 8px;
+}
+dcn-breadcrumb.winter div:hover,
+dcn-breadcrumb.winter div.active,
+dcn-breadcrumb.winter div:hover:after,
+dcn-breadcrumb.winter div.active:after {
+  background: blue;
+  line-height: 2;
+}
+dcn-breadcrumb.winter div.searchBox {
+  width: 300px;
+  background-color: transparent;
+  line-height: 1;
+}
+dcn-breadcrumb.winter div.searchBox .inputClass {
+  background: white;
+}
+dcn-breadcrumb.winter .searchBox .inputClass {
+  width: 300px;
+}
+dcn-breadcrumb.winter .ui-button {
+  display: inline-block;
+  padding: 5px;
+  margin-left: 5px;
+  text-decoration: none !important;
+  line-height: 1;
+  border-radius: 50%;
+  width: 26px;
+  height: 26px;
+  border: solid 0px gray;
+  background-color: transparent;
+  color: green;
+  -webkit-transition: 0.5s ease-in-out;
+  -moz-transition: 0.5s ease-in-out;
+  -o-transition: 0.5s ease-in-out;
+}
+dcn-breadcrumb.winter .ui-button:hover {
+  color: whitesmoke;
+  background-color: transparent;
+  transform: rotate(90deg);
+  border: solid 0px white;
+}
+dcn-breadcrumb.spring div,
+dcn-breadcrumb.spring div:after {
+  background: lightgreen;
+  line-height: 1.5;
+  transition: all 0.5s;
+}
+dcn-breadcrumb.spring div .breadcrumbPopup {
+  background-color: lightgreen;
+}
+dcn-breadcrumb.spring div .breadcrumbPopup.next-link {
+  background-color: gray;
+  color: white;
+}
+dcn-breadcrumb.spring a,
+dcn-breadcrumb.spring a:hover {
+  text-decoration: none;
+  color: white;
+  padding-left: 8px;
+}
+dcn-breadcrumb.spring div:hover,
+dcn-breadcrumb.spring div.active,
+dcn-breadcrumb.spring div:hover:after,
+dcn-breadcrumb.spring div.active:after {
+  background: #78e2eb;
+  line-height: 2;
+}
+dcn-breadcrumb.spring div.searchBox {
+  width: 300px;
+  background-color: transparent;
+  line-height: 1;
+}
+dcn-breadcrumb.spring div.searchBox .inputClass {
+  background: white;
+}
+dcn-breadcrumb.spring .searchBox .inputClass {
+  width: 300px;
+}
+dcn-breadcrumb.spring .ui-button {
+  display: inline-block;
+  padding: 5px;
+  margin-left: 5px;
+  text-decoration: none !important;
+  line-height: 1;
+  border-radius: 50%;
+  width: 26px;
+  height: 26px;
+  border: solid 0px gray;
+  background-color: transparent;
+  color: red;
+  -webkit-transition: 0.5s ease-in-out;
+  -moz-transition: 0.5s ease-in-out;
+  -o-transition: 0.5s ease-in-out;
+}
+dcn-breadcrumb.spring .ui-button:hover {
+  color: whitesmoke;
+  background-color: transparent;
+  transform: rotate(90deg);
+  border: solid 0px white;
+}
+dcn-breadcrumb.summer div,
+dcn-breadcrumb.summer div:after {
+  background: #899ee7;
+  line-height: 1.5;
+  transition: all 0.5s;
+}
+dcn-breadcrumb.summer div .breadcrumbPopup {
+  background-color: #899ee7;
+}
+dcn-breadcrumb.summer div .breadcrumbPopup.next-link {
+  background-color: gray;
+  color: white;
+}
+dcn-breadcrumb.summer a,
+dcn-breadcrumb.summer a:hover {
+  text-decoration: none;
+  color: #e0e78a;
+  padding-left: 8px;
+}
+dcn-breadcrumb.summer div:hover,
+dcn-breadcrumb.summer div.active,
+dcn-breadcrumb.summer div:hover:after,
+dcn-breadcrumb.summer div.active:after {
+  background: #3bc3ff;
+  line-height: 2;
+}
+dcn-breadcrumb.summer div.searchBox {
+  width: 300px;
+  background-color: transparent;
+  line-height: 1;
+}
+dcn-breadcrumb.summer div.searchBox .inputClass {
+  background: white;
+}
+dcn-breadcrumb.summer .searchBox .inputClass {
+  width: 300px;
+}
+dcn-breadcrumb.summer .ui-button {
+  display: inline-block;
+  padding: 5px;
+  margin-left: 5px;
+  text-decoration: none !important;
+  line-height: 1;
+  border-radius: 50%;
+  width: 26px;
+  height: 26px;
+  border: solid 0px gray;
+  background-color: transparent;
+  color: red;
+  -webkit-transition: 0.5s ease-in-out;
+  -moz-transition: 0.5s ease-in-out;
+  -o-transition: 0.5s ease-in-out;
+}
+dcn-breadcrumb.summer .ui-button:hover {
+  color: whitesmoke;
+  background-color: transparent;
+  transform: rotate(90deg);
+  border: solid 0px white;
+}

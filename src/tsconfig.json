@@ -8,11 +8,14 @@
     "mapRoot": "./",
     "module": "es6",
     "moduleResolution": "node",
-    "outDir": "../dist/out-tsc",
+    "outDir": "../dist/out-es6",
     "sourceMap": true,
     "target": "es6",
     "typeRoots": [
       "../node_modules/@types"
+    ],
+    "exclude": [
+      "src/app/breadcrumb/breadcrumb.component.spec.js"
     ]
   }
 }

@@ -8,6 +8,7 @@ import "rxjs/add/operator/debounceTime";
 import "rxjs/add/operator/switch";
 
 @Component({
+  moduleId: module.id,
   selector: 'dcn-search-box',
   template: `
         <div class="searchBox">

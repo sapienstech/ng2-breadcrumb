@@ -22,18 +22,11 @@
 .breadcrumb div:hover:after,
 .breadcrumb div.active:after {
   background: #78e2eb;
-  line-height: 2;
-}
-.breadcrumb div.searchBox {
-  width: 300px;
-  background-color: transparent;
-  line-height: 1;
-}
-.breadcrumb div.searchBox .inputClass {
-  background: white;
 }
 .breadcrumb .searchBox .inputClass {
   width: 300px;
+  background-color: white;
+  color: #0cb6e7;
 }
 .breadcrumb .ui-button {
   display: inline-block;
@@ -81,18 +74,11 @@ dcn-breadcrumb.winter div.active,
 dcn-breadcrumb.winter div:hover:after,
 dcn-breadcrumb.winter div.active:after {
   background: blue;
-  line-height: 2;
-}
-dcn-breadcrumb.winter div.searchBox {
-  width: 300px;
-  background-color: transparent;
-  line-height: 1;
-}
-dcn-breadcrumb.winter div.searchBox .inputClass {
-  background: white;
 }
 dcn-breadcrumb.winter .searchBox .inputClass {
   width: 300px;
+  background-color: yellow;
+  color: red;
 }
 dcn-breadcrumb.winter .ui-button {
   display: inline-block;
@@ -140,18 +126,11 @@ dcn-breadcrumb.spring div.active,
 dcn-breadcrumb.spring div:hover:after,
 dcn-breadcrumb.spring div.active:after {
   background: #78e2eb;
-  line-height: 2;
-}
-dcn-breadcrumb.spring div.searchBox {
-  width: 300px;
-  background-color: transparent;
-  line-height: 1;
-}
-dcn-breadcrumb.spring div.searchBox .inputClass {
-  background: white;
 }
 dcn-breadcrumb.spring .searchBox .inputClass {
   width: 300px;
+  background-color: white;
+  color: lightgreen;
 }
 dcn-breadcrumb.spring .ui-button {
   display: inline-block;
@@ -199,18 +178,11 @@ dcn-breadcrumb.summer div.active,
 dcn-breadcrumb.summer div:hover:after,
 dcn-breadcrumb.summer div.active:after {
   background: #3bc3ff;
-  line-height: 2;
-}
-dcn-breadcrumb.summer div.searchBox {
-  width: 300px;
-  background-color: transparent;
-  line-height: 1;
-}
-dcn-breadcrumb.summer div.searchBox .inputClass {
-  background: white;
 }
 dcn-breadcrumb.summer .searchBox .inputClass {
   width: 300px;
+  background-color: #e0e78a;
+  color: #899ee7;
 }
 dcn-breadcrumb.summer .ui-button {
   display: inline-block;

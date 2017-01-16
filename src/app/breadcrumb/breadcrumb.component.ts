@@ -6,18 +6,16 @@ import {BreadcrumbRoute} from "./breadcrumb-model";
 
 
 @Component({
-  //moduleId: module.id,
+  moduleId: module.id,
   selector: "dcn-breadcrumb",
-  styleUrls: ["./breadcrumb.component.css"],
+  styleUrls: ["breadcrumb.component.css"],
   //encapsulation: ViewEncapsulation.None,
   template: `
         <div ngClass="breadcrumb">
             <div>
                 <a routerLink="">
-                     <i class="icon-place-holder-icon icon"></i>
-                     Home
-                </a>
-            </div>
+                     <i class="icon-h icon"></i>
+            </a></div>
             <div *ngFor="let route of breadcrumbRoutes;" >              
                 <a [routerLink]="[route.url, route.params]">
                      <i  *ngIf="route.breadcrumb.icon" class="{{route.breadcrumb.icon}} icon" ></i>                     

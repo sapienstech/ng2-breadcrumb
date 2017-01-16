@@ -11,6 +11,7 @@
   border-radius: 5px;
 
   div {
+    z-index: 10;
     display: block;
     float: left;
     //font-size: 12px;
@@ -58,7 +59,7 @@
       if diagonal required = 1; length = 1/1.414 = 0.707*/
       transform: scale(0.707) rotate(45deg);
       /*we need to prevent the arrows from getting buried under the next link*/
-      z-index: 1;
+      z-index: 11;
       /*background same as links but the gradient will be rotated to compensate with the transform applied*/
       //  background: #666;
       //  background: linear-gradient(135deg, #666, #333);
@@ -123,113 +124,3 @@
 }
 
 
-
-//.decisionTheme {
-//  .breadcrumb-colors(lightgreen, white, #78e2eb, red)
-//}
-//.breadcrumb-colors(
-//  @item-background-color,
-//  @text-color,
-//  @hover-background-color @arrow-color)
-//{
-//  div,
-//  div:after {
-//    background: @item-background-color;
-//    //line-height: 1.5;
-//    transition: all 0.5s;
-//
-//  }
-//
-//  div {
-//    &.popover span.breadcrumbPopup {
-//      background-color: @item-background-color;
-//      &.next-link {
-//        background-color: gray;
-//        color: white;
-//      }
-//    }
-//  }
-//
-//  a,
-//  a:hover {
-//    text-decoration: none;
-//    color: @text-color;
-//    padding-left: 8px;
-//
-//  }
-//
-//  div:hover,
-//  div.active,
-//  div:hover:after,
-//  div.active:after {
-//    background-color: @hover-background-color;
-//    //line-height: 2;
-//  }
-//
-//  div.searchBox {
-//    width: 300px;
-//    background-color: transparent;
-//    line-height: 1;
-//    & .inputClass {
-//      background: white; //@hover-background-color;
-//    }
-//  }
-//
-//  .searchBox .inputClass {
-//    width: 300px;
-//  }
-//
-//  .ui-button {
-//    display: inline-block;
-//    padding: 5px;
-//    margin-left: 5px;
-//    text-decoration: none !important;
-//    line-height: 1;
-//    border-radius: 50%;
-//    width: 26px;
-//    height: 26px;
-//    border: solid 0px gray;
-//    background-color: transparent;
-//    color: @arrow-color;
-//
-//    -webkit-transition: 0.5s ease-in-out;
-//    -moz-transition: 0.5s ease-in-out;
-//    -o-transition: 0.5s ease-in-out;
-//
-//    &:hover {
-//      color: whitesmoke;
-//      background-color: transparent;
-//      transform: rotate(90deg);
-//      border: solid 0px white;
-//    }
-//  }
-
-//}
-
-
-
-//
-//.ui-button {
-//  display: inline-block;
-//  padding: 5px;
-//  margin-left: 5px;
-//  text-decoration: none !important;
-//  line-height: 1;
-//  border-radius: 50%;
-//  width: 26px;
-//  height: 26px;
-//  border: solid 0px gray;
-//  background-color: transparent;
-//  color: @arrow-color;
-//
-//  -webkit-transition: 0.5s ease-in-out;
-//  -moz-transition: 0.5s ease-in-out;
-//  -o-transition: 0.5s ease-in-out;
-//
-//  &:hover {
-//    color: whitesmoke;
-//    background-color: transparent;
-//    transform: rotate(90deg);
-//    border: solid 0px white;
-//  }
-//}

@@ -16,7 +16,7 @@ import "rxjs/add/operator/switch";
                 [value]="filterText" 
                 (input)="filterText = $event.target.value"
                 class="inputClass" 
-                placeholder="search" 
+                placeholder="search"  autofocus
                  />
         </div>
   `

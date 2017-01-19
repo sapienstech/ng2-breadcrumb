@@ -9,7 +9,7 @@
   box-shadow: 0 0 15px 1px rgba(0, 0, 0, 0.35);
   //overflow: hidden;
   border-radius: 5px;
-  z-index: 10;
+  //z-index: 10;
 
   div {
     display: block;
@@ -56,7 +56,7 @@
       if diagonal required = 1; length = 1/1.414 = 0.707*/
       transform: scale(0.707) rotate(45deg);
       /*we need to prevent the arrows from getting buried under the next link*/
-      z-index: 1;
+      z-index: 5;
       /*background same as links but the gradient will be rotated to compensate with the transform applied*/
       //  background: #666;
       //  background: linear-gradient(135deg, #666, #333);
@@ -88,7 +88,7 @@
   border-radius: 6px;
   //padding: 8px 0;
   position: absolute;
-  z-index: 1;
+  z-index: 5;
   top: 100%;
   left: 50%;
   margin-left: -80px;

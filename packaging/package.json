@@ -1,5 +1,5 @@
 {
-  "name": "breadcrumb",
+  "name": "ng2-navigator",
   "version": "0.0.1",
   "description": "use as breadcrumb and as an optional navigator for angular 2",
   "main": "index.js",
@@ -13,8 +13,7 @@
   "keywords": [
     "breadcrumb",
     "navigator",
-    "angular",
-    "2"
+    "angular 2"
   ],
   "author": "Uriel Twito",
   "license": "ISC",

@@ -5,6 +5,7 @@
    Let the user change the title of a breadcrumb dynamically.
    Let the user navigate back to a previous route.
    Let the user navigate forward by selecting options in a dropdown from the route.
+   Enable hiding routes
  ```
 
 This project was generated with [angular-cli](https://github.com/angular/angular-cli) version 1.0.0-beta.24.
@@ -49,6 +50,7 @@ in system.config.js add package
 ```
 
 **That is it. you are ready to run your application**
+
 but it does not look nice.
 you can change the theme colors.
 you can define the theme manually , but you can use a less function to help you.
@@ -79,7 +81,7 @@ you should use ```encapsulation: ViewEncapsulation.None```  in order to influenc
 #Controlling the text on a breadcrumb
 in our routing definitions we can add some more metadata to give the route a friendly name.
 
-in the example below we change path 'dashboard' into 'My Dashboard'. 
+**in the example below we change path 'dashboard' into 'My Dashboard'.** 
 
 ```$xslt
 const routes: Routes = [
@@ -89,9 +91,20 @@ const routes: Routes = [
  }
 ```
 
+**in the example below we hide 'dashboard' path.**
+
+
+```$xslt
+const routes: Routes = [
+  {
+    data:{breadcrumb:{label:'My Dashboard',hide:true}},
+    path: 'dashboard',
+ }
+```
+
 there are links that looks like this ```details/:id```
 in these cases you want to show the details value instead of details id.
-to do that you can listen to routing data changes, and update the label from the component code.
+to do that you can listen to routing data changes, and update the label from the component code by updating the heroNameObservable.
 ```$xslt
  let heroNameObservable = new BehaviorSubject<string>("hero name");
  this.route.data.subscribe(routeData=>{
@@ -101,6 +114,7 @@ to do that you can listen to routing data changes, and update the label from the
        routeData[BREADCRUMB_DATA_KEY] = breadcrumb
      });
 ```
+
 #Setting forward routing
 You can let let the router have a function that shows the forward links
 ```$xslt

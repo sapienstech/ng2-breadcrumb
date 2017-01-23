@@ -29,6 +29,7 @@ gulp.task('copyHtml', function() {
 gulp.task('copyfiles',function(){
   return gulp.src(['src/**/*theme.less',
     'packaging/**/*',
+    'README.md',
     'src/*.html'])
     .pipe(flatten())
     .pipe(gulp.dest(dest));

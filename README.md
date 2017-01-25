@@ -7,7 +7,7 @@
    Let the user navigate forward by selecting options in a dropdown from the route.
    Enable hiding routes
  ```
-some images from
+some images from the demo
 #Blue theme
 
 ![decision-theam](https://cloud.githubusercontent.com/assets/5977156/22293308/c21d8134-e317-11e6-94ab-daead0f015f0.jpg)

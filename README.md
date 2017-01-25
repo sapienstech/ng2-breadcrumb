@@ -8,10 +8,15 @@
    Enable hiding routes
  ```
 some images from
+#Blue theme
+
 ![decision-theam](https://cloud.githubusercontent.com/assets/5977156/22293308/c21d8134-e317-11e6-94ab-daead0f015f0.jpg)
 
+#Spring Theme
 
 ![spring](https://cloud.githubusercontent.com/assets/5977156/22293343/e35aad0e-e317-11e6-922b-d3652f2b8911.jpg)
+
+#Winter theme
 
 ![winter](https://cloud.githubusercontent.com/assets/5977156/22293360/f255d374-e317-11e6-8eb2-6a4f16777b99.jpg)
 

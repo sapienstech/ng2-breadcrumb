@@ -12,14 +12,14 @@ import {Observable} from "rxjs/observable";
   styleUrls: ["breadcrumb.component.css"],
   //encapsulation: ViewEncapsulation.None,
   template: `
-        <div class="breadcrumb">
-            <div>
+        <div class="breadcrumb" >
+            <div class="breadcrumb-holder">
                 <a routerLink="">
                      <i class="icon-h icon"></i>
                 </a>
             </div>
-            <div *ngFor="let route of breadcrumbRoutes; let i = index" >              
-                <a [routerLink]="[route.url, route.params]">
+            <div *ngFor="let route of breadcrumbRoutes; let i = index" class="breadcrumb-holder" >              
+                <a [routerLink]="[route.url, route.params]" class="breadcrumb-holder-link">
                      <i *ngIf="route.breadcrumb.icon" class="{{route.breadcrumb.icon}} icon" ></i>                     
                      <span *ngIf="!isString(route.breadcrumb.label)">{{route.breadcrumb.label |async}}</span>
                      <span *ngIf="isString(route.breadcrumb.label)">{{route.breadcrumb.label}}</span>

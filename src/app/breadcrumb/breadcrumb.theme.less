@@ -1,26 +1,35 @@
 .breadcrumb {
-  .breadcrumb-colors(#0cb6e7, white, #78e2eb, white)
+  .breadcrumb-colors(#0cb6e7, white, #78e2eb, white, white, #0275d8, white,black)
 }
 
-.breadcrumb-colors(@item-background-color, @text-color, @hover-background-color, @arrow-color) {
-  div,
-  div:after {
+.breadcrumb-colors(@item-background-color,
+    @text-color,
+    @hover-background-color,
+    @arrow-color,
+    @popup-background-color,
+    @popup-link-color,
+    @search-box-background-color,
+    @search-box-color) {
+  .breadcrumb-holder,
+  .breadcrumb-holder:after {
     background: @item-background-color;
     line-height: 1.5;
     transition: all 0.5s;
-
   }
 
-  div {
+  .breadcrumb-holder {
     & .breadcrumbPopup {
-      background-color: @item-background-color;
-      &.next-link {
-        background-color: gray;
-        color: white;
-      }
+      background-color: @popup-background-color;
     }
   }
-
+  .next-link {
+    a,
+    a:hover {
+      text-decoration: none;
+      color: @popup-link-color;
+      padding-left: 8px;
+    }
+  }
   a,
   a:hover {
     text-decoration: none;
@@ -29,17 +38,17 @@
 
   }
 
-  div:hover,
-  div.active,
-  div:hover:after,
-  div.active:after {
+  .breadcrumb-holder:hover,
+  .breadcrumb-holder.active,
+  .breadcrumb-holder:hover:after,
+  .breadcrumb-holder.active:after {
     background: @hover-background-color;
   }
 
   .searchBox .inputClass {
     width: 300px;
-    background-color: @text-color;
-    color: @item-background-color;
+    background-color: @search-box-background-color;//@text-color;
+    color: @search-box-color;//@item-background-color;
   }
 
   .ui-button {

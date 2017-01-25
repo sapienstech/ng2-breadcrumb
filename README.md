@@ -7,6 +7,14 @@
    Let the user navigate forward by selecting options in a dropdown from the route.
    Enable hiding routes
  ```
+some images from
+![decision-theam](https://cloud.githubusercontent.com/assets/5977156/22293308/c21d8134-e317-11e6-94ab-daead0f015f0.jpg)
+
+
+![spring](https://cloud.githubusercontent.com/assets/5977156/22293343/e35aad0e-e317-11e6-922b-d3652f2b8911.jpg)
+
+![winter](https://cloud.githubusercontent.com/assets/5977156/22293360/f255d374-e317-11e6-8eb2-6a4f16777b99.jpg)
+
 
 This project was generated with [angular-cli](https://github.com/angular/angular-cli) version 1.0.0-beta.24.
 
@@ -56,20 +64,20 @@ you can change the theme colors.
 you can define the theme manually , but you can use a less function to help you.
 in the example below you can select winter/spring or summer themes
 ```$xslt
-@import "../node_modules/ng2-navigator/breadcrumb.theme.less";
-@import "../node_modules/ng2-navigator/breadcrumb.theme.less";
+@import "breadcrumb/breadcrumb.theme.less";
 
 dcn-breadcrumb.winter {
-  .breadcrumb-colors(red, yellow, blue, green);
+  .breadcrumb-colors(red, yellow, blue, green,white,black,red,blue);
 }
 
 dcn-breadcrumb.spring {
-  .breadcrumb-colors(lightgreen, white, #78e2eb, red)
+  .breadcrumb-colors(lightgreen, white, #78e2eb, red,green,yellow,lightgreen,yellow)
 }
 
 dcn-breadcrumb.summer {
-  .breadcrumb-colors(#899ee7, #e0e78a, #3bc3ff, red);
+  .breadcrumb-colors(#899ee7, #e0e78a, #3bc3ff, red,yellow,red,#899ee7,white);
 }
+
 ```
 you can change the them to "winter" class like this.
 ```$xslt

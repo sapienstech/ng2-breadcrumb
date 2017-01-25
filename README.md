@@ -69,7 +69,7 @@ you can change the theme colors.
 you can define the theme manually , but you can use a less function to help you.
 in the example below you can select winter/spring or summer themes
 ```$xslt
-@import "breadcrumb/breadcrumb.theme.less";
+@import "breadcrumb/breadcrumb-theme.less";
 
 dcn-breadcrumb.winter {
   .breadcrumb-colors(red, yellow, blue, green,white,black,red,blue);

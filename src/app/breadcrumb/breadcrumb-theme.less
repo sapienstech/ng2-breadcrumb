@@ -23,12 +23,15 @@
     }
   }
   .next-link {
-    a,
-    a:hover {
+    a{
       text-decoration: none;
       color: @popup-link-color;
-      padding-left: 8px;
+      &:hover {
+        color: @popup-link-color;
+        text-decoration:underline;
+      }
     }
+
   }
   a,
   a:hover {
@@ -47,8 +50,9 @@
 
   .searchBox .inputClass {
     width: 300px;
-    background-color: @search-box-background-color;//@text-color;
-    color: @search-box-color;//@item-background-color;
+    background-color: @search-box-background-color;
+    color: @search-box-color;
+    line-height: normal;
   }
 
   .ui-button {

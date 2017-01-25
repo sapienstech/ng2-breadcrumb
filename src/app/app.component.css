@@ -7,11 +7,13 @@
 .breadcrumb .breadcrumb-holder .breadcrumbPopup {
   background-color: white;
 }
-.breadcrumb .next-link a,
-.breadcrumb .next-link a:hover {
+.breadcrumb .next-link a {
   text-decoration: none;
   color: #0275d8;
-  padding-left: 8px;
+}
+.breadcrumb .next-link a:hover {
+  color: #0275d8;
+  text-decoration: underline;
 }
 .breadcrumb a,
 .breadcrumb a:hover {
@@ -29,6 +31,7 @@
   width: 300px;
   background-color: white;
   color: black;
+  line-height: normal;
 }
 .breadcrumb .ui-button {
   display: inline-block;
@@ -61,11 +64,13 @@ dcn-breadcrumb.winter .breadcrumb-holder:after {
 dcn-breadcrumb.winter .breadcrumb-holder .breadcrumbPopup {
   background-color: white;
 }
-dcn-breadcrumb.winter .next-link a,
-dcn-breadcrumb.winter .next-link a:hover {
+dcn-breadcrumb.winter .next-link a {
   text-decoration: none;
   color: black;
-  padding-left: 8px;
+}
+dcn-breadcrumb.winter .next-link a:hover {
+  color: black;
+  text-decoration: underline;
 }
 dcn-breadcrumb.winter a,
 dcn-breadcrumb.winter a:hover {
@@ -83,6 +88,7 @@ dcn-breadcrumb.winter .searchBox .inputClass {
   width: 300px;
   background-color: red;
   color: blue;
+  line-height: normal;
 }
 dcn-breadcrumb.winter .ui-button {
   display: inline-block;
@@ -115,11 +121,13 @@ dcn-breadcrumb.spring .breadcrumb-holder:after {
 dcn-breadcrumb.spring .breadcrumb-holder .breadcrumbPopup {
   background-color: green;
 }
-dcn-breadcrumb.spring .next-link a,
-dcn-breadcrumb.spring .next-link a:hover {
+dcn-breadcrumb.spring .next-link a {
   text-decoration: none;
   color: yellow;
-  padding-left: 8px;
+}
+dcn-breadcrumb.spring .next-link a:hover {
+  color: yellow;
+  text-decoration: underline;
 }
 dcn-breadcrumb.spring a,
 dcn-breadcrumb.spring a:hover {
@@ -137,6 +145,7 @@ dcn-breadcrumb.spring .searchBox .inputClass {
   width: 300px;
   background-color: lightgreen;
   color: yellow;
+  line-height: normal;
 }
 dcn-breadcrumb.spring .ui-button {
   display: inline-block;
@@ -169,11 +178,13 @@ dcn-breadcrumb.summer .breadcrumb-holder:after {
 dcn-breadcrumb.summer .breadcrumb-holder .breadcrumbPopup {
   background-color: yellow;
 }
-dcn-breadcrumb.summer .next-link a,
-dcn-breadcrumb.summer .next-link a:hover {
+dcn-breadcrumb.summer .next-link a {
   text-decoration: none;
   color: red;
-  padding-left: 8px;
+}
+dcn-breadcrumb.summer .next-link a:hover {
+  color: red;
+  text-decoration: underline;
 }
 dcn-breadcrumb.summer a,
 dcn-breadcrumb.summer a:hover {
@@ -191,6 +202,7 @@ dcn-breadcrumb.summer .searchBox .inputClass {
   width: 300px;
   background-color: #899ee7;
   color: white;
+  line-height: normal;
 }
 dcn-breadcrumb.summer .ui-button {
   display: inline-block;

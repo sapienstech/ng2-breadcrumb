@@ -5,15 +5,9 @@ import {BehaviorSubject} from "rxjs/BehaviorSubject";
 
 @Component({
   selector: 'app-demo',
-  template: `
-    <p>
-      in this demo
-      I have many products!
-      this is product
-    </p>
-    <span style="background-color: yellow">{{currentProduct}} </span>
-    `,
-
+  moduleId: module.id,
+  styleUrls:['./circle-menu.css'],
+  templateUrl:"demo.component.html",
 })
 export class DemoComponent implements OnInit {
 

@@ -16,7 +16,7 @@ describe("BreadcrumbRoute Popup Component", () => {
       ],
       providers: [],
       declarations: [
-        TestComponent,SearchBoxComponent
+        TestComponent, SearchBoxComponent
       ]
     });
   }));
@@ -32,25 +32,25 @@ describe("BreadcrumbRoute Popup Component", () => {
       testCmp.searchDataMocked = [{a: 1, b: 2}];
       sendKeyUp("e");
       fixture.detectChanges();
-      // detectChanges(fixture).then(() => {
-        testCalledParameter(ON_LOADING, true);
-        testCalledParameter(ON_SEARCH_DATA, "e");
-        testCalledParameter(ON_LOADING, false);
-        testCalledParameter(ON_SEARCH_RESULT, testCmp.searchDataMocked);
-        expect(testCmp.calledMethodAndParam.length).toBe(0);
-      // });
+      testCalledParameter(ON_LOADING, true);
+      testCalledParameter(ON_SEARCH_DATA, "e");
+      testCalledParameter(ON_LOADING, false);
+      testCalledParameter(ON_SEARCH_RESULT, testCmp.searchDataMocked);
+      expect(testCmp.calledMethodAndParam.length).toBe(0);
     }));
     it('should NOT call on search result in case of an error', fakeAsync(() => {
       testCmp.searchDataMocked = [{a: 1, b: 2}];
       sendKeyUp(ON_ERROR_STRING);
       fixture.detectChanges();
-//      detectChanges(fixture).then(() => {
-        testCalledParameter(ON_LOADING, true);
-        testCalledParameter(ON_SEARCH_DATA, ON_ERROR_STRING);
-        testCalledParameter(ON_LOADING, false);
-        expect(testCmp.calledMethodAndParam.length).toBe(0);
-  //    });
+      testCalledParameter(ON_LOADING, true);
+      testCalledParameter(ON_SEARCH_DATA, ON_ERROR_STRING);
+      testCalledParameter(ON_LOADING, false);
+      expect(testCmp.calledMethodAndParam.length).toBe(0);
     }));
+    it('should have focus in the input field',()=>{
+      let element = fixture.nativeElement.querySelector("input");
+      expect(document.activeElement).toBe(element);
+    });
 
   });
   describe('when there is no input for search data function', () => {

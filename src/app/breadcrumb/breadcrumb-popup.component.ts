@@ -4,7 +4,7 @@ import "rxjs/add/observable/of";
 import {BreadcrumbDropDown, BreadcrumbDropDownItem} from "./breadcrumb-model";
 
 @Component({
-  moduleId: module.id,
+  moduleId: ""+module.id,
   selector: 'dcn-breadcrumb-popup',
   styleUrls: ["breadcrumb.component.css"],
   template: `

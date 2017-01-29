@@ -8,7 +8,7 @@ import "rxjs/add/operator/debounceTime";
 import "rxjs/add/operator/switch";
 
 @Component({
-  moduleId: module.id,
+  moduleId: ""+module.id,
   selector: 'dcn-search-box',
   template: `
         <div class="searchBox">
@@ -59,7 +59,7 @@ export class SearchBoxComponent implements OnInit {
     Observable.merge(keyUp, search)
       .do(() => this.loading.next(true))
       .map((query: string) =>
-        this.searchData(query, this.maxResults))
+        this.searchData ? this.searchData(query, this.maxResults) : Observable.of([]))
       .switch()
       .subscribe(
         (results: any[]) => {

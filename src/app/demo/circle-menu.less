@@ -65,6 +65,7 @@
 
 .menu-item-back:hover {
   background: #9dd;
+  background: #a52a60
 }
 
 .menu-item {
@@ -118,6 +119,8 @@
 }
 
 .circle-holder {
+  width: 2px;
+  height: 2px;
   position: absolute;
   left: 100%;
   margin-left: (-@outer-radius/2)+0px;
@@ -129,6 +132,8 @@
 
 
 .circle-holder1 {
+  width: 2px;
+  height: 2px;
   position: absolute;
   left: 100%;
   top: 100%;
@@ -140,13 +145,16 @@
 }
 
 .circle-holder2 {
+  width: 2px;
+  height: 2px;
   position: absolute;
   left: 100%;
   top: 50%;
   margin-left: (-@outer-radius/2)+0px;
   margin-top: (-@outer-radius/2)+0px;
   &:hover{
-    //background-color: blanchedalmond;
+    transform: scale(1);
+    transform: rotate(0);
   }
 }
 .circle-menu {

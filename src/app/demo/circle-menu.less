@@ -1,49 +1,36 @@
 @import url(http://netdna.bootstrapcdn.com/font-awesome/2.0/css/font-awesome.css);
 
-@items: 9;
-
+@items: 7;
+@deg: 360deg/@items;
+@radius: 150px; //110px;
+@outer-radius: 150;
+@button-size: @outer-radius / 3;
+@plus-pos-x: @button-size / 2 - 16;
+@plus-pos-y: @button-size / 2 - 11;
 * {
   Box-sizing: Border-box;
 }
 
 .circle-menu {
   background: burlywood;
-  width: 150px;
-  height: 150px;
-  border-radius: 500px;
   border-radius: 50%;
   position: relative;
-  //margin: -75px 0 0 -75px;
-  //position: absolute;
-  //left: 50%;
-  //top: 50%;
   list-style: none;
   font-size: 200%;
   transition: width 500ms, height 500ms, margin 500ms;
   overflow: hidden;
 }
-@outer-radius:300;
-.circle-menu:target {
-  width: 120px;
-  height: 120+0px;
-  &:hover{
-    width: @outer-radius+0px;
-    height: @outer-radius+0px;
 
-  }
-  //margin: -150px 0 0 -150px;
-}
-
+@menu-button-margin: -(@button-size/2);
 .menu-button {
-  width: 150px;
-  height: 150px;
+  width: @button-size+0px;
+  height: @button-size+0px;
   position: absolute;
   left: 50%;
   top: 50%;
-  margin: -75px 0 0 -75px;
+  margin: @menu-button-margin+0px 0 0 @menu-button-margin+0px;
   background: #ff7274;
   box-shadow: 0 0 0 1px #fff;
-  border-radius: 500px;
   border-radius: 50%;
   opacity: 0;
   z-index: 0;
@@ -52,22 +39,21 @@
 .icon-plus:before, .icon-minus:before {
   color: #8cc;
   position: relative;
-  top: 40%;
-  left: 42%;
+  top: @plus-pos-x+0px;
+  left: @plus-pos-y+0px;
   transition: opacity 500ms ease-in;
   text-decoration: none;
   z-index: 2;
 }
 
-.circle-menu:not(:target) > a:first-of-type,
-.circle-menu:target > a:last-of-type {
+.circle-menu > a:first-of-type {
   opacity: 1;
   z-index: 1;
 }
 
 .menu-item-back {
   background: #8cc;
-  width: 175px;
+  width: @outer-radius+0px; //175px;
   height: 150px;
   position: absolute;
   transform-origin: 0px 150px;
@@ -98,17 +84,14 @@
   z-index: 1;
 }
 
-@deg: 360deg/@items;
-@radius: 110px;
-
 .mixin-loop();
 
 .mixin-loop (@i:1) when (@i =< @items) {
 
   @r: @i+2;
 
-  @x: sin((@deg * @i) - @deg - 90) * @radius;
-  @y: cos((@deg * @i) - @deg - 90) * @radius;
+  @x: sin((@deg * @i) - @deg - 90) * @radius * 0.3;
+  @y: cos((@deg * @i) - @deg - 90) * @radius * 0.3;
 
   .menu-item:nth-child(@{r}) {
     display: block;
@@ -134,18 +117,27 @@
   transform: rotate((@deg * @i - (@deg/2) - 90)) skew((90 - @deg) * -1);
 }
 
-@inner-radius:80;
-.inner-circle {
+.circle-holder {
   position: absolute;
-  width: @inner-radius+0px;
-  height: @inner-radius+0px;
-  top: 0%;
-  left: 0%;
-  margin: ((@outer-radius - @inner-radius)/2)+0px 0 0 ((@outer-radius - @inner-radius)/2)+0px;
-  border-radius: 50%;
-  background-color: darksalmon;
-  z-index: 77;
-  //&:hover{
-  //  display: none;
-  //}
+  left: 100%;
+  left: 100%;
+  margin-left: (-@outer-radius/2)+0px;
+  margin-top: (-@outer-radius/2)+0px;
+  &:hover{
+    //background-color: blanchedalmond;
+  }
+}
+
+.circle-menu {
+  width: @outer-radius+0px;
+  height: @outer-radius+0px;
+  left: 0px;
+  top: 0px;
+  margin: 0;
+  transition: all .3s;
+  transform: scale(0.1) rotate(270deg);
+  &:hover {
+    transform: scale(1);
+    transform: rotate(0);
+  }
 }

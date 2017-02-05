@@ -2,8 +2,8 @@
 
 @items: 7;
 @deg: 360deg/@items;
-@radius: 150px; //110px;
 @outer-radius: 150;
+@radius: @outer-radius+0px; //110px;
 @button-size: @outer-radius / 3;
 @plus-pos-x: @button-size / 2 - 16;
 @plus-pos-y: @button-size / 2 - 11;
@@ -120,7 +120,6 @@
 .circle-holder {
   position: absolute;
   left: 100%;
-  left: 100%;
   margin-left: (-@outer-radius/2)+0px;
   margin-top: (-@outer-radius/2)+0px;
   &:hover{
@@ -128,6 +127,28 @@
   }
 }
 
+
+.circle-holder1 {
+  position: absolute;
+  left: 100%;
+  top: 100%;
+  margin-left: (-@outer-radius/2)+0px;
+  margin-top: (-@outer-radius/2)+0px;
+  &:hover{
+    //background-color: blanchedalmond;
+  }
+}
+
+.circle-holder2 {
+  position: absolute;
+  left: 100%;
+  top: 50%;
+  margin-left: (-@outer-radius/2)+0px;
+  margin-top: (-@outer-radius/2)+0px;
+  &:hover{
+    //background-color: blanchedalmond;
+  }
+}
 .circle-menu {
   width: @outer-radius+0px;
   height: @outer-radius+0px;

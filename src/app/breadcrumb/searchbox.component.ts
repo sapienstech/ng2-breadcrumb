@@ -8,7 +8,7 @@ import "rxjs/add/operator/debounceTime";
 import "rxjs/add/operator/switch";
 
 @Component({
-  moduleId: module.id,
+  moduleId: ""+module.id,
   selector: 'dcn-search-box',
   template: `
         <div class="searchBox">
@@ -16,7 +16,7 @@ import "rxjs/add/operator/switch";
                 [value]="filterText" 
                 (input)="filterText = $event.target.value"
                 class="inputClass" 
-                placeholder="search"  autofocus
+                placeholder="search"
                  />
         </div>
   `
@@ -46,6 +46,7 @@ export class SearchBoxComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    this.input.nativeElement.focus();
     let keyUp = Observable.fromEvent(this.input.nativeElement, 'keyup')
       .map((e: any) => e.target.value)
       .filter((text: string) => text.length >= this.minLength)
@@ -59,7 +60,7 @@ export class SearchBoxComponent implements OnInit {
     Observable.merge(keyUp, search)
       .do(() => this.loading.next(true))
       .map((query: string) =>
-        this.searchData(query, this.maxResults))
+        this.searchData ? this.searchData(query, this.maxResults) : Observable.of([]))
       .switch()
       .subscribe(
         (results: any[]) => {

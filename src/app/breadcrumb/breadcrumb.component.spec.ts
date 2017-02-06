@@ -80,11 +80,10 @@ describe("breadcrumbComponent", () => {
                 pos++;
             });
         });
-        it('should have text and icon for Home link', () => {
+        it('should have icon for Home link', () => {
             let pos = 0;
             let aElement = fixture.debugElement.queryAll(el => el.name === "a")[0];
-            expect(aElement .nativeElement.innerHTML.indexOf("Home")).toBeGreaterThan(-1);
-            expect(aElement .nativeElement.innerHTML.indexOf("icon-place-holder-icon icon")).toBeGreaterThan(-1);
+            expect(aElement .nativeElement.innerHTML.indexOf("icon-h icon")).toBeGreaterThan(-1);
         });
 
         it('should have text and icon for dynamic links', () => {

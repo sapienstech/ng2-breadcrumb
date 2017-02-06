@@ -7,10 +7,9 @@ import {Observable} from "rxjs/observable";
 
 
 @Component({
-  moduleId: module.id,
+  moduleId: ""+module.id,
   selector: "dcn-breadcrumb",
   styleUrls: ["breadcrumb.component.css"],
-  //encapsulation: ViewEncapsulation.None,
   template: `
         <div class="breadcrumb" >
             <div class="breadcrumb-holder">

@@ -2,9 +2,13 @@ import {Component, Input, ElementRef} from "@angular/core";
 import {Observable} from "rxjs/Observable";
 import "rxjs/add/observable/of";
 import {BreadcrumbDropDown, BreadcrumbDropDownItem} from "./breadcrumb-model";
+import {isPromise} from "rxjs/util/isPromise";
+import {Subscription} from "rxjs";
+
+const ESCAPE = 27;
 
 @Component({
-  moduleId: ""+module.id,
+  moduleId: "" + module.id,
   selector: 'dcn-breadcrumb-popup',
   styleUrls: ["breadcrumb.component.css"],
   template: `
@@ -40,8 +44,11 @@ export class BreadcrumbPopupComponent {
   @Input()
   breadcrumbDropDown: BreadcrumbDropDown;
   filteredItems: BreadcrumbDropDownItem[];
+  allItems: BreadcrumbDropDownItem[];
 
   _showPopup = false;
+  private subscription: Subscription;
+
   get showPopup() {
     return this._showPopup;
   }
@@ -64,6 +71,7 @@ export class BreadcrumbPopupComponent {
 
   ngOnDestroy() {
     this.removeListeners();
+    this.unSubscribeFromPopupInfo();
   }
 
   private addListeners() {
@@ -80,11 +88,13 @@ export class BreadcrumbPopupComponent {
 
     return this.breadcrumbDropDown &&
       (this.breadcrumbDropDown.getItems != undefined ||
+      isPromise(this.breadcrumbDropDown.items) ||
+      this.breadcrumbDropDown.items instanceof Observable ||
       this.breadcrumbDropDown.items && this.breadcrumbDropDown.items.length > 0);
   }
 
   onKeyDown(event: KeyboardEvent) {
-    if (event.which == 27) {
+    if (event.which == ESCAPE) {
       this.showPopup = false;
     }
   }
@@ -95,17 +105,41 @@ export class BreadcrumbPopupComponent {
     }
   }
 
-  search(query: string, maxResult: number): Observable<any[]> {
+  search(query: string): Observable<any[]> {
     let search = query.toUpperCase();
-    let result = this.items.filter(item => item.label.toLocaleUpperCase().indexOf(search) > -1);
+    let result = this.allItems.filter(item => item.label.toLocaleUpperCase().indexOf(search) > -1);
     return Observable.of(result);
   }
 
   setInitialFilter(event: MouseEvent) {
     event.stopPropagation();
 
-    this.filteredItems = this.items;
-    this.showPopup = !this.showPopup;
+    if (isPromise(this.items)) {
+      this.items.then(vals => {
+        this.allItems = vals;
+        this.filteredItems = this.allItems;
+        this.showPopup = !this.showPopup;
+      })
+    }
+    else if (this.items instanceof Observable) {
+      this.unSubscribeFromPopupInfo();
+      this.subscription = this.items.subscribe(vals => {
+        this.allItems = vals;
+        this.filteredItems = this.allItems;
+        this.showPopup = !this.showPopup;
+      })
+    }
+    else {
+      this.allItems = this.items;
+      this.filteredItems = this.allItems;
+      this.showPopup = !this.showPopup;
+    }
+  }
+
+  private unSubscribeFromPopupInfo() {
+    if (this.subscription) {
+      this.subscription.unsubscribe();
+    }
   }
 
   get items() {

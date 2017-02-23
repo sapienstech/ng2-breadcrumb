@@ -5,7 +5,6 @@ import {BreadcrumbService} from "./breadcrumb.service";
 import {BreadcrumbRoute} from "./breadcrumb-model";
 import {Observable} from "rxjs/observable";
 
-
 @Component({
   moduleId: ""+module.id,
   selector: "dcn-breadcrumb",

@@ -3,8 +3,8 @@ import {Params} from "@angular/router";
 import {Observable} from "rxjs/Observable";
 export interface BreadcrumbDropDown {
   popupTitle?: string;
-  items?: BreadcrumbDropDownItem[];
-  getItems?: () => BreadcrumbDropDownItem[];
+  items?: BreadcrumbDropDownItem[] | Promise<BreadcrumbDropDownItem[]> | Observable<BreadcrumbDropDownItem[]>;
+  getItems?: () => BreadcrumbDropDownItem[] | Promise<BreadcrumbDropDownItem[]> | Observable<BreadcrumbDropDownItem[]>;
 }
 
 

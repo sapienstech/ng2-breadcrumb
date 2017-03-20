@@ -1,31 +1,17 @@
+.breadcrumb .breadcrumb {
+  color: white;
+}
 .breadcrumb .breadcrumb-holder,
 .breadcrumb .breadcrumb-holder:after {
   background: #0cb6e7;
-  line-height: 1.5;
   transition: all 0.5s;
 }
 .breadcrumb .breadcrumb-holder .breadcrumbPopup {
   background-color: white;
 }
-.breadcrumb .next-link a {
-  text-decoration: none;
-  color: #0275d8;
-}
-.breadcrumb .next-link a:hover {
-  color: #0275d8;
-  text-decoration: underline;
-}
-.breadcrumb a,
-.breadcrumb a:hover {
-  text-decoration: none;
+.breadcrumb .breadcrumb-link,
+.breadcrumb .breadcrumb-link:hover {
   color: white;
-  padding-left: 8px;
-}
-.breadcrumb .breadcrumb-holder:hover,
-.breadcrumb .breadcrumb-holder.active,
-.breadcrumb .breadcrumb-holder:hover:after,
-.breadcrumb .breadcrumb-holder.active:after {
-  background: #78e2eb;
 }
 .breadcrumb .searchBox .inputClass {
   width: 300px;
@@ -33,56 +19,27 @@
   color: black;
   line-height: normal;
 }
-.breadcrumb .ui-button {
-  display: inline-block;
-  padding: 5px;
-  margin-left: 5px;
-  text-decoration: none !important;
-  line-height: 1;
-  border-radius: 50%;
-  width: 26px;
-  height: 26px;
-  border: solid 0px gray;
-  background-color: transparent;
+.breadcrumb .menu-button {
   color: white;
-  -webkit-transition: 0.5s ease-in-out;
-  -moz-transition: 0.5s ease-in-out;
-  -o-transition: 0.5s ease-in-out;
 }
-.breadcrumb .ui-button:hover {
-  color: whitesmoke;
-  background-color: transparent;
-  transform: rotate(90deg);
-  border: solid 0px white;
+.breadcrumb .menu-button.has-popup:hover,
+.breadcrumb .menu-button.is-active {
+  color: white;
+}
+dcn-breadcrumb.winter .breadcrumb {
+  color: yellow;
 }
 dcn-breadcrumb.winter .breadcrumb-holder,
 dcn-breadcrumb.winter .breadcrumb-holder:after {
   background: red;
-  line-height: 1.5;
   transition: all 0.5s;
 }
 dcn-breadcrumb.winter .breadcrumb-holder .breadcrumbPopup {
   background-color: white;
 }
-dcn-breadcrumb.winter .next-link a {
-  text-decoration: none;
-  color: black;
-}
-dcn-breadcrumb.winter .next-link a:hover {
-  color: black;
-  text-decoration: underline;
-}
-dcn-breadcrumb.winter a,
-dcn-breadcrumb.winter a:hover {
-  text-decoration: none;
+dcn-breadcrumb.winter .breadcrumb-link,
+dcn-breadcrumb.winter .breadcrumb-link:hover {
   color: yellow;
-  padding-left: 8px;
-}
-dcn-breadcrumb.winter .breadcrumb-holder:hover,
-dcn-breadcrumb.winter .breadcrumb-holder.active,
-dcn-breadcrumb.winter .breadcrumb-holder:hover:after,
-dcn-breadcrumb.winter .breadcrumb-holder.active:after {
-  background: blue;
 }
 dcn-breadcrumb.winter .searchBox .inputClass {
   width: 300px;
@@ -90,56 +47,27 @@ dcn-breadcrumb.winter .searchBox .inputClass {
   color: blue;
   line-height: normal;
 }
-dcn-breadcrumb.winter .ui-button {
-  display: inline-block;
-  padding: 5px;
-  margin-left: 5px;
-  text-decoration: none !important;
-  line-height: 1;
-  border-radius: 50%;
-  width: 26px;
-  height: 26px;
-  border: solid 0px gray;
-  background-color: transparent;
+dcn-breadcrumb.winter .menu-button {
   color: green;
-  -webkit-transition: 0.5s ease-in-out;
-  -moz-transition: 0.5s ease-in-out;
-  -o-transition: 0.5s ease-in-out;
 }
-dcn-breadcrumb.winter .ui-button:hover {
-  color: whitesmoke;
-  background-color: transparent;
-  transform: rotate(90deg);
-  border: solid 0px white;
+dcn-breadcrumb.winter .menu-button.has-popup:hover,
+dcn-breadcrumb.winter .menu-button.is-active {
+  color: green;
+}
+dcn-breadcrumb.spring .breadcrumb {
+  color: white;
 }
 dcn-breadcrumb.spring .breadcrumb-holder,
 dcn-breadcrumb.spring .breadcrumb-holder:after {
   background: lightgreen;
-  line-height: 1.5;
   transition: all 0.5s;
 }
 dcn-breadcrumb.spring .breadcrumb-holder .breadcrumbPopup {
   background-color: green;
 }
-dcn-breadcrumb.spring .next-link a {
-  text-decoration: none;
-  color: yellow;
-}
-dcn-breadcrumb.spring .next-link a:hover {
-  color: yellow;
-  text-decoration: underline;
-}
-dcn-breadcrumb.spring a,
-dcn-breadcrumb.spring a:hover {
-  text-decoration: none;
+dcn-breadcrumb.spring .breadcrumb-link,
+dcn-breadcrumb.spring .breadcrumb-link:hover {
   color: white;
-  padding-left: 8px;
-}
-dcn-breadcrumb.spring .breadcrumb-holder:hover,
-dcn-breadcrumb.spring .breadcrumb-holder.active,
-dcn-breadcrumb.spring .breadcrumb-holder:hover:after,
-dcn-breadcrumb.spring .breadcrumb-holder.active:after {
-  background: #78e2eb;
 }
 dcn-breadcrumb.spring .searchBox .inputClass {
   width: 300px;
@@ -147,56 +75,27 @@ dcn-breadcrumb.spring .searchBox .inputClass {
   color: yellow;
   line-height: normal;
 }
-dcn-breadcrumb.spring .ui-button {
-  display: inline-block;
-  padding: 5px;
-  margin-left: 5px;
-  text-decoration: none !important;
-  line-height: 1;
-  border-radius: 50%;
-  width: 26px;
-  height: 26px;
-  border: solid 0px gray;
-  background-color: transparent;
+dcn-breadcrumb.spring .menu-button {
   color: red;
-  -webkit-transition: 0.5s ease-in-out;
-  -moz-transition: 0.5s ease-in-out;
-  -o-transition: 0.5s ease-in-out;
 }
-dcn-breadcrumb.spring .ui-button:hover {
-  color: whitesmoke;
-  background-color: transparent;
-  transform: rotate(90deg);
-  border: solid 0px white;
+dcn-breadcrumb.spring .menu-button.has-popup:hover,
+dcn-breadcrumb.spring .menu-button.is-active {
+  color: red;
+}
+dcn-breadcrumb.summer .breadcrumb {
+  color: #e0e78a;
 }
 dcn-breadcrumb.summer .breadcrumb-holder,
 dcn-breadcrumb.summer .breadcrumb-holder:after {
   background: #899ee7;
-  line-height: 1.5;
   transition: all 0.5s;
 }
 dcn-breadcrumb.summer .breadcrumb-holder .breadcrumbPopup {
   background-color: yellow;
 }
-dcn-breadcrumb.summer .next-link a {
-  text-decoration: none;
-  color: red;
-}
-dcn-breadcrumb.summer .next-link a:hover {
-  color: red;
-  text-decoration: underline;
-}
-dcn-breadcrumb.summer a,
-dcn-breadcrumb.summer a:hover {
-  text-decoration: none;
+dcn-breadcrumb.summer .breadcrumb-link,
+dcn-breadcrumb.summer .breadcrumb-link:hover {
   color: #e0e78a;
-  padding-left: 8px;
-}
-dcn-breadcrumb.summer .breadcrumb-holder:hover,
-dcn-breadcrumb.summer .breadcrumb-holder.active,
-dcn-breadcrumb.summer .breadcrumb-holder:hover:after,
-dcn-breadcrumb.summer .breadcrumb-holder.active:after {
-  background: #3bc3ff;
 }
 dcn-breadcrumb.summer .searchBox .inputClass {
   width: 300px;
@@ -204,25 +103,10 @@ dcn-breadcrumb.summer .searchBox .inputClass {
   color: white;
   line-height: normal;
 }
-dcn-breadcrumb.summer .ui-button {
-  display: inline-block;
-  padding: 5px;
-  margin-left: 5px;
-  text-decoration: none !important;
-  line-height: 1;
-  border-radius: 50%;
-  width: 26px;
-  height: 26px;
-  border: solid 0px gray;
-  background-color: transparent;
+dcn-breadcrumb.summer .menu-button {
   color: red;
-  -webkit-transition: 0.5s ease-in-out;
-  -moz-transition: 0.5s ease-in-out;
-  -o-transition: 0.5s ease-in-out;
 }
-dcn-breadcrumb.summer .ui-button:hover {
-  color: whitesmoke;
-  background-color: transparent;
-  transform: rotate(90deg);
-  border: solid 0px white;
+dcn-breadcrumb.summer .menu-button.has-popup:hover,
+dcn-breadcrumb.summer .menu-button.is-active {
+  color: red;
 }

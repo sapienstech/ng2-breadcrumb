@@ -1,126 +1,163 @@
-@item-background-color: lightgreen;
-@text-color: white;
-@hover-background-color: #78e2eb;
-@arrow-color: lightpink;
-
 .breadcrumb {
-  /*centering*/
-  display: inline-block;
-  box-shadow: 0 0 15px 1px rgba(0, 0, 0, 0.35);
-  //overflow: hidden;
-  border-radius: 5px;
-  //z-index: 10;
-
-  div {
-    display: block;
-    float: left;
-    //font-size: 12px;
-    line-height: 36px;
-    //color: white;
-    padding: 0 10px 0 20px;
-    //    background: #666;
-    //   background: linear-gradient(#666, #333);
-    position: relative;
-
-    .icon {
-      //border-radius: 50%;
-      //border: solid 2px gray;
-    }
-
-    &:first-child {
-      padding-left: 0;
-      border-radius: 5px 0 0 5px;
-    }
-
-    &:last-child {
-      border-radius: 0 5px 5px 0; /*this was to prevent glitches on hover*/
-      padding-right: 20px;
-
-      /*we dont need an arrow after the last link*/
-      &:after {
-        content: none;
-      }
-    }
-
-    /*adding the arrows for the breadcrumbRoutes using rotated pseudo elements*/
-    &:after {
-      content: '';
-      position: absolute;
-      top: 0;
-      right: -18px; /*half of square's length*/
-      /*same dimension as the line-height of .breadcrumbDropDown a */
-      width: 36px;
-      height: 36px;
-      /*as you see the rotated square takes a larger height. which makes it tough to position it properly. So we are going to scale it down so that the diagonals become equal to the line-height of the link. We scale it to 70.7% because if square's:
-      length = 1; diagonal = (1^2 + 1^2)^0.5 = 1.414 (pythagoras theorem)
-      if diagonal required = 1; length = 1/1.414 = 0.707*/
-      transform: scale(0.707) rotate(45deg);
-      /*we need to prevent the arrows from getting buried under the next link*/
-      z-index: 5;
-      /*background same as links but the gradient will be rotated to compensate with the transform applied*/
-      //  background: #666;
-      //  background: linear-gradient(135deg, #666, #333);
-      /*stylish arrow design using box shadow*/
-      box-shadow: 2px -2px 0 2px rgba(0, 0, 0, 0.4),
-        3px -3px 0 2px rgba(255, 255, 255, 0.1);
-      /*
-          5px - for rounded arrows and
-          50px - to prevent hover glitches on the border created using shadows*/
-      border-radius: 0 5px 0 50px;
-    }
-
-    > a {
-      text-decoration: none;
-      outline: none;
-      padding: 10px 0 10px 30px;
-    }
-  }
+    display: flex;
+    height: 50px;
 }
+
+.breadcrumb-holder {
+    position: relative;
+    display: flex;
+    align-items: center;
+    font-size: 18px;
+    &:first-child {
+        padding-left: 12px;
+    }
+    .home-icon {
+        font-size: 1.5em;
+    }
+    .menu-button {
+        display: flex;
+        font-size: 18px;
+        padding: 0;
+        width: 20px;
+        height: 30px;
+        margin: 0 5px;
+        outline: none;
+        border: none;
+        border-color: transparent;
+        background-color: transparent;
+        &.has-popup:hover,
+        &.is-active {
+            cursor: pointer;
+            border-radius: 2px;
+            border: 1px solid #fff;
+            .menu-button-icon {
+                transform: rotate(90deg);
+                transition: all 0.3s linear;
+            }
+        }
+        .menu-button-icon {
+            margin-top: 1px;
+            margin: auto;
+            transition: all 0.3s linear;
+        }
+    }
+}
+
+.breadcrumb-link {
+    text-decoration: none;
+    outline: none;
+    display: flex;
+    align-items: center;
+    .link-icon {
+        padding-right: 6px;
+    }
+    span {
+        text-transform: capitalize;
+        &:hover {
+            text-decoration: underline;
+        }
+    }
+}
+
 
 /* The actual popover */
-.popover .breadcrumbPopup {
 
-  visibility: visible;
-  //box-shadow: 4px 3px 5px 1px black;
-  box-shadow: 0 3px 9px rgba(0,0,0,.5);
-  padding: 10px;
-  //color: #fff;
-  text-align: left;
-  border-radius: 6px;
-  //padding: 8px 0;
-  position: absolute;
-  z-index: 5;
-  top: 100%;
-  left: 50%;
-  margin-left: -80px;
-  -webkit-animation: fadeIn 1s;
-  animation: fadeIn 1s;
+.popover .breadcrumbPopup {
+    visibility: visible;
+    box-shadow: 1px 2px 1px lighten(#DDD, 1);
+    text-align: left;
+    position: absolute;
+    z-index: 5;
+    top: 100%;
+    left: 50%;
+    margin-left: -80px;
+    -webkit-animation: fadeIn 1s;
+    animation: fadeIn 1s;
+    .breadcrumb-popup-menu {
+        max-height: 150px;
+        width: 310px;
+        overflow-x: hidden;
+        overflow-y: auto;
+    }
+    .breadcrumb-popup-menu-item {
+        height: 40px;
+    }
+    .breadcrumb-popup-link {
+        height: 100%;
+        width: 100%;
+        display: flex;
+        padding: 0 20px;
+        align-items: center;
+        color: #3e4959;
+        text-decoration: none;
+        outline: none;
+        cursor: pointer;
+        &:hover {
+            background-color: #F3F4F6;
+            .breadcrumb-popup-link-icon,
+            .breadcrumb-popup-link-text {
+                color: #0cb6e7;
+            }
+        }
+        &:visited {
+            color: #3e4959;
+        }
+    }
+    .breadcrumb-popup-link-icon {
+        width: 28px;
+        height: 28px;
+        font-size: 28px;
+        color: #a0a0a0;
+        margin-right: 20px;
+    }
+    .breadcrumb-popup-link-text {
+        font-size: 18px;
+        line-height: 1;
+        color: #3A4862;
+        &:first-letter {
+            text-transform: uppercase;
+        }
+    }
+    .breadcrumb-popup-search{
+      padding: 12px;
+      display: block;
+    }
 }
 
-///* Toggle this class - hide and show the popover */
-//.popover .show {
-//  visibility: visible;
-//  -webkit-animation: fadeIn 5s;
-//  animation: fadeIn 5s;
-//}
 
-/* Add animation (fade in the popover) */
+
+.search-box {
+    width: 100%;
+}
+
+.input-class {
+    line-height: 1;
+    height: 38px;
+    width: 100%;
+    font-size: 14px;
+    padding:6px;
+    border: 1px solid #DEE5E7;
+    border-radius: 2px;
+    &:active,
+    &:focus {
+        border-color: #5EA6DD;
+    }
+}
+
 @-webkit-keyframes fadeIn {
-  from {
-    opacity: 0;
-  }
-  to {
-    opacity: 1;
-  }
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
 }
 
 @keyframes fadeIn {
-  from {
-    opacity: 0;
-  }
-  to {
-    opacity: 1;
-  }
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
 }
-
-

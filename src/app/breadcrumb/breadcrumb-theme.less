@@ -1,83 +1,34 @@
 .breadcrumb {
-  .breadcrumb-colors(#0cb6e7, white, #78e2eb, white, white, #0275d8, white,black)
+    .breadcrumb-colors(#0cb6e7, white, #78e2eb, white, white, #0275d8, white, black)
 }
 
-.breadcrumb-colors(@item-background-color,
-    @text-color,
-    @hover-background-color,
-    @arrow-color,
-    @popup-background-color,
-    @popup-link-color,
-    @search-box-background-color,
-    @search-box-color) {
-  .breadcrumb-holder,
-  .breadcrumb-holder:after {
-    background: @item-background-color;
-    line-height: 1.5;
-    transition: all 0.5s;
-  }
-
-  .breadcrumb-holder {
-    & .breadcrumbPopup {
-      background-color: @popup-background-color;
+.breadcrumb-colors(@item-background-color, @text-color, @hover-background-color, @arrow-color, @popup-background-color, @popup-link-color, @search-box-background-color, @search-box-color) {
+    .breadcrumb {
+        color: @text-color;
     }
-  }
-  .next-link {
-    a{
-      text-decoration: none;
-      color: @popup-link-color;
-      &:hover {
-        color: @popup-link-color;
-        text-decoration:underline;
-      }
+    .breadcrumb-holder,
+    .breadcrumb-holder:after {
+        background: @item-background-color;
+        transition: all 0.5s;
     }
-
-  }
-  a,
-  a:hover {
-    text-decoration: none;
-    color: @text-color;
-    padding-left: 8px;
-
-  }
-
-  .breadcrumb-holder:hover,
-  .breadcrumb-holder.active,
-  .breadcrumb-holder:hover:after,
-  .breadcrumb-holder.active:after {
-    background: @hover-background-color;
-  }
-
-  .searchBox .inputClass {
-    width: 300px;
-    background-color: @search-box-background-color;
-    color: @search-box-color;
-    line-height: normal;
-  }
-
-  .ui-button {
-    display: inline-block;
-    padding: 5px;
-    margin-left: 5px;
-    text-decoration: none !important;
-    line-height: 1;
-    border-radius: 50%;
-    width: 26px;
-    height: 26px;
-    border: solid 0px gray;
-    background-color: transparent;
-    color: @arrow-color;
-
-    -webkit-transition: 0.5s ease-in-out;
-    -moz-transition: 0.5s ease-in-out;
-    -o-transition: 0.5s ease-in-out;
-
-    &:hover {
-      color: whitesmoke;
-      background-color: transparent;
-      transform: rotate(90deg);
-      border: solid 0px white;
+    .breadcrumb-holder {
+        & .breadcrumbPopup {
+            background-color: @popup-background-color;
+        }
     }
-  }
-
+    .breadcrumb-link,
+    .breadcrumb-link:hover {
+        color: @text-color;
+    }
+    .search-box .input-class {
+        background-color: @search-box-background-color;
+        color: @search-box-color;
+    }
+    .menu-button {
+        color: @arrow-color;
+        &.has-popup:hover,
+        &.is-active {
+            color: @arrow-color;
+        }
+    }
 }

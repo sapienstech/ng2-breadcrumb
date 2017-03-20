@@ -1,15 +1,23 @@
- <div class="breadcrumb" >
-            <div class="breadcrumb-holder">
-                <a routerLink="">
-                     <i class="icon-h icon"></i>
-                </a>
-            </div>
-            <div *ngFor="let route of breadcrumbRoutes; let i = index" class="breadcrumb-holder" >              
-                <a [routerLink]="[route.url, route.params]" class="breadcrumb-holder-link">
-                     <i *ngIf="route.breadcrumb.icon" class="{{route.breadcrumb.icon}} icon" ></i>                     
-                     <span *ngIf="!isString(route.breadcrumb.label)">{{route.breadcrumb.label |async}}</span>
-                     <span *ngIf="isString(route.breadcrumb.label)">{{route.breadcrumb.label}}</span>
-                </a>       
-                <dcn-breadcrumb-popup [breadcrumbDropDown]="route.breadcrumb.dropDown"></dcn-breadcrumb-popup>                
-            </div>        
-        </div>
+<div class="breadcrumb">
+    <div class="breadcrumb-holder">
+        <a routerLink="" class="breadcrumb-link">
+            <!--add option for an outer font-->
+            <!---->
+            <span><i class="fa fa-home home-icon"></i></span>
+            <!--<span>Home</span>-->
+            <button class="menu-button"><i class="fa fa-angle-right menu-button-icon"></i></button>
+        </a>
+    </div>
+
+    <div *ngFor="let route of breadcrumbRoutes; let i = index" class="breadcrumb-holder">
+        <a [routerLink]="[route.url, route.params]" class="breadcrumb-link">
+            <i *ngIf="route.breadcrumb.icon" class="{{route.breadcrumb.icon}} icon fa fa-trash-o link-icon"></i>
+            <span *ngIf="!isString(route.breadcrumb.label)">{{route.breadcrumb.label |async}}</span>
+            <span *ngIf="isString(route.breadcrumb.label)">{{route.breadcrumb.label}}</span>
+        </a>
+        <button #btn3 class="menu-button has-popup is-active" (click)="setInitialFilter($event)">
+            <i class="fa fa-angle-right menu-button-icon"></i>
+        </button>
+        <dcn-breadcrumb-popup [breadcrumbDropDown]="route.breadcrumb.dropDown"></dcn-breadcrumb-popup>
+    </div>
+</div>

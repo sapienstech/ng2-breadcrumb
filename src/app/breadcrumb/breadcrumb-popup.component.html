@@ -1,25 +1,24 @@
-<span *ngIf="isShowBreadcrumbDropDown">      
-    <!--remove this button               -->
-                    <button #btn3  class="ui-button" (click)="setInitialFilter($event)">
-                         <i class="fa fa-angle-right"></i>
-                    </button>
-                    <div class="popover" *ngIf="showPopup">
-                      <span class="breadcrumbPopup">
-                        <h4 *ngIf="breadcrumbDropDown.popupTitle">{{breadcrumbDropDown.popupTitle}}</h4>
-                        <dcn-search-box  class="breadcrumb-popup-search"
-                            [searchData]="search" 
-                            [minLength]="0" 
-                            (results)="onFilter($event)" >              
-                        </dcn-search-box>
+<!--<button #btn3 [ngClass]="{'menu-button':true,'has-popup':isShowNextArrow,'is-active':showPopup}" (click)="setInitialFilter($event)">-->
+  <!--<i class="fa fa-angle-right menu-button-icon"></i>-->
+<!--</button>-->
+<!--<div class="popover" *ngIf="showPopup">-->
+                      <!--<span class="breadcrumbPopup">-->
+                        <!--<h4 *ngIf="breadcrumbDropDown.popupTitle">{{breadcrumbDropDown.popupTitle}}</h4>-->
+                        <!--<dcn-search-box class="breadcrumb-popup-search"-->
+                                        <!--[searchData]="search"-->
+                                        <!--[minLength]="0"-->
+                                        <!--(results)="onFilter($event)">-->
+                        <!--</dcn-search-box>-->
 
-                        <div class="breadcrumb-popup-menu" >
-                            <div *ngFor="let nextLink of filteredItems"  class="breadcrumb-popup-menu-item">
-                                <!--*ngIf="nextLink.icon"-->
-                                <a [routerLink]="[nextLink.url, nextLink.params?nextLink.params:{}]" class="breadcrumb-popup-link" >
-                                <i class="{{nextLink.icon}} icon fa fa-globe breadcrumb-popup-link-icon" ></i>
-                                <span class="breadcrumb-popup-link-text">{{nextLink.label}}</span></a>
-                            </div>
-                        </div>
-                        </span>
-</div>
-</span>
+                        <!--<div class="breadcrumb-popup-menu">-->
+                            <!--<div *ngFor="let nextLink of filteredItems" class="breadcrumb-popup-menu-item">-->
+                                <!--&lt;!&ndash;*ngIf="nextLink.icon"&ndash;&gt;-->
+                                <!--<a [routerLink]="[nextLink.url, nextLink.params?nextLink.params:{}]"-->
+                                   <!--class="breadcrumb-popup-link">-->
+                                <!--<i class="{{nextLink.icon}} icon fa fa-globe breadcrumb-popup-link-icon"></i>-->
+                                <!--<span class="breadcrumb-popup-link-text">{{nextLink.label}}</span></a>-->
+                            <!--</div>-->
+                        <!--</div>-->
+                        <!--</span>-->
+<!--</div>-->
+

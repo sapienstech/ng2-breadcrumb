@@ -4,16 +4,46 @@ import "rxjs/add/observable/of";
 import {BreadcrumbDropDown, BreadcrumbDropDownItem} from "./breadcrumb-model";
 
 @Component({
-  moduleId: ""+module.id,
+  moduleId: "" + module.id,
   selector: 'dcn-breadcrumb-popup',
   styleUrls: ["breadcrumb.component.css"],
-  templateUrl:'breadcrumb-popup.component.html'
+  template: `
+<div class="popover" >
+<button *ngIf="isShowNextArrow"  #btn3 [ngClass]="{'menu-button':true, 'has-no-popup':!isShowBreadcrumbDropDown,'has-popup':isShowBreadcrumbDropDown,'is-active':showPopup}" (click)="setInitialFilter($event)">
+  <i class="fa fa-angle-right menu-button-icon"></i>
+</button>
+  <div *ngIf="showPopup">
+                        <span class="breadcrumbPopup">
+                          <h4 *ngIf="breadcrumbDropDown.popupTitle">{{breadcrumbDropDown.popupTitle}}</h4>
+                          <dcn-search-box class="breadcrumb-popup-search"
+                                          [searchData]="search"
+                                          [minLength]="0"
+                                          (results)="onFilter($event)">
+                          </dcn-search-box>
+  
+                          <div class="breadcrumb-popup-menu">
+                              <div *ngFor="let nextLink of filteredItems" class="breadcrumb-popup-menu-item">
+                                  <!--*ngIf="nextLink.icon"-->
+                                  <a [routerLink]="[nextLink.url, nextLink.params?nextLink.params:{}]"
+                                     class="breadcrumb-popup-link">
+                                  <i class="{{nextLink.icon}} icon breadcrumb-popup-link-icon"></i>
+                                  <span class="breadcrumb-popup-link-text">{{nextLink.label}}</span></a>
+                              </div>
+                          </div>
+                          </span>
+  </div>
+</div>
+
+`
 })
 export class BreadcrumbPopupComponent {
 
   @Input()
   breadcrumbDropDown: BreadcrumbDropDown;
   filteredItems: BreadcrumbDropDownItem[];
+
+  @Input()
+  isLast: boolean;
 
   _showPopup = false;
   get showPopup() {
@@ -48,6 +78,10 @@ export class BreadcrumbPopupComponent {
   private removeListeners() {
     document.removeEventListener("keydown", this.onKeyDown);
     document.removeEventListener("click", this.onClick);
+  }
+
+  get isShowNextArrow(): boolean {
+    return this.isShowBreadcrumbDropDown || !this.isLast;
   }
 
   get isShowBreadcrumbDropDown(): boolean {

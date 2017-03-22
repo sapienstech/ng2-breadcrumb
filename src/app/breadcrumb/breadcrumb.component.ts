@@ -7,10 +7,32 @@ import {Observable} from "rxjs/observable";
 
 
 @Component({
-  moduleId: ""+module.id,
+  moduleId: "" + module.id,
   selector: "dcn-breadcrumb",
   styleUrls: ["breadcrumb.component.css"],
-  templateUrl:'breadcrumb.component.html'
+  template: `
+<div class="breadcrumb">
+    <div class="breadcrumb-holder">
+        <a routerLink="" class="breadcrumb-link">
+            <!--add option for an outer font-->
+            <!---->
+            <span><i class="fa fa-home home-icon"></i></span>
+            <!--<span>Home</span>-->
+        </a>
+            <button *ngIf="hasRoutes" class="menu-button has-no-popup"><i class="fa fa-angle-right menu-button-icon"></i></button>
+    </div>
+
+    <div *ngFor="let route of breadcrumbRoutes; let i = index; let isLast=last" class="breadcrumb-holder">
+        <a [routerLink]="[route.url, route.params]" class="breadcrumb-link">
+            <i *ngIf="route.breadcrumb.icon" class="{{route.breadcrumb.icon}} icon link-icon"></i>
+            <span *ngIf="!isString(route.breadcrumb.label)">{{route.breadcrumb.label |async}}</span>
+            <span *ngIf="isString(route.breadcrumb.label)">{{route.breadcrumb.label}}</span>
+        </a>
+        <dcn-breadcrumb-popup [isLast]="isLast" [breadcrumbDropDown]="route.breadcrumb.dropDown"></dcn-breadcrumb-popup>
+    </div>
+</div>
+
+`
 })
 export class BreadcrumbComponent implements OnInit {
 
@@ -29,6 +51,10 @@ export class BreadcrumbComponent implements OnInit {
 
   isString(val: string|Observable<string>) {
     return typeof val == "string";
+  }
+
+  get hasRoutes(): boolean {
+    return this.breadcrumbRoutes && this.breadcrumbRoutes.length > 0;
   }
 
   public breadcrumbRoutes: BreadcrumbRoute[];

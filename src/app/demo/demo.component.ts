@@ -28,12 +28,13 @@ export class DemoComponent implements OnInit {
     this.activatedRoute.data.subscribe((data: {breadcrumb: Breadcrumb}) => {
       data.breadcrumb = {
         label: xxx,
-        dropDown: {
-          items: [
-            {label: "product1", url: "products/product1"},
-            {label: "product2", url: "products/product2"}
-          ]
-        }
+        icon:"fa fa-globe"
+        // dropDown: {
+        //   items: [
+        //     {label: "product1", url: "products/product1", icon:"fa fa-trash-o"},
+        //     {label: "product2", url: "products/product2", icon:"fa fa-trash-o"}
+        //   ]
+        // }
       };
       setTimeout(() => {
         xxx.next("I have Changed");

@@ -14,10 +14,7 @@ import {Observable} from "rxjs/observable";
 <div class="breadcrumb">
     <div class="breadcrumb-holder">
         <a routerLink="" class="breadcrumb-link">
-            <!--add option for an outer font-->
-            <!---->
             <span><i class="fa fa-home home-icon"></i></span>
-            <!--<span>Home</span>-->
         </a>
             <button *ngIf="hasRoutes" class="menu-button has-no-popup"><i class="fa fa-angle-right menu-button-icon"></i></button>
     </div>
@@ -36,19 +33,6 @@ import {Observable} from "rxjs/observable";
 })
 export class BreadcrumbComponent implements OnInit {
 
-  // _theme: string;
-  // @Input()
-  // set theme(theme: string) {
-  //   this._theme = theme;
-  // }
-  //
-  // get theme() {
-  //   console.log("decisionTheme",this._theme);
-  //   if (!this._theme) {
-  //     return "decisionTheme";
-  //   }
-  //   return this._theme;
-  // }
 
   isString(val: string|Observable<string>) {
     return typeof val == "string";
@@ -64,7 +48,6 @@ export class BreadcrumbComponent implements OnInit {
               private activatedRoute: ActivatedRoute,
               private router: Router) {
     this.breadcrumbRoutes = [];
-    // this.theme = "decisionTheme";
   }
 
   ngOnInit() {

@@ -214,6 +214,38 @@ describe("Breadcrumb Popup Component", () => {
     });
   });
 
+  describe('class indicators', () => {
+    let breadcrumbPopupComponent: BreadcrumbPopupComponent;
+    beforeEach(() => {
+      breadcrumbPopupComponent = new BreadcrumbPopupComponent(null);
+    });
+    it('should have next arrow in case there is a dropdown', () => {
+      let breadcrumbDropDown = {items: []} as  BreadcrumbDropDown;
+      breadcrumbDropDown.items.length = 10;
+      breadcrumbPopupComponent.breadcrumbDropDown = breadcrumbDropDown;
+      expect(breadcrumbPopupComponent.isShowNextArrow).toBe(true);
+    });
+    it('should have an arrow if it is NOT the last element', () => {
+      breadcrumbPopupComponent.isLast= false;
+      expect(breadcrumbPopupComponent.isShowNextArrow).toBe(true);
+
+    });
+    it('should NOT have an arrow if it is the last element and it has NO dropdown', () => {
+      breadcrumbPopupComponent.isLast= true;
+      expect(breadcrumbPopupComponent.isShowNextArrow).toBe(false);
+
+    });
+    it('should have an arrow if it is the last element and it has dropdown', () => {
+      breadcrumbPopupComponent.isLast= true;
+      let breadcrumbDropDown = {items: []} as  BreadcrumbDropDown;
+      breadcrumbDropDown.items.length = 10;
+      breadcrumbPopupComponent.breadcrumbDropDown = breadcrumbDropDown;
+      expect(breadcrumbPopupComponent.isShowNextArrow).toBe(true);
+
+    });
+
+  });
+
   function buildBreadcrumbs(url: string, visible: boolean, params = undefined): BreadcrumbDropDown {
     return {
       popupTitle: "I am a drop down title"

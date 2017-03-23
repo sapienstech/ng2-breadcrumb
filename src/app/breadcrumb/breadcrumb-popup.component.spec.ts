@@ -50,10 +50,10 @@ describe("Breadcrumb Popup Component", () => {
 
       it('should not be visible if there are no items', () => {
         testCmp.testBreadCrumb = inputBreadcrumb;
-        fixture.detectChanges();
+        fixture.autoDetectChanges();
         fixture.whenStable(fixture).then(() => {
           expect(page.links.length).toBe(0);
-          expect(page.dropDownButton).toBe(null);
+          expect(page.dropDownButton.componentInstance).toBe(null);
           expect(page.breadcrumbPopupComponent.isShowBreadcrumbDropDown).toBe(undefined);
         });
       });
@@ -279,8 +279,11 @@ export function click(el: DebugElement | HTMLElement, eventObj: any = ButtonClic
   if (el instanceof HTMLElement) {
     el.click();
   } else {
-    el.triggerEventHandler("click",{stopPropagation:()=>{}});
-   // el.triggerEventHandler('click', eventObj);
+    el.triggerEventHandler("click", {
+      stopPropagation: () => {
+      }
+    });
+    // el.triggerEventHandler('click', eventObj);
   }
 }
 //region test components

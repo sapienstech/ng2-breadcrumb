@@ -9,7 +9,7 @@ var tsc = require('gulp-typescript');
 
 var node_path = require('path');
 
-var dest = "dist/out-es5/src/app/breadcrumb";
+var dest = "dist/out-tsc/src/app/breadcrumb";
 gulp.task('default', function () {
   //return gutil.log('Gulp is running!')
   console.log("default");

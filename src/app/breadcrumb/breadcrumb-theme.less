@@ -1,10 +1,14 @@
+//dcn-breadcrumb.decisionTheme {
+//  .breadcrumb-colors(#0cb6e7, white, #78e2eb, white, white, #0275d8, white, black);
+//}
 .breadcrumb {
-    .breadcrumb-colors(#0cb6e7, white, #78e2eb, white, white, #0275d8, white, black)
-}
+   .breadcrumb-colors(#0cb6e7, white, #78e2eb, white, white, #0275d8, white, black)
+ }
 
 .breadcrumb-colors(@item-background-color, @text-color, @hover-background-color, @arrow-color, @popup-background-color, @popup-link-color, @search-box-background-color, @search-box-color) {
     .breadcrumb {
         color: @text-color;
+        background-color: @item-background-color;
     }
     .breadcrumb-holder,
     .breadcrumb-holder:after {

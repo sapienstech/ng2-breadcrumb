@@ -1,5 +1,6 @@
 .breadcrumb .breadcrumb {
   color: white;
+  background-color: #0cb6e7;
 }
 .breadcrumb .breadcrumb-holder,
 .breadcrumb .breadcrumb-holder:after {
@@ -13,11 +14,9 @@
 .breadcrumb .breadcrumb-link:hover {
   color: white;
 }
-.breadcrumb .searchBox .inputClass {
-  width: 300px;
+.breadcrumb .search-box .input-class {
   background-color: white;
   color: black;
-  line-height: normal;
 }
 .breadcrumb .menu-button {
   color: white;
@@ -28,6 +27,7 @@
 }
 dcn-breadcrumb.winter .breadcrumb {
   color: yellow;
+  background-color: red;
 }
 dcn-breadcrumb.winter .breadcrumb-holder,
 dcn-breadcrumb.winter .breadcrumb-holder:after {
@@ -41,11 +41,9 @@ dcn-breadcrumb.winter .breadcrumb-link,
 dcn-breadcrumb.winter .breadcrumb-link:hover {
   color: yellow;
 }
-dcn-breadcrumb.winter .searchBox .inputClass {
-  width: 300px;
+dcn-breadcrumb.winter .search-box .input-class {
   background-color: red;
   color: blue;
-  line-height: normal;
 }
 dcn-breadcrumb.winter .menu-button {
   color: green;
@@ -56,6 +54,7 @@ dcn-breadcrumb.winter .menu-button.is-active {
 }
 dcn-breadcrumb.spring .breadcrumb {
   color: white;
+  background-color: lightgreen;
 }
 dcn-breadcrumb.spring .breadcrumb-holder,
 dcn-breadcrumb.spring .breadcrumb-holder:after {
@@ -69,11 +68,9 @@ dcn-breadcrumb.spring .breadcrumb-link,
 dcn-breadcrumb.spring .breadcrumb-link:hover {
   color: white;
 }
-dcn-breadcrumb.spring .searchBox .inputClass {
-  width: 300px;
+dcn-breadcrumb.spring .search-box .input-class {
   background-color: lightgreen;
   color: yellow;
-  line-height: normal;
 }
 dcn-breadcrumb.spring .menu-button {
   color: red;
@@ -84,6 +81,7 @@ dcn-breadcrumb.spring .menu-button.is-active {
 }
 dcn-breadcrumb.summer .breadcrumb {
   color: #e0e78a;
+  background-color: #899ee7;
 }
 dcn-breadcrumb.summer .breadcrumb-holder,
 dcn-breadcrumb.summer .breadcrumb-holder:after {
@@ -97,11 +95,9 @@ dcn-breadcrumb.summer .breadcrumb-link,
 dcn-breadcrumb.summer .breadcrumb-link:hover {
   color: #e0e78a;
 }
-dcn-breadcrumb.summer .searchBox .inputClass {
-  width: 300px;
+dcn-breadcrumb.summer .search-box .input-class {
   background-color: #899ee7;
   color: white;
-  line-height: normal;
 }
 dcn-breadcrumb.summer .menu-button {
   color: red;

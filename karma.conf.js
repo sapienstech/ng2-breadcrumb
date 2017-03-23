@@ -37,7 +37,7 @@ module.exports = function (config) {
               : ['progress', 'kjhtml','junit'],
     junitReporter: {
       outputDir: './target/testresults',
-      outputFile: 'TEST-karma-' + root + '.xml',
+      outputFile: 'TEST-karma-' + '.xml',
       useBrowserName: false,
       suite: root
     },

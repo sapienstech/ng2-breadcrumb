@@ -8,7 +8,7 @@
   transition: all 0.5s;
 }
 .breadcrumb .breadcrumb-holder .breadcrumbPopup {
-  background-color: #F3F4F6;
+  background-color: white;
 }
 .breadcrumb .breadcrumb-link,
 .breadcrumb .breadcrumb-link:hover {
@@ -26,22 +26,22 @@
   color: white;
 }
 .breadcrumb .popover .breadcrumbPopup .breadcrumb-popup-link {
-  color: #0275d8;
+  color: #3e4959;
 }
 .breadcrumb .popover .breadcrumbPopup .breadcrumb-popup-link:hover {
-  background-color: white;
+  background-color: #F3F4F6;
 }
 .breadcrumb .popover .breadcrumbPopup .breadcrumb-popup-link:hover .breadcrumb-popup-link-text {
   color: #0cb6e7;
 }
 .breadcrumb .popover .breadcrumbPopup .breadcrumb-popup-link:visited {
-  color: #0275d8;
+  color: #3e4959;
 }
 .breadcrumb .popover .breadcrumbPopup .breadcrumb-popup-link-icon {
   color: #a0a0a0;
 }
 .breadcrumb .popover .breadcrumbPopup .breadcrumb-popup-link-text {
-  color: #0275d8;
+  color: #3e4959;
 }
 dcn-breadcrumb.winter .breadcrumb {
   color: yellow;

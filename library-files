@@ -1,4 +1,4 @@
---target es5 --module commonjs --declaration true --moduleResolution node --outDir dist/out-es5 --rootDir ./ -emitDecoratorMetadata true --experimentalDecorators  true
+--target es5 --module commonjs  --declaration true --moduleResolution node --outDir dist/out-es5 --rootDir ./ -emitDecoratorMetadata true --experimentalDecorators  true
 src/app/breadcrumb/breadcrumb.component.ts
 src/app/breadcrumb/breadcrumb.module.ts
 src/app/breadcrumb/breadcrumb.service.ts

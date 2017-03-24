@@ -7,19 +7,19 @@
    Let the user navigate forward by selecting options in a dropdown from the route.
    Enable hiding routes
  ```
-some images from the demo
+Some images from the demo
+
 #Blue theme
 
-![decision-theam](https://cloud.githubusercontent.com/assets/5977156/22293308/c21d8134-e317-11e6-94ab-daead0f015f0.jpg)
+![image](https://cloud.githubusercontent.com/assets/5977156/24284417/339b2686-107c-11e7-85e2-cae461d83ba9.png)
+
 
 #Spring Theme
 
-![spring](https://cloud.githubusercontent.com/assets/5977156/22293343/e35aad0e-e317-11e6-922b-d3652f2b8911.jpg)
+![image](https://cloud.githubusercontent.com/assets/5977156/24284432/4434b304-107c-11e7-8d3c-02043e5af5db.png)
 
 #Winter theme
-
-![winter](https://cloud.githubusercontent.com/assets/5977156/22293360/f255d374-e317-11e6-8eb2-6a4f16777b99.jpg)
-
+![image](https://cloud.githubusercontent.com/assets/5977156/24284583/0f0f020a-107d-11e7-8dc5-5a7cf8f983d2.png)
 
 This project was generated with [angular-cli](https://github.com/angular/angular-cli) version 1.0.0-beta.24.
 
@@ -72,16 +72,26 @@ in the example below you can select winter/spring or summer themes
 @import "breadcrumb/breadcrumb-theme.less";
 
 dcn-breadcrumb.winter {
-  .breadcrumb-colors(red, yellow, blue, green,white,black,red,blue);
-}
-
-dcn-breadcrumb.spring {
-  .breadcrumb-colors(lightgreen, white, #78e2eb, red,green,yellow,lightgreen,yellow)
+  .breadcrumb-colors(#b176b6, yellow, blue, yellow,
+    #b176b6,red,
+    gray,#fff5ea,red,
+    #d7d5cb,#b176b6);
 }
 
 dcn-breadcrumb.summer {
-  .breadcrumb-colors(#899ee7, #e0e78a, #3bc3ff, red,yellow,red,#899ee7,white);
+  .breadcrumb-colors(#e72154, #e0e78a, #3bc3ff, white,
+    #e72154,yellow,
+    blue,white,yellow,
+    #899ee7,#e72154);
 }
+
+dcn-breadcrumb.spring {
+  .breadcrumb-colors(#5FC073, white, #78e2eb, white,
+    #5FC073,yellow,
+    gray,yellow,blue,
+    #040404,#5FC073);
+}
+
 
 ```
 you can change the them to "winter" class like this.

@@ -2,20 +2,22 @@ import {Component, OnInit, EventEmitter, ElementRef, Input, Output, ViewChild} f
 import {Observable} from "rxjs/Observable";
 import "rxjs/add/observable/fromEvent";
 import "rxjs/add/observable/merge";
+import "rxjs/add/observable/of";
 import "rxjs/add/operator/do";
 import "rxjs/add/operator/map";
 import "rxjs/add/operator/debounceTime";
 import "rxjs/add/operator/switch";
-
+import "rxjs/add/operator/filter";
 @Component({
   moduleId: ""+module.id,
   selector: 'dcn-search-box',
+  styleUrls:['breadcrumb.component.css'],
   template: `
-        <div class="searchBox">
+        <div class="search-box">
             <input #input type="search"
                 [value]="filterText" 
                 (input)="filterText = $event.target.value"
-                class="inputClass" 
+                class="input-class" 
                 placeholder="search"
                  />
         </div>

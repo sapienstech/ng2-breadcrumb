@@ -16,7 +16,7 @@ const community_routes: Routes = [
     data: {
       breadcrumb: {
         label: "Products",
-        icon:"fa fa-trash-o link-icon",
+        icon:"fa fa-list link-icon",
         dropDown: {
           items: [
             {label: "product1", url: "products/product1", icon:"fa fa-globe"},

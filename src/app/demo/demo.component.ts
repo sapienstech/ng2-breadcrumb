@@ -9,9 +9,9 @@ import {BehaviorSubject} from "rxjs/BehaviorSubject";
     <p>
       in this demo
       I have many products!
-      this is product
+      
     </p>
-    <span style="background-color: yellow">{{currentProduct}} </span>
+    <div style="background-color: antiquewhite; color: black;">Current product is [{{currentProduct}}] </div>
     `,
 
 })
@@ -24,11 +24,11 @@ export class DemoComponent implements OnInit {
 
 
   ngOnInit() {
-    let xxx = new BehaviorSubject<string>("I am a Product");
+    let productSubject = new BehaviorSubject<string>("I am a Product");
     this.activatedRoute.data.subscribe((data: {breadcrumb: Breadcrumb}) => {
       data.breadcrumb = {
-        label: xxx,
-        icon:"fa fa-globe"
+        label: productSubject,
+        icon: "fa fa-globe"
         // dropDown: {
         //   items: [
         //     {label: "product1", url: "products/product1", icon:"fa fa-trash-o"},
@@ -37,9 +37,12 @@ export class DemoComponent implements OnInit {
         // }
       };
       setTimeout(() => {
-        xxx.next("I have Changed");
-        xxx.complete();
-      },5000);
+        productSubject.next("I have Changed");
+        productSubject.complete();
+      }, 5000);
+    });
+    this.activatedRoute.url.subscribe(param => {
+      this.currentProduct = param[param.length - 1].path;
     });
   }
 

@@ -21,6 +21,9 @@
 .breadcrumb .menu-button {
   color: white;
 }
+.breadcrumb .menu-button .arrow {
+  fill: white;
+}
 .breadcrumb .menu-button.has-popup:hover,
 .breadcrumb .menu-button.is-active {
   color: white;
@@ -66,6 +69,9 @@ dcn-breadcrumb.winter .search-box .input-class {
 dcn-breadcrumb.winter .menu-button {
   color: yellow;
 }
+dcn-breadcrumb.winter .menu-button .arrow {
+  fill: yellow;
+}
 dcn-breadcrumb.winter .menu-button.has-popup:hover,
 dcn-breadcrumb.winter .menu-button.is-active {
   color: yellow;
@@ -109,11 +115,14 @@ dcn-breadcrumb.summer .search-box .input-class {
   color: #e72154;
 }
 dcn-breadcrumb.summer .menu-button {
-  color: white;
+  color: lightgreen;
+}
+dcn-breadcrumb.summer .menu-button .arrow {
+  fill: lightgreen;
 }
 dcn-breadcrumb.summer .menu-button.has-popup:hover,
 dcn-breadcrumb.summer .menu-button.is-active {
-  color: white;
+  color: lightgreen;
 }
 dcn-breadcrumb.summer .popover .breadcrumbPopup .breadcrumb-popup-link {
   color: white;
@@ -155,6 +164,9 @@ dcn-breadcrumb.spring .search-box .input-class {
 }
 dcn-breadcrumb.spring .menu-button {
   color: white;
+}
+dcn-breadcrumb.spring .menu-button .arrow {
+  fill: white;
 }
 dcn-breadcrumb.spring .menu-button.has-popup:hover,
 dcn-breadcrumb.spring .menu-button.is-active {

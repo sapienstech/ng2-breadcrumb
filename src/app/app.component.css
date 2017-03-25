@@ -2,6 +2,9 @@
   color: white;
   background-color: #0cb6e7;
 }
+.breadcrumb .arrowUp {
+  border-bottom-color: white;
+}
 .breadcrumb .breadcrumb-holder,
 .breadcrumb .breadcrumb-holder:after {
   background: #0cb6e7;
@@ -50,13 +53,16 @@ dcn-breadcrumb.winter .breadcrumb {
   color: yellow;
   background-color: #b176b6;
 }
+dcn-breadcrumb.winter .arrowUp {
+  border-bottom-color: #895fb6;
+}
 dcn-breadcrumb.winter .breadcrumb-holder,
 dcn-breadcrumb.winter .breadcrumb-holder:after {
   background: #b176b6;
   transition: all 0.5s;
 }
 dcn-breadcrumb.winter .breadcrumb-holder .breadcrumbPopup {
-  background-color: #b176b6;
+  background-color: #895fb6;
 }
 dcn-breadcrumb.winter .breadcrumb-link,
 dcn-breadcrumb.winter .breadcrumb-link:hover {
@@ -97,6 +103,9 @@ dcn-breadcrumb.winter .popover .breadcrumbPopup .breadcrumb-popup-link-text {
 dcn-breadcrumb.summer .breadcrumb {
   color: #e0e78a;
   background-color: #e72154;
+}
+dcn-breadcrumb.summer .arrowUp {
+  border-bottom-color: #e72154;
 }
 dcn-breadcrumb.summer .breadcrumb-holder,
 dcn-breadcrumb.summer .breadcrumb-holder:after {
@@ -145,6 +154,9 @@ dcn-breadcrumb.summer .popover .breadcrumbPopup .breadcrumb-popup-link-text {
 dcn-breadcrumb.spring .breadcrumb {
   color: white;
   background-color: #5FC073;
+}
+dcn-breadcrumb.spring .arrowUp {
+  border-bottom-color: #5FC073;
 }
 dcn-breadcrumb.spring .breadcrumb-holder,
 dcn-breadcrumb.spring .breadcrumb-holder:after {

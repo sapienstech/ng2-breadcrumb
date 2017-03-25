@@ -1,11 +1,8 @@
-import {Component, Input, ElementRef} from "@angular/core";
+import {Component, Input, ElementRef, HostListener} from "@angular/core";
 import {Observable} from "rxjs/Observable";
 import "rxjs/add/observable/of";
 import {BreadcrumbDropDown, BreadcrumbDropDownItem} from "./breadcrumb-model";
-import {isPromise} from "rxjs/util/isPromise";
-import {Subscription} from "rxjs";
-
-const ESCAPE = 27;
+import {Subscription} from "rxjs/Subscription";
 
 @Component({
   moduleId: "" + module.id,
@@ -23,9 +20,10 @@ const ESCAPE = 27;
 	<path  class="arrow" d="M360.731,229.075l-225.1-225.1c-5.3-5.3-13.8-5.3-19.1,0s-5.3,13.8,0,19.1l215.5,215.5l-215.5,215.5   c-5.3,5.3-5.3,13.8,0,19.1c2.6,2.6,6.1,4,9.5,4c3.4,0,6.9-1.3,9.5-4l225.1-225.1C365.931,242.875,365.931,234.275,360.731,229.075z   " fill="#FFFFFF"/>
 </g>
 </svg>
-    <!--<i class="fa fa-angle-right menu-button-icon"></i>-->
+
   </button>
   <div *ngIf="showPopup" class="breadcrumbPopup">
+  <div class="arrowUp"></div>
       <h4 *ngIf="breadcrumbDropDown.popupTitle">{{breadcrumbDropDown.popupTitle}}</h4>
       <dcn-search-box class="breadcrumb-popup-search"
                       [searchData]="search"
@@ -35,7 +33,6 @@ const ESCAPE = 27;
   
       <div class="breadcrumb-popup-menu">
           <div *ngFor="let nextLink of filteredItems" class="breadcrumb-popup-menu-item">
-              <!--*ngIf="nextLink.icon"-->
               <a [routerLink]="[nextLink.url, nextLink.params?nextLink.params:{}]"
                  class="breadcrumb-popup-link">
               <i class="{{nextLink.icon}} icon breadcrumb-popup-link-icon"></i>
@@ -67,33 +64,15 @@ export class BreadcrumbPopupComponent {
 
   set showPopup(isShow: boolean) {
     this._showPopup = isShow;
-    if (!isShow) {
-      this.removeListeners();
-    }
-    else {
-      this.addListeners();
-    }
+
   }
 
   constructor(private elementRef: ElementRef) {
-    this.search = this.search.bind(this);
-    this.onKeyDown = this.onKeyDown.bind(this);
-    this.onClick = this.onClick.bind(this);
+
   }
 
   ngOnDestroy() {
-    this.removeListeners();
     this.unSubscribeFromPopupInfo();
-  }
-
-  private addListeners() {
-    document.addEventListener("keydown", this.onKeyDown);
-    document.addEventListener("click", this.onClick);
-  }
-
-  private removeListeners() {
-    document.removeEventListener("keydown", this.onKeyDown);
-    document.removeEventListener("click", this.onClick);
   }
 
   get isShowNextArrow(): boolean {
@@ -104,17 +83,16 @@ export class BreadcrumbPopupComponent {
 
     return this.breadcrumbDropDown &&
       (this.breadcrumbDropDown.getItems != undefined ||
-      isPromise(this.breadcrumbDropDown.items) ||
       this.breadcrumbDropDown.items instanceof Observable ||
       this.breadcrumbDropDown.items && this.breadcrumbDropDown.items.length > 0);
   }
 
+  @HostListener('keydown.escape', ['$event'])
   onKeyDown(event: KeyboardEvent) {
-    if (event.which == ESCAPE) {
-      this.showPopup = false;
-    }
+    this.showPopup = false;
   }
 
+  @HostListener('document:click',['$event'])
   onClick(event: MouseEvent) {
     if (!this.elementRef.nativeElement.contains(event.target)) {
       this.showPopup = false;
@@ -130,14 +108,7 @@ export class BreadcrumbPopupComponent {
   setInitialFilter(event: MouseEvent) {
     event.stopPropagation();
 
-    if (isPromise(this.items)) {
-      this.items.then(vals => {
-        this.allItems = vals;
-        this.filteredItems = this.allItems;
-        this.showPopup = !this.showPopup;
-      })
-    }
-    else if (this.items instanceof Observable) {
+    if (this.items instanceof Observable) {
       this.unSubscribeFromPopupInfo();
       this.subscription = this.items.subscribe(vals => {
         this.allItems = vals;

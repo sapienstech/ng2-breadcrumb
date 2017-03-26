@@ -4,42 +4,45 @@ import "rxjs/add/observable/of";
 import {BreadcrumbDropDown, BreadcrumbDropDownItem} from "./breadcrumb-model";
 
 @Component({
-  moduleId: ""+module.id,
+  moduleId: "" + module.id,
   selector: 'dcn-breadcrumb-popup',
   styleUrls: ["breadcrumb.component.css"],
   template: `
-            <span *ngIf="isShowBreadcrumbDropDown" >                    
-                    <button #btn3  class="ui-button" (click)="setInitialFilter($event)">
-                        &#10148;
-                    </button>
-                    <div class="popover" *ngIf="showPopup">
-                      <span class="breadcrumbPopup">
-                        <h4 *ngIf="breadcrumbDropDown.popupTitle">{{breadcrumbDropDown.popupTitle}}</h4>
-                        <dcn-search-box 
-                            [searchData]="search" 
-                            [minLength]="0" 
-                            (results)="onFilter($event)" 
-                            >              
-                        </dcn-search-box>
+<div class="popover" >
+  <button *ngIf="isShowNextArrow"  #btn3 [ngClass]="{'menu-button':true, 'has-no-popup':!isShowBreadcrumbDropDown,'has-popup':isShowBreadcrumbDropDown,'is-active':showPopup}" (click)="setInitialFilter($event)">
+    <i class="fa fa-angle-right menu-button-icon"></i>
+  </button>
+  <div *ngIf="showPopup" class="breadcrumbPopup">
+      <h4 *ngIf="breadcrumbDropDown.popupTitle">{{breadcrumbDropDown.popupTitle}}</h4>
+      <dcn-search-box class="breadcrumb-popup-search"
+                      [searchData]="search"
+                      [minLength]="0"
+                      (results)="onFilter($event)">
+      </dcn-search-box>
+  
+      <div class="breadcrumb-popup-menu">
+          <div *ngFor="let nextLink of filteredItems" class="breadcrumb-popup-menu-item">
+              <!--*ngIf="nextLink.icon"-->
+              <a [routerLink]="[nextLink.url, nextLink.params?nextLink.params:{}]"
+                 class="breadcrumb-popup-link">
+              <i class="{{nextLink.icon}} icon breadcrumb-popup-link-icon"></i>
+              <span class="breadcrumb-popup-link-text">{{nextLink.label}}</span></a>
+          </div>
+      </div>
+  </div>
 
-                        <div style="max-height: 150px;overflow: auto" >
-                            <div *ngFor="let nextLink of filteredItems"  class="next-link">
-                    
-                                <a [routerLink]="[nextLink.url, nextLink.params?nextLink.params:{}]" >
-                                <i  *ngIf="nextLink.icon" class="{{nextLink.icon}} icon" ></i>
-                                {{nextLink.label}}</a>
-                            </div>
-                        </div>
-                        </span>
-                     </div>
-            </span>
-      `
+</div>
+
+`
 })
 export class BreadcrumbPopupComponent {
 
   @Input()
   breadcrumbDropDown: BreadcrumbDropDown;
   filteredItems: BreadcrumbDropDownItem[];
+
+  @Input()
+  isLast: boolean;
 
   _showPopup = false;
   get showPopup() {
@@ -74,6 +77,10 @@ export class BreadcrumbPopupComponent {
   private removeListeners() {
     document.removeEventListener("keydown", this.onKeyDown);
     document.removeEventListener("click", this.onClick);
+  }
+
+  get isShowNextArrow(): boolean {
+    return this.isShowBreadcrumbDropDown || !this.isLast;
   }
 
   get isShowBreadcrumbDropDown(): boolean {

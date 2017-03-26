@@ -1,14 +1,16 @@
-<div style="background-color: antiquewhite">
-<dcn-breadcrumb class="{{selectedTheme}}"></dcn-breadcrumb>
+<div>
+  <dcn-breadcrumb class="{{selectedTheme}}"></dcn-breadcrumb>
 </div>
-<h1>
-  {{title}}
-</h1>
 
-select theme:
-<select [(ngModel)]="selectedTheme">
-  <option *ngFor="let theme of themes" [value]=theme (select)="selectedTheme=$event">{{theme}}</option>
-</select>
 
 <router-outlet></router-outlet>
+<br/>
+<br/>
+<br/>
+<h1>
+  Select theme:
+  <select [(ngModel)]="selectedTheme">
+    <option *ngFor="let theme of themes" [value]=theme (select)="selectedTheme=$event">{{theme}}</option>
+  </select>
 
+</h1>

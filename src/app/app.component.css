@@ -1,228 +1,180 @@
+.breadcrumb .breadcrumb {
+  color: white;
+  background-color: #0cb6e7;
+}
 .breadcrumb .breadcrumb-holder,
 .breadcrumb .breadcrumb-holder:after {
   background: #0cb6e7;
-  line-height: 1.5;
   transition: all 0.5s;
 }
 .breadcrumb .breadcrumb-holder .breadcrumbPopup {
   background-color: white;
 }
-.breadcrumb .next-link a {
-  text-decoration: none;
-  color: #0275d8;
-}
-.breadcrumb .next-link a:hover {
-  color: #0275d8;
-  text-decoration: underline;
-}
-.breadcrumb a,
-.breadcrumb a:hover {
-  text-decoration: none;
+.breadcrumb .breadcrumb-link,
+.breadcrumb .breadcrumb-link:hover {
   color: white;
-  padding-left: 8px;
 }
-.breadcrumb .breadcrumb-holder:hover,
-.breadcrumb .breadcrumb-holder.active,
-.breadcrumb .breadcrumb-holder:hover:after,
-.breadcrumb .breadcrumb-holder.active:after {
-  background: #78e2eb;
-}
-.breadcrumb .searchBox .inputClass {
-  width: 300px;
+.breadcrumb .search-box .input-class {
   background-color: white;
   color: black;
-  line-height: normal;
 }
-.breadcrumb .ui-button {
-  display: inline-block;
-  padding: 5px;
-  margin-left: 5px;
-  text-decoration: none !important;
-  line-height: 1;
-  border-radius: 50%;
-  width: 26px;
-  height: 26px;
-  border: solid 0px gray;
-  background-color: transparent;
+.breadcrumb .menu-button {
   color: white;
-  -webkit-transition: 0.5s ease-in-out;
-  -moz-transition: 0.5s ease-in-out;
-  -o-transition: 0.5s ease-in-out;
 }
-.breadcrumb .ui-button:hover {
-  color: whitesmoke;
-  background-color: transparent;
-  transform: rotate(90deg);
-  border: solid 0px white;
+.breadcrumb .menu-button.has-popup:hover,
+.breadcrumb .menu-button.is-active {
+  color: white;
+}
+.breadcrumb .popover .breadcrumbPopup .breadcrumb-popup-link {
+  color: #3e4959;
+}
+.breadcrumb .popover .breadcrumbPopup .breadcrumb-popup-link:hover {
+  background-color: #F3F4F6;
+}
+.breadcrumb .popover .breadcrumbPopup .breadcrumb-popup-link:hover .breadcrumb-popup-link-text {
+  color: #0cb6e7;
+}
+.breadcrumb .popover .breadcrumbPopup .breadcrumb-popup-link:visited {
+  color: #3e4959;
+}
+.breadcrumb .popover .breadcrumbPopup .breadcrumb-popup-link-icon {
+  color: #a0a0a0;
+}
+.breadcrumb .popover .breadcrumbPopup .breadcrumb-popup-link-text {
+  color: #3e4959;
+}
+dcn-breadcrumb.winter .breadcrumb {
+  color: yellow;
+  background-color: #b176b6;
 }
 dcn-breadcrumb.winter .breadcrumb-holder,
 dcn-breadcrumb.winter .breadcrumb-holder:after {
-  background: red;
-  line-height: 1.5;
+  background: #b176b6;
   transition: all 0.5s;
 }
 dcn-breadcrumb.winter .breadcrumb-holder .breadcrumbPopup {
-  background-color: white;
+  background-color: #b176b6;
 }
-dcn-breadcrumb.winter .next-link a {
-  text-decoration: none;
-  color: black;
-}
-dcn-breadcrumb.winter .next-link a:hover {
-  color: black;
-  text-decoration: underline;
-}
-dcn-breadcrumb.winter a,
-dcn-breadcrumb.winter a:hover {
-  text-decoration: none;
-  color: yellow;
-  padding-left: 8px;
-}
-dcn-breadcrumb.winter .breadcrumb-holder:hover,
-dcn-breadcrumb.winter .breadcrumb-holder.active,
-dcn-breadcrumb.winter .breadcrumb-holder:hover:after,
-dcn-breadcrumb.winter .breadcrumb-holder.active:after {
-  background: blue;
-}
-dcn-breadcrumb.winter .searchBox .inputClass {
-  width: 300px;
-  background-color: red;
-  color: blue;
-  line-height: normal;
-}
-dcn-breadcrumb.winter .ui-button {
-  display: inline-block;
-  padding: 5px;
-  margin-left: 5px;
-  text-decoration: none !important;
-  line-height: 1;
-  border-radius: 50%;
-  width: 26px;
-  height: 26px;
-  border: solid 0px gray;
-  background-color: transparent;
-  color: green;
-  -webkit-transition: 0.5s ease-in-out;
-  -moz-transition: 0.5s ease-in-out;
-  -o-transition: 0.5s ease-in-out;
-}
-dcn-breadcrumb.winter .ui-button:hover {
-  color: whitesmoke;
-  background-color: transparent;
-  transform: rotate(90deg);
-  border: solid 0px white;
-}
-dcn-breadcrumb.spring .breadcrumb-holder,
-dcn-breadcrumb.spring .breadcrumb-holder:after {
-  background: lightgreen;
-  line-height: 1.5;
-  transition: all 0.5s;
-}
-dcn-breadcrumb.spring .breadcrumb-holder .breadcrumbPopup {
-  background-color: green;
-}
-dcn-breadcrumb.spring .next-link a {
-  text-decoration: none;
+dcn-breadcrumb.winter .breadcrumb-link,
+dcn-breadcrumb.winter .breadcrumb-link:hover {
   color: yellow;
 }
-dcn-breadcrumb.spring .next-link a:hover {
+dcn-breadcrumb.winter .search-box .input-class {
+  background-color: #d7d5cb;
+  color: #b176b6;
+}
+dcn-breadcrumb.winter .menu-button {
   color: yellow;
-  text-decoration: underline;
 }
-dcn-breadcrumb.spring a,
-dcn-breadcrumb.spring a:hover {
-  text-decoration: none;
-  color: white;
-  padding-left: 8px;
-}
-dcn-breadcrumb.spring .breadcrumb-holder:hover,
-dcn-breadcrumb.spring .breadcrumb-holder.active,
-dcn-breadcrumb.spring .breadcrumb-holder:hover:after,
-dcn-breadcrumb.spring .breadcrumb-holder.active:after {
-  background: #78e2eb;
-}
-dcn-breadcrumb.spring .searchBox .inputClass {
-  width: 300px;
-  background-color: lightgreen;
+dcn-breadcrumb.winter .menu-button.has-popup:hover,
+dcn-breadcrumb.winter .menu-button.is-active {
   color: yellow;
-  line-height: normal;
 }
-dcn-breadcrumb.spring .ui-button {
-  display: inline-block;
-  padding: 5px;
-  margin-left: 5px;
-  text-decoration: none !important;
-  line-height: 1;
-  border-radius: 50%;
-  width: 26px;
-  height: 26px;
-  border: solid 0px gray;
-  background-color: transparent;
+dcn-breadcrumb.winter .popover .breadcrumbPopup .breadcrumb-popup-link {
+  color: #fff5ea;
+}
+dcn-breadcrumb.winter .popover .breadcrumbPopup .breadcrumb-popup-link:hover {
+  background-color: gray;
+}
+dcn-breadcrumb.winter .popover .breadcrumbPopup .breadcrumb-popup-link:hover .breadcrumb-popup-link-text {
   color: red;
-  -webkit-transition: 0.5s ease-in-out;
-  -moz-transition: 0.5s ease-in-out;
-  -o-transition: 0.5s ease-in-out;
 }
-dcn-breadcrumb.spring .ui-button:hover {
-  color: whitesmoke;
-  background-color: transparent;
-  transform: rotate(90deg);
-  border: solid 0px white;
+dcn-breadcrumb.winter .popover .breadcrumbPopup .breadcrumb-popup-link:visited {
+  color: #fff5ea;
+}
+dcn-breadcrumb.winter .popover .breadcrumbPopup .breadcrumb-popup-link-icon {
+  color: red;
+}
+dcn-breadcrumb.winter .popover .breadcrumbPopup .breadcrumb-popup-link-text {
+  color: #fff5ea;
+}
+dcn-breadcrumb.summer .breadcrumb {
+  color: #e0e78a;
+  background-color: #e72154;
 }
 dcn-breadcrumb.summer .breadcrumb-holder,
 dcn-breadcrumb.summer .breadcrumb-holder:after {
-  background: #899ee7;
-  line-height: 1.5;
+  background: #e72154;
   transition: all 0.5s;
 }
 dcn-breadcrumb.summer .breadcrumb-holder .breadcrumbPopup {
-  background-color: yellow;
+  background-color: #e72154;
 }
-dcn-breadcrumb.summer .next-link a {
-  text-decoration: none;
-  color: red;
-}
-dcn-breadcrumb.summer .next-link a:hover {
-  color: red;
-  text-decoration: underline;
-}
-dcn-breadcrumb.summer a,
-dcn-breadcrumb.summer a:hover {
-  text-decoration: none;
+dcn-breadcrumb.summer .breadcrumb-link,
+dcn-breadcrumb.summer .breadcrumb-link:hover {
   color: #e0e78a;
-  padding-left: 8px;
 }
-dcn-breadcrumb.summer .breadcrumb-holder:hover,
-dcn-breadcrumb.summer .breadcrumb-holder.active,
-dcn-breadcrumb.summer .breadcrumb-holder:hover:after,
-dcn-breadcrumb.summer .breadcrumb-holder.active:after {
-  background: #3bc3ff;
-}
-dcn-breadcrumb.summer .searchBox .inputClass {
-  width: 300px;
+dcn-breadcrumb.summer .search-box .input-class {
   background-color: #899ee7;
+  color: #e72154;
+}
+dcn-breadcrumb.summer .menu-button {
   color: white;
-  line-height: normal;
 }
-dcn-breadcrumb.summer .ui-button {
-  display: inline-block;
-  padding: 5px;
-  margin-left: 5px;
-  text-decoration: none !important;
-  line-height: 1;
-  border-radius: 50%;
-  width: 26px;
-  height: 26px;
-  border: solid 0px gray;
-  background-color: transparent;
-  color: red;
-  -webkit-transition: 0.5s ease-in-out;
-  -moz-transition: 0.5s ease-in-out;
-  -o-transition: 0.5s ease-in-out;
+dcn-breadcrumb.summer .menu-button.has-popup:hover,
+dcn-breadcrumb.summer .menu-button.is-active {
+  color: white;
 }
-dcn-breadcrumb.summer .ui-button:hover {
-  color: whitesmoke;
-  background-color: transparent;
-  transform: rotate(90deg);
-  border: solid 0px white;
+dcn-breadcrumb.summer .popover .breadcrumbPopup .breadcrumb-popup-link {
+  color: white;
+}
+dcn-breadcrumb.summer .popover .breadcrumbPopup .breadcrumb-popup-link:hover {
+  background-color: blue;
+}
+dcn-breadcrumb.summer .popover .breadcrumbPopup .breadcrumb-popup-link:hover .breadcrumb-popup-link-text {
+  color: yellow;
+}
+dcn-breadcrumb.summer .popover .breadcrumbPopup .breadcrumb-popup-link:visited {
+  color: white;
+}
+dcn-breadcrumb.summer .popover .breadcrumbPopup .breadcrumb-popup-link-icon {
+  color: yellow;
+}
+dcn-breadcrumb.summer .popover .breadcrumbPopup .breadcrumb-popup-link-text {
+  color: white;
+}
+dcn-breadcrumb.spring .breadcrumb {
+  color: white;
+  background-color: #5FC073;
+}
+dcn-breadcrumb.spring .breadcrumb-holder,
+dcn-breadcrumb.spring .breadcrumb-holder:after {
+  background: #5FC073;
+  transition: all 0.5s;
+}
+dcn-breadcrumb.spring .breadcrumb-holder .breadcrumbPopup {
+  background-color: #5FC073;
+}
+dcn-breadcrumb.spring .breadcrumb-link,
+dcn-breadcrumb.spring .breadcrumb-link:hover {
+  color: white;
+}
+dcn-breadcrumb.spring .search-box .input-class {
+  background-color: #040404;
+  color: #5FC073;
+}
+dcn-breadcrumb.spring .menu-button {
+  color: white;
+}
+dcn-breadcrumb.spring .menu-button.has-popup:hover,
+dcn-breadcrumb.spring .menu-button.is-active {
+  color: white;
+}
+dcn-breadcrumb.spring .popover .breadcrumbPopup .breadcrumb-popup-link {
+  color: yellow;
+}
+dcn-breadcrumb.spring .popover .breadcrumbPopup .breadcrumb-popup-link:hover {
+  background-color: gray;
+}
+dcn-breadcrumb.spring .popover .breadcrumbPopup .breadcrumb-popup-link:hover .breadcrumb-popup-link-text {
+  color: blue;
+}
+dcn-breadcrumb.spring .popover .breadcrumbPopup .breadcrumb-popup-link:visited {
+  color: yellow;
+}
+dcn-breadcrumb.spring .popover .breadcrumbPopup .breadcrumb-popup-link-icon {
+  color: yellow;
+}
+dcn-breadcrumb.spring .popover .breadcrumbPopup .breadcrumb-popup-link-text {
+  color: yellow;
 }

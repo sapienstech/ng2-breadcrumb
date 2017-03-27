@@ -75,10 +75,6 @@ export class BreadcrumbPopupComponent {
     return this.isShowBreadcrumbDropDown || !this.isLast;
   }
 
-  get isShowNextArrow(): boolean {
-    return this.isShowBreadcrumbDropDown || !this.isLast;
-  }
-
   get isShowBreadcrumbDropDown(): boolean {
 
     return this.breadcrumbDropDown &&

@@ -1,7 +1,9 @@
-import {Component, Input, ElementRef} from "@angular/core";
+import {Component, Input, ElementRef, HostListener} from "@angular/core";
 import {Observable} from "rxjs/Observable";
 import "rxjs/add/observable/of";
+import "rxjs/add/operator/mergeMap";
 import {BreadcrumbDropDown, BreadcrumbDropDownItem} from "./breadcrumb-model";
+import {Subscription} from "rxjs/Subscription";
 
 @Component({
   moduleId: "" + module.id,
@@ -11,18 +13,27 @@ import {BreadcrumbDropDown, BreadcrumbDropDownItem} from "./breadcrumb-model";
 <div class="popover" >
   <button *ngIf="isShowNextArrow"  #btn3 [ngClass]="{'menu-button':true, 'has-no-popup':!isShowBreadcrumbDropDown,'has-popup':isShowBreadcrumbDropDown,'is-active':showPopup}" (click)="setInitialFilter($event)">
     <i class="fa fa-angle-right menu-button-icon"></i>
+    <!--<svg class="menu-button-icon"-->
+      <!--id="Capa_1" x="0px" y="0px" -->
+  <!--viewBox="0 0 477.175 477.175" -->
+  <!--width="20px" height="30px">-->
+<!--<g>-->
+	<!--<path  class="arrow" d="M360.731,229.075l-225.1-225.1c-5.3-5.3-13.8-5.3-19.1,0s-5.3,13.8,0,19.1l215.5,215.5l-215.5,215.5   c-5.3,5.3-5.3,13.8,0,19.1c2.6,2.6,6.1,4,9.5,4c3.4,0,6.9-1.3,9.5-4l225.1-225.1C365.931,242.875,365.931,234.275,360.731,229.075z" fill="#FFFFFF"/>-->
+<!--</g>-->
+<!--</svg>-->
+
   </button>
   <div *ngIf="showPopup" class="breadcrumbPopup">
+  <div class="arrowUp"></div>
       <h4 *ngIf="breadcrumbDropDown.popupTitle">{{breadcrumbDropDown.popupTitle}}</h4>
       <dcn-search-box class="breadcrumb-popup-search"
                       [searchData]="search"
                       [minLength]="0"
-                      (results)="onFilter($event)">
+                      (results)="onFiltered($event)">
       </dcn-search-box>
   
       <div class="breadcrumb-popup-menu">
           <div *ngFor="let nextLink of filteredItems" class="breadcrumb-popup-menu-item">
-              <!--*ngIf="nextLink.icon"-->
               <a [routerLink]="[nextLink.url, nextLink.params?nextLink.params:{}]"
                  class="breadcrumb-popup-link">
               <i class="{{nextLink.icon}} icon breadcrumb-popup-link-icon"></i>
@@ -39,44 +50,25 @@ export class BreadcrumbPopupComponent {
 
   @Input()
   breadcrumbDropDown: BreadcrumbDropDown;
+  allItems: BreadcrumbDropDownItem[];
   filteredItems: BreadcrumbDropDownItem[];
 
   @Input()
   isLast: boolean;
 
   _showPopup = false;
+
   get showPopup() {
     return this._showPopup;
   }
 
   set showPopup(isShow: boolean) {
     this._showPopup = isShow;
-    if (!isShow) {
-      this.removeListeners();
-    }
-    else {
-      this.addListeners();
-    }
+
   }
 
   constructor(private elementRef: ElementRef) {
     this.search = this.search.bind(this);
-    this.onKeyDown = this.onKeyDown.bind(this);
-    this.onClick = this.onClick.bind(this);
-  }
-
-  ngOnDestroy() {
-    this.removeListeners();
-  }
-
-  private addListeners() {
-    document.addEventListener("keydown", this.onKeyDown);
-    document.addEventListener("click", this.onClick);
-  }
-
-  private removeListeners() {
-    document.removeEventListener("keydown", this.onKeyDown);
-    document.removeEventListener("click", this.onClick);
   }
 
   get isShowNextArrow(): boolean {
@@ -87,35 +79,50 @@ export class BreadcrumbPopupComponent {
 
     return this.breadcrumbDropDown &&
       (this.breadcrumbDropDown.getItems != undefined ||
+      this.breadcrumbDropDown.items instanceof Observable ||
       this.breadcrumbDropDown.items && this.breadcrumbDropDown.items.length > 0);
   }
 
+  @HostListener('keydown.escape', ['$event'])
   onKeyDown(event: KeyboardEvent) {
-    if (event.which == 27) {
-      this.showPopup = false;
-    }
+    this.showPopup = false;
   }
 
+  @HostListener('document:click', ['$event'])
   onClick(event: MouseEvent) {
     if (!this.elementRef.nativeElement.contains(event.target)) {
       this.showPopup = false;
     }
   }
 
-  search(query: string, maxResult: number): Observable<any[]> {
+  search(query: string): Observable<any[]> {
     let search = query.toUpperCase();
-    let result = this.items.filter(item => item.label.toLocaleUpperCase().indexOf(search) > -1);
+    let result = this.allItems.filter(item => item.label.toLocaleUpperCase().indexOf(search) > -1);
     return Observable.of(result);
   }
 
   setInitialFilter(event: MouseEvent) {
     event.stopPropagation();
 
-    this.filteredItems = this.items;
-    this.showPopup = !this.showPopup;
+    const items = this.items;
+    if (items instanceof Observable) {
+      let subscription = items.subscribe(vals => {
+        this.allItems = vals;
+        this.filteredItems = vals;
+        this.showPopup = !this.showPopup;
+        if (subscription) {
+          subscription.unsubscribe();
+        }
+      })
+    }
+    else {
+      this.allItems = items;
+      this.filteredItems = items;
+      this.showPopup = !this.showPopup;
+    }
   }
 
-  get items() {
+  get items(): BreadcrumbDropDownItem[] |  Observable<BreadcrumbDropDownItem[]> {
     if (this.breadcrumbDropDown.getItems) {
       return this.breadcrumbDropDown.getItems();
     }
@@ -124,7 +131,7 @@ export class BreadcrumbPopupComponent {
     }
   }
 
-  onFilter(filteredBreadcrumbDropDownData) {
+  onFiltered(filteredBreadcrumbDropDownData) {
     this.filteredItems = filteredBreadcrumbDropDownData;
   }
 

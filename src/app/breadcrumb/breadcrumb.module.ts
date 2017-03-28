@@ -5,11 +5,12 @@ import {RouterModule} from "@angular/router";
 import {BreadcrumbService} from "./breadcrumb.service";
 import {BreadcrumbPopupComponent} from "./breadcrumb-popup.component";
 import {SearchBoxComponent} from "./searchbox.component";
+import {RoutePlaceHolderComponet} from "./route-place-holder.component";
 @NgModule({
-    imports: [CommonModule, RouterModule],
-    declarations: [BreadcrumbComponent, BreadcrumbPopupComponent,SearchBoxComponent],
-    exports: [BreadcrumbComponent],
-    providers: [BreadcrumbService]
+  imports: [CommonModule, RouterModule],
+  declarations: [BreadcrumbComponent, BreadcrumbPopupComponent, SearchBoxComponent, RoutePlaceHolderComponet],
+  exports: [BreadcrumbComponent, RoutePlaceHolderComponet],
+  providers: [BreadcrumbService]
 
 })
 export class BreadcrumbModule {

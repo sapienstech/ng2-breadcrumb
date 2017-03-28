@@ -163,6 +163,8 @@ this.route.data.subscribe(data=>{
   }
 
 ```
+
+
 the whole breadcrumb model looks like this.
 ```$xslt
 
@@ -175,14 +177,22 @@ export interface Breadcrumb {
 
 export interface BreadcrumbDropDown {
   popupTitle?: string;
-  items?: BreadcrumbDropDownItem[];
-  getItems?: () => BreadcrumbDropDownItem[];
+  items?: BreadcrumbDropDownItem[] |  Observable<BreadcrumbDropDownItem[]>;
+  getItems?: () => BreadcrumbDropDownItem[] |  Observable<BreadcrumbDropDownItem[]>;
 }
+
+
 export interface BreadcrumbDropDownItem {
   label: string;
   url: string;
   icon?: string;
   params?: Params;
+}
+
+export interface BreadcrumbRoute {
+  breadcrumb: Breadcrumb
+  url: string;
+  params: Params;
 }
 ```
 

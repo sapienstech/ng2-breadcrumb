@@ -13,9 +13,7 @@
     "target": "es6",
     "typeRoots": [
       "../node_modules/@types"
-    ],
-    "exclude": [
-      "src/app/breadcrumb/breadcrumb.component.spec.js"
     ]
+
   }
 }

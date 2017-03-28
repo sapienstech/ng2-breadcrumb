@@ -1,18 +1,18 @@
 //import {BreadcrumbDropDownItem} from "./breadcrumb.service";
 import {Params} from "@angular/router";
 import {Observable} from "rxjs/Observable";
-export interface BreadcrumbDropDown {
-  popupTitle?: string;
-  items?: BreadcrumbDropDownItem[] |  Observable<BreadcrumbDropDownItem[]>;
-  getItems?: () => BreadcrumbDropDownItem[] |  Observable<BreadcrumbDropDownItem[]>;
-}
-
 
 export interface Breadcrumb {
   label: string|Observable<string>;
   icon?: string;
   hide?: boolean
   dropDown?: BreadcrumbDropDown
+}
+
+export interface BreadcrumbDropDown {
+  popupTitle?: string;
+  items?: BreadcrumbDropDownItem[] |  Observable<BreadcrumbDropDownItem[]>;
+  getItems?: () => BreadcrumbDropDownItem[] |  Observable<BreadcrumbDropDownItem[]>;
 }
 
 

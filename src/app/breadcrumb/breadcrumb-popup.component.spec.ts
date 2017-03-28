@@ -5,6 +5,7 @@ import {BreadcrumbPopupComponent} from "./breadcrumb-popup.component";
 import {SearchBoxComponent} from "./searchbox.component";
 import {RouterLinkStubDirective} from "./router-stub";
 import {BreadcrumbDropDown, BreadcrumbDropDownItem} from "./breadcrumb-model";
+import {Observable} from "rxjs/Observable";
 
 describe("Breadcrumb Popup Component", () => {
   describe('the UI part', () => {
@@ -38,11 +39,6 @@ describe("Breadcrumb Popup Component", () => {
 
     describe('when there is NO breadcrumbDropDown valid data', () => {
       it('should not fail if there is no breadcrumbDropDown', () => {
-        testCmp.testBreadCrumb = undefined;
-        fixture.detectChanges();
-        expect(page.links.length).toBe(0);
-      });
-      it('should not fail if there is no breadcrumbDropDown', () => {
         testCmp.testBreadCrumb = "";
         fixture.detectChanges();
         expect(page.links.length).toBe(0);
@@ -58,7 +54,7 @@ describe("Breadcrumb Popup Component", () => {
         });
       });
     });
-    describe('when there is a valid breadcrumbDropDown data', () => {
+    describe('when there is a valid breadcrumbDropDown data as array', () => {
       beforeEach(async(() => {
         inputBreadcrumb.items = [
           {
@@ -124,7 +120,7 @@ describe("Breadcrumb Popup Component", () => {
           });
           it('should listen to events from search box', () => {
             let onFilterSpy = spyOn(page.breadcrumbPopupComponent, "onFiltered").and.callThrough();
-            let items = inputBreadcrumb.items as BreadcrumbDropDownItem[]  ;
+            let items = inputBreadcrumb.items as BreadcrumbDropDownItem[];
             let event = items.filter(f => f.label.indexOf("first") > -1);
             page.searchBox.triggerEventHandler("results", event);
             detectChanges(fixture).then(() => {
@@ -150,6 +146,54 @@ describe("Breadcrumb Popup Component", () => {
           }));
         })
       });
+    });
+
+    describe('when there is a valid breadcrumbDropDown data as observable', () => {
+      let breadcrumbDropDownItem =          [
+        {
+          label: "first label",
+
+          url: "first url",
+          icon: "first icon",
+          params: []
+        },
+        {
+          label: "second label",
+          url: "second url",
+          icon: "second icon",
+          params: [{id: 2}]
+        }
+      ];
+      function getBreadCrumbItem(): Observable<BreadcrumbDropDownItem[]> {
+        return Observable.of(breadcrumbDropDownItem);
+      };
+      beforeEach(async(() => {
+        inputBreadcrumb.getItems = getBreadCrumbItem;
+        testCmp.testBreadCrumb = inputBreadcrumb;
+        fixture.detectChanges();
+      }));
+      describe('when the user click on the button', () => {
+        beforeEach(async(() => {
+          click(page.dropDownButton);
+          detectChanges(fixture).then(() => {
+          });
+        }));
+        fit('should have text and icon for dynamic links', async(() => {
+          let items = inputBreadcrumb.getItems();
+          expect(items instanceof Observable).toBe(true);
+          if(items instanceof Observable){
+            items.subscribe(data=>{
+              let pos = 0;
+              page.anchorElements.map(anchor => {
+                expect(anchor.nativeElement.innerHTML.indexOf(data[pos].label)).toBeGreaterThan(-1);
+                expect(anchor.nativeElement.innerHTML.indexOf(data[pos].icon)).toBeGreaterThan(-1);
+                pos++;
+              });
+            });
+          }
+        }));
+      });
+
     });
 
     function detectChanges(fixture) {
@@ -227,17 +271,17 @@ describe("Breadcrumb Popup Component", () => {
       expect(breadcrumbPopupComponent.isShowNextArrow).toBe(true);
     });
     it('should have an arrow if it is NOT the last element', () => {
-      breadcrumbPopupComponent.isLast= false;
+      breadcrumbPopupComponent.isLast = false;
       expect(breadcrumbPopupComponent.isShowNextArrow).toBe(true);
 
     });
     it('should NOT have an arrow if it is the last element and it has NO dropdown', () => {
-      breadcrumbPopupComponent.isLast= true;
+      breadcrumbPopupComponent.isLast = true;
       expect(breadcrumbPopupComponent.isShowNextArrow).toBe(false);
 
     });
     it('should have an arrow if it is the last element and it has dropdown', () => {
-      breadcrumbPopupComponent.isLast= true;
+      breadcrumbPopupComponent.isLast = true;
       let breadcrumbDropDown = {items: []} as  BreadcrumbDropDown;
       (breadcrumbDropDown.items as BreadcrumbDropDownItem[] ).length = 10;
       breadcrumbPopupComponent.breadcrumbDropDown = breadcrumbDropDown;
@@ -289,7 +333,7 @@ class Page {
   }
 
   get anchorElements() {
-    return this.fixture.debugElement.queryAll(By.css("a"));
+    return this.fixture.debugElement.queryAll(By.css(".breadcrumb-popup-link"));
   }
 
   get title() {

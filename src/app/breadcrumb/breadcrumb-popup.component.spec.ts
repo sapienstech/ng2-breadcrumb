@@ -178,7 +178,7 @@ describe("Breadcrumb Popup Component", () => {
           detectChanges(fixture).then(() => {
           });
         }));
-        fit('should have text and icon for dynamic links', async(() => {
+        it('should have text and icon for dynamic links', async(() => {
           let items = inputBreadcrumb.getItems();
           expect(items instanceof Observable).toBe(true);
           if(items instanceof Observable){

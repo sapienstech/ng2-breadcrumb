@@ -1,179 +1,173 @@
 .breadcrumb {
-  display: flex;
-  height: 50px;
-  background: #0cb6e7;
+    display: flex;
+    height: 50px;
+    background: #0cb6e7;
 }
 
 .breadcrumb-holder {
-  //position: relative;
-  display: flex;
-  align-items: center;
-  font-size: 18px;
-  &:first-child {
-    padding-left: 12px;
-  }
-  .home-icon {
-    font-size: 1.5em;
-  }
+    //position: relative;
+    display: flex;
+    align-items: center;
+    font-size: 18px;
+    &:first-child {
+        padding-left: 12px;
+    }
+    .home-icon {
+        font-size: 1.5em;
+    }
 }
 
 .menu-button {
-  display: flex;
-  font-size: 18px;
-  padding: 0;
-  width: 20px;
-  height: 30px;
-  margin: 0 5px;
-  outline: none;
-  border: none;
-  border-color: transparent;
-  background-color: transparent;
-  &.has-no-popup{
-    pointer-events:none;
-    cursor: default;
-  }
-  &.has-popup:hover,
-  &.is-active {
-    pointer-events:auto;
-    cursor: pointer;
-    border-radius: 2px;
-    border: 1px solid #fff;
-    .menu-button-icon {
-      transform: rotate(90deg);
-      transition: all 0.3s linear;
+    display: flex;
+    font-size: 18px;
+    padding: 0;
+    width: 20px;
+    height: 30px;
+    margin: 0 5px;
+    outline: none;
+    border: none;
+    border-color: transparent;
+    background-color: transparent;
+    &.has-no-popup {
+        pointer-events: none;
+        cursor: default;
     }
-  }
-  .menu-button-icon {
-    margin-top: 1px;
-    margin: auto;
-    transition: all 0.3s linear;
-  }
+    &.has-popup:hover,
+    &.is-active {
+        pointer-events: auto;
+        cursor: pointer;
+        border-radius: 2px;
+        border: 1px solid #fff;
+        .menu-button-icon {
+            transform: rotate(90deg);
+            transition: all 0.3s linear;
+        }
+    }
+    .menu-button-icon {
+        margin-top: 1px;
+        margin: auto;
+        transition: all 0.3s linear;
+    }
 }
 
 .breadcrumb-link {
-  text-decoration: none;
-  outline: none;
-  display: flex;
-  align-items: center;
-  .link-icon {
-    padding-right: 6px;
-  }
-  span {
-    text-transform: capitalize;
-    &:hover {
-      text-decoration: underline;
+    text-decoration: none;
+    outline: none;
+    display: flex;
+    align-items: center;
+    .link-icon {
+        padding-right: 6px;
     }
-  }
+    span {
+        text-transform: capitalize;
+        &:hover {
+            text-decoration: underline;
+        }
+    }
 }
 
+
 /* The actual popover */
-.popover{
-  position: relative;
+
+.popover {
+    position: relative;
 }
 
 .popover .breadcrumbPopup {
-  visibility: visible;
-  box-shadow: 1px 2px 1px lighten(#DDD, 1);
-  text-align: left;
-  position: absolute;
-  z-index: 5;
-  top: 100%;
-  left: 0%;
-  margin-top: 10px;
-  margin-left: 5px;
-  -webkit-animation: fadeIn 1s;
-  animation: fadeIn 1s;
-  .breadcrumb-popup-menu {
-    max-height: 150px;
-    width: 310px;
-    overflow-x: hidden;
-    overflow-y: auto;
-  }
-  .breadcrumb-popup-menu-item {
-    height: 40px;
-  }
-  .breadcrumb-popup-link {
-    height: 100%;
-    width: 100%;
-    display: flex;
-    padding: 0 20px;
-    align-items: center;
-    //color: #3e4959;
-    text-decoration: none;
-    outline: none;
-    cursor: pointer;
-    &:hover {
-      //background-color: #F3F4F6;
-      .breadcrumb-popup-link-icon,
-      .breadcrumb-popup-link-text {
-        //color: #0cb6e7;
-      }
+    visibility: visible;
+    box-shadow: 1px 2px 1px lighten(#DDD, 1);
+    text-align: left;
+    position: absolute;
+    z-index: 5;
+    top: 100%;
+    left: -9px;
+    margin-top: 7px;
+    margin-left: 5px;
+    -webkit-animation: fadeIn 1s;
+    animation: fadeIn 1s;
+    border-left-width: 1px;
+    border-left-style: solid;
+    .breadcrumb-popup-menu {
+        max-height: 150px;
+        width: 310px;
+        overflow-x: hidden;
+        overflow-y: auto;
     }
-    &:visited {
-      //color: #3e4959;
+    .breadcrumb-popup-menu-item {
+        height: 40px;
     }
-  }
-  .breadcrumb-popup-link-icon {
-    width: 28px;
-    height: 28px;
-    font-size: 28px;
-    //color: #a0a0a0;
-    margin-right: 20px;
-  }
-  .breadcrumb-popup-link-text {
-    font-size: 18px;
-    line-height: 1;
-    //color: #3A4862;
-    &:first-letter {
-      text-transform: uppercase;
+    .breadcrumb-popup-link {
+        height: 100%;
+        width: 100%;
+        display: flex;
+        padding: 0 12px;
+        align-items: center;
+        font-size: 12px;
+        //color: #3e4959;
+        text-decoration: none;
+        outline: none;
+        cursor: pointer;
     }
-  }
-  .breadcrumb-popup-search {
-    padding: 12px;
-    display: block;
-  }
+    .breadcrumb-popup-link-icon {
+        font-size: 1.5em;
+        //color: #a0a0a0;
+        margin-right: 15px;
+    }
+    .breadcrumb-popup-link-text {
+        margin-top:1px;
+        &:first-letter {
+            text-transform: uppercase;
+        }
+    }
+    .breadcrumb-popup-search {
+        padding: 12px;
+        display: block;
+    }
 }
-.arrowUp{
-  position: absolute;
-  margin-top: -9px;
-  width: 0;
-  height: 0;
-  border-left: 9px solid transparent;
-  border-right: 9px solid transparent;
-  border-bottom: 9px solid #ffffff;}
+
+.arrowUp {
+    position: absolute;
+    margin-top: -7px;
+    margin-left: 9px;
+    width: 0;
+    height: 0;
+    border-left: 9px solid transparent;
+    border-right: 9px solid transparent;
+    border-bottom: 9px solid #ffffff;
+}
 
 .search-box {
-  width: 100%;
+    width: 100%;
 }
 
 .input-class {
-  line-height: 1;
-  height: 38px;
-  width: 100%;
-  font-size: 14px;
-  padding: 6px;
-  border: 1px solid #DEE5E7;
-  border-radius: 2px;
-  &:active,
-  &:focus {
-    border-color: #5EA6DD;
-  }
+    line-height: 1;
+    height: 38px;
+    width: 100%;
+    font-size: 14px;
+    padding: 6px;
+    border: 1px solid #DEE5E7;
+    border-radius: 2px;
+    &:active,
+    &:focus {
+        border-color: #5EA6DD;
+    }
 }
 
 @-webkit-keyframes fadeIn {
-  from {
-    opacity: 0;
-  }
-  to {
-    opacity: 1;
-  }
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
 }
 
 @keyframes fadeIn {
-  from {
-    opacity: 0;
-  }
-  to {
-    opacity: 1;
-  }
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
 }

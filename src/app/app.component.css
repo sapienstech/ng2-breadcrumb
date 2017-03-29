@@ -31,12 +31,16 @@
 .breadcrumb .menu-button.is-active {
   color: white;
 }
+.breadcrumb .popover .breadcrumbPopup {
+  border-left-color: #ddd;
+}
 .breadcrumb .popover .breadcrumbPopup .breadcrumb-popup-link {
   color: #3e4959;
 }
 .breadcrumb .popover .breadcrumbPopup .breadcrumb-popup-link:hover {
   background-color: #F3F4F6;
 }
+.breadcrumb .popover .breadcrumbPopup .breadcrumb-popup-link:hover .breadcrumb-popup-link-icon,
 .breadcrumb .popover .breadcrumbPopup .breadcrumb-popup-link:hover .breadcrumb-popup-link-text {
   color: #0cb6e7;
 }
@@ -82,12 +86,16 @@ dcn-breadcrumb.winter .menu-button.has-popup:hover,
 dcn-breadcrumb.winter .menu-button.is-active {
   color: yellow;
 }
+dcn-breadcrumb.winter .popover .breadcrumbPopup {
+  border-left-color: #ddd;
+}
 dcn-breadcrumb.winter .popover .breadcrumbPopup .breadcrumb-popup-link {
   color: #fff5ea;
 }
 dcn-breadcrumb.winter .popover .breadcrumbPopup .breadcrumb-popup-link:hover {
   background-color: gray;
 }
+dcn-breadcrumb.winter .popover .breadcrumbPopup .breadcrumb-popup-link:hover .breadcrumb-popup-link-icon,
 dcn-breadcrumb.winter .popover .breadcrumbPopup .breadcrumb-popup-link:hover .breadcrumb-popup-link-text {
   color: red;
 }
@@ -133,12 +141,16 @@ dcn-breadcrumb.summer .menu-button.has-popup:hover,
 dcn-breadcrumb.summer .menu-button.is-active {
   color: white;
 }
+dcn-breadcrumb.summer .popover .breadcrumbPopup {
+  border-left-color: #ddd;
+}
 dcn-breadcrumb.summer .popover .breadcrumbPopup .breadcrumb-popup-link {
   color: white;
 }
 dcn-breadcrumb.summer .popover .breadcrumbPopup .breadcrumb-popup-link:hover {
   background-color: blue;
 }
+dcn-breadcrumb.summer .popover .breadcrumbPopup .breadcrumb-popup-link:hover .breadcrumb-popup-link-icon,
 dcn-breadcrumb.summer .popover .breadcrumbPopup .breadcrumb-popup-link:hover .breadcrumb-popup-link-text {
   color: yellow;
 }
@@ -184,12 +196,16 @@ dcn-breadcrumb.spring .menu-button.has-popup:hover,
 dcn-breadcrumb.spring .menu-button.is-active {
   color: white;
 }
+dcn-breadcrumb.spring .popover .breadcrumbPopup {
+  border-left-color: #ddd;
+}
 dcn-breadcrumb.spring .popover .breadcrumbPopup .breadcrumb-popup-link {
   color: yellow;
 }
 dcn-breadcrumb.spring .popover .breadcrumbPopup .breadcrumb-popup-link:hover {
   background-color: gray;
 }
+dcn-breadcrumb.spring .popover .breadcrumbPopup .breadcrumb-popup-link:hover .breadcrumb-popup-link-icon,
 dcn-breadcrumb.spring .popover .breadcrumbPopup .breadcrumb-popup-link:hover .breadcrumb-popup-link-text {
   color: blue;
 }

@@ -1,12 +1,12 @@
 
 .breadcrumb {
   .breadcrumb-colors(#0cb6e7, white, #78e2eb, white, white, #a0a0a0,
-    #F3F4F6, #3e4959, #0cb6e7, white,black)
+    #F3F4F6, #3e4959, #0cb6e7,#ddd, white,black)
 }
 
 .breadcrumb-colors(@item-background-color, @text-color, @hover-background-color, @arrow-color,
   @popup-background-color, @icon-color,
-  @popup-ling-bg-color, @popup-link-color, @popup-link-hover-color @search-box-background-color, @search-box-color)
+  @popup-ling-bg-color, @popup-link-color, @popup-link-hover-color ,@popup-border-color,@search-box-background-color, @search-box-color)
 {
 .breadcrumb {
   color: @text-color;
@@ -52,10 +52,12 @@
 }
 
 .popover .breadcrumbPopup {
+  border-left-color: #ddd;
   .breadcrumb-popup-link {
     color: @popup-link-color; //#3e4959;
     &:hover {
       background-color: @popup-ling-bg-color; //#F3F4F6;
+      .breadcrumb-popup-link-icon,
       .breadcrumb-popup-link-text {
         color: @popup-link-hover-color; //#0cb6e7;
       }
@@ -70,6 +72,7 @@
   .breadcrumb-popup-link-text {
     color: @popup-link-color; //#3A4862;
   }
+  
 }
 
 }

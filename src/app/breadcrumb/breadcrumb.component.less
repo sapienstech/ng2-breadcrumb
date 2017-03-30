@@ -29,13 +29,13 @@
   border: none;
   border-color: transparent;
   background-color: transparent;
-  &.has-no-popup{
-    pointer-events:none;
+  &.has-no-popup {
+    pointer-events: none;
     cursor: default;
   }
   &.has-popup:hover,
   &.is-active {
-    pointer-events:auto;
+    pointer-events: auto;
     cursor: pointer;
     border-radius: 2px;
     border: 1px solid #fff;
@@ -58,7 +58,7 @@
   align-items: center;
   .link-icon {
     padding-right: 6px;
-    &:hover + span{
+    &:hover + span {
       text-decoration: underline;
     }
   }
@@ -71,7 +71,8 @@
 }
 
 /* The actual popover */
-.popover{
+
+.popover {
   position: relative;
 }
 
@@ -82,11 +83,13 @@
   position: absolute;
   z-index: 5;
   top: 100%;
-  left: 0%;
-  margin-top: 10px;
+  left: -9px;
+  margin-top: 7px;
   margin-left: 5px;
   -webkit-animation: fadeIn 1s;
   animation: fadeIn 1s;
+  border-left-width: 1px;
+  border-left-style: solid;
   .breadcrumb-popup-menu {
     max-height: 150px;
     width: 310px;
@@ -100,34 +103,21 @@
     height: 100%;
     width: 100%;
     display: flex;
-    padding: 0 20px;
+    padding: 0 12px;
     align-items: center;
+    font-size: 12px;
     //color: #3e4959;
     text-decoration: none;
     outline: none;
     cursor: pointer;
-    &:hover {
-      //background-color: #F3F4F6;
-      .breadcrumb-popup-link-icon,
-      .breadcrumb-popup-link-text {
-        //color: #0cb6e7;
-      }
-    }
-    &:visited {
-      //color: #3e4959;
-    }
   }
   .breadcrumb-popup-link-icon {
-    width: 28px;
-    height: 28px;
-    font-size: 28px;
+    font-size: 1.5em;
     //color: #a0a0a0;
-    margin-right: 20px;
+    margin-right: 15px;
   }
   .breadcrumb-popup-link-text {
-    font-size: 18px;
-    line-height: 1;
-    //color: #3A4862;
+    margin-top: 1px;
     &:first-letter {
       text-transform: uppercase;
     }
@@ -137,14 +127,17 @@
     display: block;
   }
 }
-//.arrowUp{
-//  position: absolute;
-//  margin-top: -9px;
-//  width: 0;
-//  height: 0;
-//  border-left: 9px solid transparent;
-//  border-right: 9px solid transparent;
-//  border-bottom: 9px solid #ffffff;}
+
+.arrowUp {
+  position: absolute;
+  margin-top: -7px;
+  margin-left: 9px;
+  width: 0;
+  height: 0;
+  border-left: 9px solid transparent;
+  border-right: 9px solid transparent;
+  border-bottom: 9px solid #ffffff;
+}
 
 .search-box {
   width: 100%;

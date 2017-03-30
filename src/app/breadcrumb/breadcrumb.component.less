@@ -21,6 +21,7 @@
   display: flex;
   font-size: 18px;
   padding: 0;
+  align-items: center;
   width: 20px;
   height: 30px;
   margin: 0 5px;
@@ -57,6 +58,9 @@
   align-items: center;
   .link-icon {
     padding-right: 6px;
+    &:hover + span{
+      text-decoration: underline;
+    }
   }
   span {
     text-transform: capitalize;
@@ -133,14 +137,14 @@
     display: block;
   }
 }
-.arrowUp{
-  position: absolute;
-  margin-top: -9px;
-  width: 0;
-  height: 0;
-  border-left: 9px solid transparent;
-  border-right: 9px solid transparent;
-  border-bottom: 9px solid #ffffff;}
+//.arrowUp{
+//  position: absolute;
+//  margin-top: -9px;
+//  width: 0;
+//  height: 0;
+//  border-left: 9px solid transparent;
+//  border-right: 9px solid transparent;
+//  border-bottom: 9px solid #ffffff;}
 
 .search-box {
   width: 100%;

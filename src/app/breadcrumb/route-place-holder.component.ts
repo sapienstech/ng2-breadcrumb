@@ -4,10 +4,12 @@ import {Component, OnInit} from "@angular/core";
 import {ActivatedRoute} from "@angular/router";
 import {Breadcrumb} from "./breadcrumb-model";
 import {BREADCRUMB_DATA_KEY} from "./breadcrumb.service";
+import {BreadcrumbRouterService} from "./breadcrumb-router.service";
 
 @Component({
   moduleId: module.id,
   selector: 'selector',
+  providers:[BreadcrumbRouterService],
   template: `
 <router-outlet></router-outlet>
 `

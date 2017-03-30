@@ -18,52 +18,54 @@
 }
 
 .menu-button {
-    display: flex;
-    font-size: 18px;
-    padding: 0;
-    width: 20px;
-    height: 30px;
-    margin: 0 5px;
-    outline: none;
-    border: none;
-    border-color: transparent;
-    background-color: transparent;
-    &.has-no-popup {
-        pointer-events: none;
-        cursor: default;
-    }
-    &.has-popup:hover,
-    &.is-active {
-        pointer-events: auto;
-        cursor: pointer;
-        border-radius: 2px;
-        border: 1px solid #fff;
-        .menu-button-icon {
-            transform: rotate(90deg);
-            transition: all 0.3s linear;
-        }
-    }
+  display: flex;
+  font-size: 18px;
+  padding: 0;
+  align-items: center;width: 20px;
+  height: 30px;
+  margin: 0 5px;
+  outline: none;
+  border: none;
+  border-color: transparent;
+  background-color: transparent;
+  &.has-no-popup{
+    pointer-events:none;
+    cursor: default;
+  }
+  &.has-popup:hover,
+  &.is-active {
+    pointer-events:auto;
+    cursor: pointer;
+    border-radius: 2px;
+    border: 1px solid #fff;
     .menu-button-icon {
-        margin-top: 1px;
-        margin: auto;
-        transition: all 0.3s linear;
+      transform: rotate(90deg);
+      transition: all 0.3s linear;
     }
+  }
+  .menu-button-icon {
+    margin-top: 1px;
+    margin: auto;
+    transition: all 0.3s linear;
+  }
 }
 
 .breadcrumb-link {
-    text-decoration: none;
-    outline: none;
-    display: flex;
-    align-items: center;
-    .link-icon {
-        padding-right: 6px;
+  text-decoration: none;
+  outline: none;
+  display: flex;
+  align-items: center;
+  .link-icon {
+    padding-right: 6px;
+  &:hover + span{
+      text-decoration: underline;
+    }}
+  span {
+    text-transform: capitalize;
+    &:hover {
+      text-decoration: underline;
     }
-    span {
-        text-transform: capitalize;
-        &:hover {
-            text-decoration: underline;
-        }
-    }
+  }
 }
 
 
@@ -126,15 +128,16 @@
 }
 
 .arrowUp {
-    position: absolute;
-    margin-top: -7px;
-    margin-left: 9px;
-    width: 0;
-    height: 0;
-    border-left: 9px solid transparent;
-    border-right: 9px solid transparent;
-    border-bottom: 9px solid #ffffff;
+  position: absolute;
+  margin-top: -7px;
+  margin-left: 9px;
+  width: 0;
+  height: 0;
+  border-left: 9px solid transparent;
+  border-right: 9px solid transparent;
+  border-bottom: 9px solid #ffffff;
 }
+
 
 .search-box {
     width: 100%;

@@ -24,7 +24,7 @@ import {Subscription} from "rxjs/Subscription";
 
   </button>
   <div *ngIf="showPopup" class="breadcrumbPopup">
-  <div class="arrowUp"></div>
+  <div></div>
       <h4 *ngIf="breadcrumbDropDown.popupTitle">{{breadcrumbDropDown.popupTitle}}</h4>
       <dcn-search-box class="breadcrumb-popup-search"
                       [searchData]="search"

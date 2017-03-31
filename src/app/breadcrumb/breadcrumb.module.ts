@@ -7,11 +7,12 @@ import {BreadcrumbPopupComponent} from "./breadcrumb-popup.component";
 import {SearchBoxComponent} from "./searchbox.component";
 import {RoutePlaceHolderComponet} from "./route-place-holder.component";
 import {BreadcrumbRouterService} from "./breadcrumb-router.service";
+import {BreadcrumbResolver} from "./breadcrumb.resolver";
 @NgModule({
   imports: [CommonModule, RouterModule],
   declarations: [BreadcrumbComponent, BreadcrumbPopupComponent, SearchBoxComponent, RoutePlaceHolderComponet],
   exports: [BreadcrumbComponent, RoutePlaceHolderComponet],
-  providers: [BreadcrumbService, BreadcrumbRouterService]
+  providers: [BreadcrumbService, BreadcrumbRouterService, BreadcrumbResolver]
 
 })
 export class BreadcrumbModule {

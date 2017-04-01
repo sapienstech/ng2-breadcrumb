@@ -3,9 +3,10 @@ import {TestBed, async, ComponentFixture, fakeAsync, tick} from "@angular/core/t
 import {By} from "@angular/platform-browser";
 import {BreadcrumbPopupComponent} from "./breadcrumb-popup.component";
 import {SearchBoxComponent} from "./searchbox.component";
-import {RouterLinkStubDirective} from "./router-stub";
+import {RouterLinkStubDirective, RouterStub} from "./router-stub";
 import {BreadcrumbDropDown, BreadcrumbDropDownItem} from "./breadcrumb-model";
 import {Observable} from "rxjs/Observable";
+import {Router} from "@angular/router";
 
 describe("Breadcrumb Popup Component", () => {
   describe('the UI part', () => {
@@ -18,7 +19,9 @@ describe("Breadcrumb Popup Component", () => {
     beforeEach(async(() => {
       TestBed.configureTestingModule({
         imports: [],
-        providers: [],
+        providers: [
+          {provide: Router, useClass: RouterStub},
+        ],
         declarations: [
           TestComponent,
           SearchBoxComponent,
@@ -249,7 +252,7 @@ describe("Breadcrumb Popup Component", () => {
           params: [{id: 2}]
         }
       ];
-      let breadcrumbPopupComponent = new BreadcrumbPopupComponent(null);
+      let breadcrumbPopupComponent = new BreadcrumbPopupComponent(null,null);
       breadcrumbPopupComponent.breadcrumbDropDown = inputBreadcrumb;
       breadcrumbDropDownData = breadcrumbPopupComponent.items as BreadcrumbDropDownItem[];
     });
@@ -262,7 +265,7 @@ describe("Breadcrumb Popup Component", () => {
   describe('class indicators', () => {
     let breadcrumbPopupComponent: BreadcrumbPopupComponent;
     beforeEach(() => {
-      breadcrumbPopupComponent = new BreadcrumbPopupComponent(null);
+      breadcrumbPopupComponent = new BreadcrumbPopupComponent(null,null);
     });
     it('should have next arrow in case there is a dropdown', () => {
       let breadcrumbDropDown = {items: []} as  BreadcrumbDropDown;

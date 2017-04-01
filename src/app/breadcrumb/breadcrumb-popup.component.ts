@@ -18,15 +18,20 @@ import {Router} from "@angular/router";
   <div class="arrowUp"></div>
       <h4 *ngIf="breadcrumbDropDown.popupTitle">{{breadcrumbDropDown.popupTitle}}</h4>
       <dcn-search-box class="breadcrumb-popup-search"
+                      #searchbox
                       [searchData]="search"
-                      (keydown.arrowDown)="selectElementDown()"
-                      (keydown.arrowUp)="selectElementUp()"
+                      (keydown.arrowDown)="selectElementDown($event)"
+                      (keydown.arrowUp)="selectElementUp($event)"
                       (keydown.enter)="navigate()"
                       [minLength]="0"
                       (results)="onFiltered($event)">
       </dcn-search-box>
       
-      <div class="breadcrumb-popup-menu" #scrollMe >
+      <div class="breadcrumb-popup-menu" #scrollMe tabindex="1" 
+            (keydown.arrowDown)="selectElementDown($event)"
+            (keydown.arrowUp)="selectElementUp($event)"
+            (keydown.enter)="navigate()"
+      >
           <div *ngFor="let nextLink of filteredItems; let inx=index;"  class="breadcrumb-popup-menu-item">
               <a [routerLink]="[nextLink.url, nextLink.params?nextLink.params:{}]"
                  (mouseenter)="selectedItemIndex=inx"
@@ -141,16 +146,18 @@ export class BreadcrumbPopupComponent {
     this.selectedItemIndex = -1;
   }
 
-  selectElementDown() {
+  selectElementDown(event:KeyboardEvent) {
     if (this.selectedItemIndex != this.filteredItems.length - 1) {
       this.selectedItemIndex++;
     }
+    event.preventDefault();
   }
 
-  selectElementUp() {
+  selectElementUp(event:KeyboardEvent) {
     if (this.selectedItemIndex != 0) {
       this.selectedItemIndex--;
     }
+    event.preventDefault();
   }
 
   navigate() {

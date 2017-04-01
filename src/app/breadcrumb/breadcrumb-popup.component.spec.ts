@@ -151,14 +151,14 @@ describe("Breadcrumb Popup Component", () => {
           }));
           it('should change the component selection on key down', async(() => {
             page.breadcrumbPopupComponent.selectedItemIndex = 0;
-            page.searchBox.triggerEventHandler("keydown.arrowDown", null);
+            page.searchBox.triggerEventHandler("keydown.arrowDown", {preventDefault:()=>{}});
             detectChanges(fixture).then(f => {
               expect(page.breadcrumbPopupComponent.selectedItemIndex).toBe(1);
             });
           }));
           it('should change the component selection on key up', async(() => {
             page.breadcrumbPopupComponent.selectedItemIndex = 3;
-            page.searchBox.triggerEventHandler("keydown.arrowUp", null);
+            page.searchBox.triggerEventHandler("keydown.arrowUp", {preventDefault:()=>{}});
             detectChanges(fixture).then(f => {
               expect(page.breadcrumbPopupComponent.selectedItemIndex).toBe(2);
             });

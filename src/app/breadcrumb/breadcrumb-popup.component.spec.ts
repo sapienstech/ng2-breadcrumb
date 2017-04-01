@@ -15,6 +15,7 @@ describe("Breadcrumb Popup Component", () => {
     let inputBreadcrumb: BreadcrumbDropDown;
     let testCmp;
     let page: Page;
+    let router: Router;
 
     beforeEach(async(() => {
       TestBed.configureTestingModule({
@@ -37,6 +38,7 @@ describe("Breadcrumb Popup Component", () => {
         linkParam = {id: 8};
         inputBreadcrumb = buildBreadcrumbs("url1", undefined);
       });
+      router = TestBed.get(Router);
 
     }));
 
@@ -147,12 +149,36 @@ describe("Breadcrumb Popup Component", () => {
               expect(onFilterSpy).toHaveBeenCalledWith([inputBreadcrumb.items [1]]);
             });
           }));
+          it('should change the component selection on key down', async(() => {
+            page.breadcrumbPopupComponent.selectedItemIndex = 0;
+            page.searchBox.triggerEventHandler("keydown.arrowDown", null);
+            detectChanges(fixture).then(f => {
+              expect(page.breadcrumbPopupComponent.selectedItemIndex).toBe(1);
+            });
+          }));
+          it('should change the component selection on key up', async(() => {
+            page.breadcrumbPopupComponent.selectedItemIndex = 3;
+            page.searchBox.triggerEventHandler("keydown.arrowUp", null);
+            detectChanges(fixture).then(f => {
+              expect(page.breadcrumbPopupComponent.selectedItemIndex).toBe(2);
+            });
+          }));
+
+          it('should route to the link when clicking enter', async(() => {
+            page.breadcrumbPopupComponent.selectedItemIndex = 1;
+            router.navigateByUrl = jasmine.createSpy("navigateByUrl");
+            page.searchBox.triggerEventHandler("keydown.enter", null);
+            detectChanges(fixture).then(f => {
+              expect(router.navigateByUrl).toHaveBeenCalledWith(page.breadcrumbPopupComponent.filteredItems[page.breadcrumbPopupComponent.selectedItemIndex].url);
+            });
+          }));
+
         })
       });
     });
 
     describe('when there is a valid breadcrumbDropDown data as observable', () => {
-      let breadcrumbDropDownItem =          [
+      let breadcrumbDropDownItem = [
         {
           label: "first label",
 
@@ -167,6 +193,7 @@ describe("Breadcrumb Popup Component", () => {
           params: [{id: 2}]
         }
       ];
+
       function getBreadCrumbItem(): Observable<BreadcrumbDropDownItem[]> {
         return Observable.of(breadcrumbDropDownItem);
       };
@@ -184,8 +211,8 @@ describe("Breadcrumb Popup Component", () => {
         it('should have text and icon for dynamic links', async(() => {
           let items = inputBreadcrumb.getItems();
           expect(items instanceof Observable).toBe(true);
-          if(items instanceof Observable){
-            items.subscribe(data=>{
+          if (items instanceof Observable) {
+            items.subscribe(data => {
               let pos = 0;
               page.anchorElements.map(anchor => {
                 expect(anchor.nativeElement.innerHTML.indexOf(data[pos].label)).toBeGreaterThan(-1);
@@ -252,7 +279,7 @@ describe("Breadcrumb Popup Component", () => {
           params: [{id: 2}]
         }
       ];
-      let breadcrumbPopupComponent = new BreadcrumbPopupComponent(null,null);
+      let breadcrumbPopupComponent = new BreadcrumbPopupComponent(null, null);
       breadcrumbPopupComponent.breadcrumbDropDown = inputBreadcrumb;
       breadcrumbDropDownData = breadcrumbPopupComponent.items as BreadcrumbDropDownItem[];
     });
@@ -265,7 +292,7 @@ describe("Breadcrumb Popup Component", () => {
   describe('class indicators', () => {
     let breadcrumbPopupComponent: BreadcrumbPopupComponent;
     beforeEach(() => {
-      breadcrumbPopupComponent = new BreadcrumbPopupComponent(null,null);
+      breadcrumbPopupComponent = new BreadcrumbPopupComponent(null, null);
     });
     it('should have next arrow in case there is a dropdown', () => {
       let breadcrumbDropDown = {items: []} as  BreadcrumbDropDown;

@@ -21,6 +21,7 @@ import {Router} from "@angular/router";
                       [searchData]="search"
                       (keydown.arrowDown)="selectElementDown()"
                       (keydown.arrowUp)="selectElementUp()"
+                      (keydown.enter)="navigate()"
                       [minLength]="0"
                       (results)="onFiltered($event)">
       </dcn-search-box>
@@ -152,9 +153,10 @@ export class BreadcrumbPopupComponent {
     }
   }
 
-  @HostListener('keyup.enter')
   navigate() {
-    this.router.navigateByUrl(this.filteredItems[this.selectedItemIndex].url);
+    if (this.selectedItemIndex >= 0 && this.selectedItemIndex <= this.filteredItems.length) {
+      this.router.navigateByUrl(this.filteredItems[this.selectedItemIndex].url);
+    }
   }
 
   private  get selectedItem() {

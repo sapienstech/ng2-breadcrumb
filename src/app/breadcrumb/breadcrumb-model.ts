@@ -21,6 +21,7 @@ export interface BreadcrumbDropDownItem {
   url: string;
   icon?: string;
   params?: Params;
+  disabled?: boolean
 }
 
 export interface BreadcrumbRoute {

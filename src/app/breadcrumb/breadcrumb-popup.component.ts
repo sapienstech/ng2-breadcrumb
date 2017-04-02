@@ -27,13 +27,18 @@ import {Router} from "@angular/router";
                       (results)="onFiltered($event)">
       </dcn-search-box>
       
-      <div class="breadcrumb-popup-menu" #scrollMe tabindex="1" 
-            (keydown.arrowDown)="selectElementDown($event)"
-            (keydown.arrowUp)="selectElementUp($event)"
-            (keydown.enter)="navigate()"
-      >
+      <div class="breadcrumb-popup-menu" #scrollMe >
           <div *ngFor="let nextLink of filteredItems; let inx=index;"  class="breadcrumb-popup-menu-item">
-              <a [routerLink]="[nextLink.url, nextLink.params?nextLink.params:{}]"
+
+              <a *ngIf="nextLink.disabled"
+                 (mouseenter)="selectedItemIndex=inx"
+                 [ngClass]="{'breadcrumb-popup-link':true, 'is-disabled':nextLink.disabled, 'is-selected':inx==selectedItemIndex}" >
+              <i class="{{nextLink.icon}} icon breadcrumb-popup-link-icon" ></i>
+              <span class="breadcrumb-popup-link-text" >{{nextLink.label}}</span></a>
+
+
+              <a *ngIf="!nextLink.disabled" 
+                 [routerLink]="[nextLink.url, nextLink.params?nextLink.params:{}]" 
                  (mouseenter)="selectedItemIndex=inx"
                  [ngClass]="{'breadcrumb-popup-link':true, 'is-selected':inx==selectedItemIndex}" >
               <i class="{{nextLink.icon}} icon breadcrumb-popup-link-icon" ></i>
@@ -146,14 +151,14 @@ export class BreadcrumbPopupComponent {
     this.selectedItemIndex = -1;
   }
 
-  selectElementDown(event:KeyboardEvent) {
+  selectElementDown(event: KeyboardEvent) {
     if (this.selectedItemIndex != this.filteredItems.length - 1) {
       this.selectedItemIndex++;
     }
     event.preventDefault();
   }
 
-  selectElementUp(event:KeyboardEvent) {
+  selectElementUp(event: KeyboardEvent) {
     if (this.selectedItemIndex != 0) {
       this.selectedItemIndex--;
     }
@@ -161,7 +166,7 @@ export class BreadcrumbPopupComponent {
   }
 
   navigate() {
-    if (this.selectedItemIndex >= 0 && this.selectedItemIndex <= this.filteredItems.length) {
+    if (this.selectedItemIndex >= 0 && this.selectedItemIndex <= this.filteredItems.length && !this.filteredItems[this.selectedItemIndex].disabled) {
       this.router.navigateByUrl(this.filteredItems[this.selectedItemIndex].url);
     }
   }

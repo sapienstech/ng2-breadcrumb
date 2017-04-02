@@ -1,6 +1,6 @@
 @popup-row-height: 40;
 @popup-number-of-rows: 4;
-@popup-height: @popup-row-height * @popup-number-of-rows;
+@popup-height: @popup-row-height * @popup-number-of-rows - 3;
 .breadcrumb {
   display: flex;
   height: 50px;
@@ -97,6 +97,7 @@
     width: 310px;
     overflow-x: hidden;
     overflow-y: auto;
+    outline: none;
   }
   .breadcrumb-popup-menu-item {
     height: @popup-row-height+0px;
@@ -112,6 +113,9 @@
     text-decoration: none;
     outline: none;
     cursor: pointer;
+    &.is-disabled{
+      cursor: default;
+    }
   }
   .breadcrumb-popup-link-icon {
     font-size: 1.5em;

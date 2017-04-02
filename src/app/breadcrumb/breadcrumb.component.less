@@ -1,3 +1,6 @@
+@popup-row-height: 40;
+@popup-number-of-rows: 4;
+@popup-height: @popup-row-height * @popup-number-of-rows - 3;
 .breadcrumb {
   display: flex;
   height: 50px;
@@ -5,7 +8,6 @@
 }
 
 .breadcrumb-holder {
-  //position: relative;
   display: flex;
   align-items: center;
   font-size: 18px;
@@ -91,13 +93,14 @@
   border-left-width: 1px;
   border-left-style: solid;
   .breadcrumb-popup-menu {
-    max-height: 150px;
+    max-height: @popup-height+0px;
     width: 310px;
     overflow-x: hidden;
     overflow-y: auto;
+    outline: none;
   }
   .breadcrumb-popup-menu-item {
-    height: 40px;
+    height: @popup-row-height+0px;
   }
   .breadcrumb-popup-link {
     height: 100%;
@@ -110,6 +113,9 @@
     text-decoration: none;
     outline: none;
     cursor: pointer;
+    &.is-disabled{
+      cursor: default;
+    }
   }
   .breadcrumb-popup-link-icon {
     font-size: 1.5em;

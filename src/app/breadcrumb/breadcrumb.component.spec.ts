@@ -68,14 +68,16 @@ describe("breadcrumbComponent", () => {
       expect(links.length).toBe(4, 'should have 4 links');
     });
     it('should have home as the first link', async(() => {
-      expect(links[0].linkParams).toBe('', 'should link to Home');
+      expect(links[0].linkParams[0]).toBe('', 'should link to Home');
     }));
     it('should bind to routerLink', () => {
       let pos = 0;
+
       links.map(link => {
         if (pos != 0) {// the first one is Home
           expect(link.linkParams[0]).toBe(visibleBreadcrumbs[pos - 1].url, 'should bind to url');
-          expect(link.linkParams[1]).toBe(visibleBreadcrumbs[pos - 1].params, 'should bind to link param');
+          //currently I removed params from the routelink
+          //expect(link.linkParams[1]).toBe(visibleBreadcrumbs[pos - 1].params, 'should bind to link param');
         }
         pos++;
       });
@@ -100,12 +102,14 @@ describe("breadcrumbComponent", () => {
     });
     it('should have breadcrumbDropDown popup and bind to breadcrumbDropDown', () => {
       let breadcrumbPopups = fixture.debugElement.queryAll(By.directive(DcnBreadcrumbPopupStub));
-      expect(breadcrumbPopups.length).toBe(3);
+      expect(breadcrumbPopups.length).toBe(4);
       let pos = 0;
       breadcrumbPopups
         .map(cmp => {
-          let popup = cmp.componentInstance as DcnBreadcrumbPopupStub;
-          expect(popup.breadcrumbDropDown).toBe(visibleBreadcrumbs[pos].breadcrumb.dropDown);
+          if(pos >0){
+            let popup = cmp.componentInstance as DcnBreadcrumbPopupStub;
+            expect(popup.breadcrumbDropDown).toBe(visibleBreadcrumbs[pos-1].breadcrumb.dropDown);
+          }
           pos++;
         });
     });

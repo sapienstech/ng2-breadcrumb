@@ -1,8 +1,7 @@
 import {Component, OnInit, Input} from "@angular/core";
 import {Router, ActivatedRoute, NavigationEnd} from "@angular/router";
-//import "rxjs/add/operator/filter";
 import {BreadcrumbService} from "./breadcrumb.service";
-import {BreadcrumbRoute, BreadcrumbDropDown} from "./breadcrumb-model";
+import {BreadcrumbRoute, Breadcrumb} from "./breadcrumb-model";
 import {Observable} from "rxjs/observable";
 
 @Component({
@@ -12,20 +11,11 @@ import {Observable} from "rxjs/observable";
   template: `
 
 <div class="breadcrumb">
-    <div class="breadcrumb-holder">
-        <a routerLink="" class="breadcrumb-link">
-            <span><i class="fa fa-home home-icon"></i></span>
-        </a>
-           <dcn-breadcrumb-popup [isLast]="!hasRoutes" [breadcrumbDropDown]="homeDropDown"></dcn-breadcrumb-popup>
 
-            <!--<button *ngIf="hasRoutes" class="menu-button has-no-popup">-->
-             <!--<i class="fa fa-angle-right menu-button-icon"></i>-->
-        <!--</button>-->
-    </div>
-
-    <div *ngFor="let route of breadcrumbRoutes; let i = index; let isLast=last" class="breadcrumb-holder">
-        <a [routerLink]="[route.url, route.params]" class="breadcrumb-link">
-            <i *ngIf="route.breadcrumb.icon" class="{{route.breadcrumb.icon}} icon link-icon"></i>
+    <div *ngFor="let route of breadcrumbRoutes; let inx = index; let isLast=last" class="breadcrumb-holder">
+        <a [routerLink]="[route.url]" class="breadcrumb-link">
+            <i *ngIf="route.breadcrumb.icon && inx==0" class="{{route.breadcrumb.icon}} home-icon"></i>
+            <i *ngIf="route.breadcrumb.icon && inx!=0" class="{{route.breadcrumb.icon}} icon link-icon" ></i>
             <span *ngIf="!isString(route.breadcrumb.label)">{{route.breadcrumb.label |async}}</span>
             <span *ngIf="isString(route.breadcrumb.label)">{{route.breadcrumb.label}}</span>
         </a>
@@ -38,7 +28,12 @@ import {Observable} from "rxjs/observable";
 export class BreadcrumbComponent implements OnInit {
 
   @Input()
-  homeDropDown: BreadcrumbDropDown;
+  set homeBreadcrumb(breadcrumb: Breadcrumb) {
+    if (breadcrumb) {
+      this.homeBreadcrumbRoute.breadcrumb = breadcrumb;
+    }
+  }
+  homeBreadcrumbRoute: BreadcrumbRoute;
 
   isString(val: string|Observable<string>) {
     return typeof val == "string";
@@ -54,13 +49,22 @@ export class BreadcrumbComponent implements OnInit {
               private activatedRoute: ActivatedRoute,
               private router: Router) {
     this.breadcrumbRoutes = [];
+    this.homeBreadcrumbRoute = {
+      breadcrumb: {
+        label: "",
+        icon: "fa fa-home home-icon"
+      },
+      url: "",
+      params: undefined
+    };
   }
 
   ngOnInit() {
     this.router.events.filter(event => event instanceof NavigationEnd).subscribe(event => {
-      this.breadcrumbRoutes = this.breadcrumbService.getBreadcrumbs(this.activatedRoute.root)
-        .filter(breadcrumb => !breadcrumb.breadcrumb.hide);
+      this.breadcrumbRoutes=[];
+      this.breadcrumbRoutes.push(this.homeBreadcrumbRoute);
+      this.breadcrumbRoutes.push(...this.breadcrumbService.getBreadcrumbs(this.activatedRoute.root)
+        .filter(breadcrumb => !breadcrumb.breadcrumb.hide));
     });
   }
-
 }

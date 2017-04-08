@@ -1,4 +1,5 @@
 import {Component, ViewEncapsulation} from '@angular/core';
+import {BreadcrumbDropDown} from "./breadcrumb/breadcrumb-model";
 
 @Component({
   selector: 'app-root',
@@ -11,4 +12,6 @@ export class AppComponent {
 
   themes = ["winter", "summer", "spring", "decisionTheme"];
   selectedTheme: "NO_THEME";
+
+  homeDropDown:BreadcrumbDropDown={items:[{label:"SSSS",url:"dddd"}]};
 }

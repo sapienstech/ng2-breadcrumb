@@ -2,7 +2,7 @@ import {Component, OnInit, Input} from "@angular/core";
 import {Router, ActivatedRoute, NavigationEnd} from "@angular/router";
 //import "rxjs/add/operator/filter";
 import {BreadcrumbService} from "./breadcrumb.service";
-import {BreadcrumbRoute} from "./breadcrumb-model";
+import {BreadcrumbRoute, BreadcrumbDropDown} from "./breadcrumb-model";
 import {Observable} from "rxjs/observable";
 
 @Component({
@@ -16,9 +16,11 @@ import {Observable} from "rxjs/observable";
         <a routerLink="" class="breadcrumb-link">
             <span><i class="fa fa-home home-icon"></i></span>
         </a>
-            <button *ngIf="hasRoutes" class="menu-button has-no-popup">
-             <i class="fa fa-angle-right menu-button-icon"></i>
-            </button>
+           <dcn-breadcrumb-popup [isLast]="!hasRoutes" [breadcrumbDropDown]="homeDropDown"></dcn-breadcrumb-popup>
+
+            <!--<button *ngIf="hasRoutes" class="menu-button has-no-popup">-->
+             <!--<i class="fa fa-angle-right menu-button-icon"></i>-->
+        <!--</button>-->
     </div>
 
     <div *ngFor="let route of breadcrumbRoutes; let i = index; let isLast=last" class="breadcrumb-holder">
@@ -35,6 +37,8 @@ import {Observable} from "rxjs/observable";
 })
 export class BreadcrumbComponent implements OnInit {
 
+  @Input()
+  homeDropDown: BreadcrumbDropDown;
 
   isString(val: string|Observable<string>) {
     return typeof val == "string";
@@ -58,4 +62,5 @@ export class BreadcrumbComponent implements OnInit {
         .filter(breadcrumb => !breadcrumb.breadcrumb.hide);
     });
   }
+
 }

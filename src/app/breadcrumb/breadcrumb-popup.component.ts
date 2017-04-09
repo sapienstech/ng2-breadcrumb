@@ -58,6 +58,7 @@ export class BreadcrumbPopupComponent {
   allItems: BreadcrumbDropDownItem[];
   filteredItems: BreadcrumbDropDownItem[];
   selectedItemIndex: number;
+  private itemSelectedByKeyboard: boolean = false;
 
   @Input()
   isLast: boolean;
@@ -98,7 +99,8 @@ export class BreadcrumbPopupComponent {
       this.hidePopup();
     }
   }
-  hidePopup(){
+
+  hidePopup() {
     this.showPopup = false;
   }
 
@@ -153,9 +155,11 @@ export class BreadcrumbPopupComponent {
     this.selectedItemIndex = -1;
   }
 
+
   selectElementDown(event: KeyboardEvent) {
     if (this.selectedItemIndex != this.filteredItems.length - 1) {
       this.selectedItemIndex++;
+      this.itemSelectedByKeyboard = true;
     }
     event.preventDefault();
   }
@@ -163,6 +167,7 @@ export class BreadcrumbPopupComponent {
   selectElementUp(event: KeyboardEvent) {
     if (this.selectedItemIndex != 0) {
       this.selectedItemIndex--;
+      this.itemSelectedByKeyboard = true;
     }
     event.preventDefault();
   }
@@ -178,7 +183,10 @@ export class BreadcrumbPopupComponent {
   }
 
   ngAfterViewChecked() {
-    this.scrollIntoView();
+    if (this.itemSelectedByKeyboard) {
+      this.scrollIntoView();
+      this.itemSelectedByKeyboard = false;
+    }
   }
 
   private scrollIntoView() {
@@ -195,7 +203,7 @@ export class BreadcrumbPopupComponent {
   @ViewChild('scrollMe')
   private myScrollContainer: ElementRef;
 
-  public scrollInView(container, item) {
+  private scrollInView(container, item) {
     let borderTopValue: string = getComputedStyle(container).getPropertyValue('borderTopWidth');
     let borderTop: number = borderTopValue ? parseFloat(borderTopValue) : 0;
     let paddingTopValue: string = getComputedStyle(container).getPropertyValue('paddingTop');
@@ -215,7 +223,7 @@ export class BreadcrumbPopupComponent {
     }
   }
 
-  public getOuterHeight(el, margin?) {
+  private getOuterHeight(el, margin?) {
     let height = el.offsetHeight;
 
     if (margin) {

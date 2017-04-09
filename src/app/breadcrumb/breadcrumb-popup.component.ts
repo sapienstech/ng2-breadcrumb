@@ -40,6 +40,7 @@ import {Router} from "@angular/router";
               <a *ngIf="!nextLink.disabled" 
                  [routerLink]="[nextLink.url, nextLink.params?nextLink.params:{}]" 
                  (mouseenter)="selectedItemIndex=inx"
+                 (click)="hidePopup()"
                  [ngClass]="{'breadcrumb-popup-link':true, 'is-selected':inx==selectedItemIndex}" >
               <i class="{{nextLink.icon}} icon breadcrumb-popup-link-icon" ></i>
               <span class="breadcrumb-popup-link-text" >{{nextLink.label}}</span></a>
@@ -80,7 +81,6 @@ export class BreadcrumbPopupComponent {
   }
 
   get isShowBreadcrumbDropDown(): boolean {
-
     return this.breadcrumbDropDown &&
       (this.breadcrumbDropDown.getItems != undefined ||
       this.breadcrumbDropDown.items instanceof Observable ||
@@ -89,14 +89,17 @@ export class BreadcrumbPopupComponent {
 
   @HostListener('keydown.escape', ['$event'])
   onKeyEscape(event: KeyboardEvent) {
-    this.showPopup = false;
+    this.hidePopup();
   }
 
   @HostListener('document:click', ['$event'])
   onClick(event: MouseEvent) {
     if (!this.elementRef.nativeElement.contains(event.target)) {
-      this.showPopup = false;
+      this.hidePopup();
     }
+  }
+  hidePopup(){
+    this.showPopup = false;
   }
 
   search(query: string): Observable<any[]> {
@@ -106,7 +109,6 @@ export class BreadcrumbPopupComponent {
   }
 
   setInitialFilter(event: MouseEvent) {
-    event.stopPropagation();
     this.resetSelection();
     const items = this.items;
     if (items instanceof Observable) {

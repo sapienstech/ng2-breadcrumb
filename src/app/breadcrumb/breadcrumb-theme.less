@@ -1,12 +1,12 @@
 
 .breadcrumb {
   .breadcrumb-colors(#0cb6e7, white, #78e2eb, white, white, #a0a0a0,
-    #F3F4F6, #3e4959, #0cb6e7, #ddd, white, black)
+    #F3F4F6, #3e4959, #0cb6e7, #ddd, white, black,#a0a0a0)
 }
 
 .breadcrumb-colors(@item-background-color, @text-color, @hover-background-color, @arrow-color,
   @popup-background-color, @icon-color,
-  @popup-ling-bg-color, @popup-link-color, @popup-link-hover-color ,@popup-border-color,@search-box-background-color, @search-box-color) {
+  @popup-ling-bg-color, @popup-link-color, @popup-link-hover-color ,@popup-border-color,@search-box-background-color, @search-box-color, @disabled-color) {
   .breadcrumb {
     color: @text-color;
     background-color: @item-background-color;
@@ -68,13 +68,12 @@
         .breadcrumb-popup-link-icon,
         .breadcrumb-popup-link-text {
           color: @popup-link-hover-color; //#0cb6e7;
-
         }
-        &.is-disabled {
-          .breadcrumb-popup-link-icon,
-          .breadcrumb-popup-link-text {
-            color: @popup-link-color;
-          }
+      }
+      &.is-disabled {
+        .breadcrumb-popup-link-icon,
+        .breadcrumb-popup-link-text {
+          color: @disabled-color;
         }
       }
 

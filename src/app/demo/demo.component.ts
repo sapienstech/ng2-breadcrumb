@@ -24,7 +24,7 @@ export class DemoComponent implements OnInit {
 
 
   ngOnInit() {
-    let productSubject = new BehaviorSubject<string>("I am a Product");
+    let productSubject = new BehaviorSubject<string>("i am a Product");
     this.activatedRoute.data.subscribe((data: {breadcrumb: Breadcrumb}) => {
       data.breadcrumb = {
         label: productSubject,

@@ -7,14 +7,14 @@ import {BREADCRUMB_DATA_KEY} from "./breadcrumb.service";
 import {BreadcrumbRouterService} from "./breadcrumb-router.service";
 
 @Component({
-  moduleId: module.id,
+  moduleId: "" + module.id,
   selector: 'selector',
   providers:[BreadcrumbRouterService],
   template: `
 <router-outlet></router-outlet>
 `
 })
-export class RoutePlaceHolderComponet implements OnInit {
+export class RoutePlaceHolderComponent implements OnInit {
   constructor(private activatedRoute: ActivatedRoute) {
   }
 

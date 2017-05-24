@@ -9,7 +9,9 @@
     "test": "gulp compileLess && ng test -w false",
     "lint": "ng lint",
     "e2e": "ng e2e",
-    "make-comp": "tsc  && gulp less"
+    "make-comp": "tsc  && gulp less",
+    "publish-dist": "rm -rf node_modules/ && rm -rf dist/ && npm install && npm run make-comp && npm publish dist/out-tsc/src/app/breadcrumb"
+    "publish-dist-cmd": "if exist node_modules rmdir /s /q node_modules && if exist dist rmdir /s /q dist && npm install && npm run make-comp && npm publish dist/out-tsc/src/app/breadcrumb"
   },
   "private": true,
   "dependencies": {

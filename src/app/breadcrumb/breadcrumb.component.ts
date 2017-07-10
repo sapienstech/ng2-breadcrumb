@@ -2,7 +2,7 @@ import {Component, OnInit, Input} from "@angular/core";
 import {Router, ActivatedRoute, NavigationEnd} from "@angular/router";
 import {BreadcrumbService} from "./breadcrumb.service";
 import {BreadcrumbRoute, Breadcrumb} from "./breadcrumb-model";
-import {Observable} from "rxjs/observable";
+import {Observable} from "rxjs/Observable";
 
 @Component({
   moduleId: "" + module.id,

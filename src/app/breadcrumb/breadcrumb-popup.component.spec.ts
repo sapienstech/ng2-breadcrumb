@@ -54,7 +54,6 @@ describe("Breadcrumb Popup Component", () => {
         fixture.autoDetectChanges();
         fixture.whenStable(fixture).then(() => {
           expect(page.links.length).toBe(0);
-          expect(page.dropDownButton.componentInstance).toBe(null);
           expect(page.breadcrumbPopupComponent.isShowBreadcrumbDropDown).toBe(undefined);
         });
       });
@@ -250,7 +249,6 @@ describe("Breadcrumb Popup Component", () => {
 
   });
   describe('tests not covered from UI', () => {
-    let breadcrumbPopupComponent: BreadcrumbPopupComponent;
     let breadcrumbDropDownData: BreadcrumbDropDownItem[];
     const LABEL = "form function";
     beforeEach(() => {

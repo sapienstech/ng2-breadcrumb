@@ -9,16 +9,16 @@
  ```
 Some images from the demo
 
-#Blue theme
+# Blue theme
 
 ![image](https://cloud.githubusercontent.com/assets/5977156/24284417/339b2686-107c-11e7-85e2-cae461d83ba9.png)
 
 
-#Spring Theme
+# Spring Theme
 
 ![image](https://cloud.githubusercontent.com/assets/5977156/24284432/4434b304-107c-11e7-8d3c-02043e5af5db.png)
 
-#Winter theme
+# Winter theme
 ![image](https://cloud.githubusercontent.com/assets/5977156/24284583/0f0f020a-107d-11e7-8dc5-5a7cf8f983d2.png)
 
 This project was generated with [angular-cli](https://github.com/angular/angular-cli) version 1.0.0-beta.24.
@@ -26,12 +26,12 @@ This project was generated with [angular-cli](https://github.com/angular/angular
 # Dependencies
  Angular 2
 
-#Install
+# Install
 install via npm
 ```
   npm install ng2-navigator --save
 ```
-#Usage
+# Usage
 Import the breadcrumb module into your module.
 ```
 import {BreadcrumbModule} from "ng2-navigator/breadcrumb.module";
@@ -101,7 +101,7 @@ you can change the them to "winter" class like this.
 you should use ```encapsulation: ViewEncapsulation.None```  in order to influence the style, or instead you can import the style from index.html.
 
 
-#Controlling the text on a breadcrumb (static)
+# Controlling the text on a breadcrumb (static)
 in our routing definitions we can add some more metadata to give the route a friendly name.
 
 **in the example below we change path 'dashboard' into 'My Dashboard'.** 
@@ -125,12 +125,12 @@ const routes: Routes = [
  }
 ```
 
-#Controlling the text on a breadcrumb (dynamic)
+# Controlling the text on a breadcrumb (dynamic)
 There are links that looks like this ```details/:id```
 in these cases you want to show the details value instead of details/:id.
 to do that you can listen to routing data changes, and update the label from the component code by updating the heroNameObservable.
 
-##Using breadcrumb resolver.
+## Using breadcrumb resolver.
 
   For all paths that are not leafs the user should create a resolver that updates the breadcrumb
   The route configuration should look like this:
@@ -159,7 +159,7 @@ export class MyBreadcrumbResolver implements Resolve<Breadcrumb> {
     }
 }
 ```
-##Using breadcrumb in a component
+## Using breadcrumb in a component
  Sometimes in a leaf component there is a need to change the breadcrumb lable according to changed data.
  you can do this ny getting a reference to the breadcrumb and updating its information.
  
@@ -174,7 +174,7 @@ export class MyBreadcrumbResolver implements Resolve<Breadcrumb> {
 ```
 
 
-#The inherited resolver behavior (dynamic)
+# The inherited resolver behavior (dynamic)
  You may note that resolvers are inherited when no component is used in the routing definition.
  look at the example below
  
@@ -195,7 +195,7 @@ export class MyBreadcrumbResolver implements Resolve<Breadcrumb> {
 
   BreadcrumbDynamicResolver will create a new empty breadcrumb definition for MyComponent, so now changing breadcrumb in MyComponent will change only its breadcrumb. 
 
-#The inherited resolver behavior (static)
+# The inherited resolver behavior (static)
  In case you have static data on your routing definition you can use 
  ```
      {
@@ -210,7 +210,7 @@ export class MyBreadcrumbResolver implements Resolve<Breadcrumb> {
   BreadcrumbResolver will create a new empty breadcrumb definition for MyComponent and copy the static data into it.
   This also fix the inherited resolver issue.  
 
-#Setting forward routing
+# Setting forward routing
 You can let let the router have a function that shows the forward links.
 dropDown.getItems is a function that returns BreadcrumbDropDownItem[] |  Observable<BreadcrumbDropDownItem[]>.
  
@@ -224,7 +224,7 @@ this.route.data.subscribe(data=>{
 ```
 
 
-#The breadcrumb model.
+# The breadcrumb model.
 ```
 
 export interface Breadcrumb {

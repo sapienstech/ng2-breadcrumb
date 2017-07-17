@@ -52,12 +52,12 @@ Place the breadcrumb selector in your component's html somewhere above your rout
 <router-outlet></router-outlet>
 ```
 in system.config.js add map
-```$xslt
+```
   map: {
     'ng2-navigator': 'npm:ng2-navigator'
 ```
 in system.config.js add package
-```$xslt
+```
   packages: {
     'ng2-navigator': { defaultExtension: 'js' }
 ```
@@ -68,7 +68,7 @@ but it does not look nice.
 you can change the theme colors.
 you can define the theme manually , but you can use a less function to help you.
 in the example below you can select winter/spring or summer themes
-```$xslt
+```
 @import "breadcrumb/breadcrumb-theme.less";
 
 dcn-breadcrumb.winter {
@@ -95,78 +95,137 @@ dcn-breadcrumb.spring {
 
 ```
 you can change the them to "winter" class like this.
-```$xslt
+```
 <dcn-breadcrumb class="winter"></dcn-breadcrumb>
 ```
 you should use ```encapsulation: ViewEncapsulation.None```  in order to influence the style, or instead you can import the style from index.html.
 
 
-#Controlling the text on a breadcrumb
+#Controlling the text on a breadcrumb (static)
 in our routing definitions we can add some more metadata to give the route a friendly name.
 
 **in the example below we change path 'dashboard' into 'My Dashboard'.** 
 
-```$xslt
+```
 const routes: Routes = [
   {
-    data:{breadcrumb:{label:'My Dashboard'}},
     path: 'dashboard',
+    data:{breadcrumb:{label:'My Dashboard'}},
  }
 ```
 
 **in the example below we hide 'dashboard' path.**
 
 
-```$xslt
+```
 const routes: Routes = [
   {
-    data:{breadcrumb:{label:'My Dashboard',hide:true}},
     path: 'dashboard',
+    data:{breadcrumb:{label:'My Dashboard',hide:true}},
  }
 ```
 
-there are links that looks like this ```details/:id```
-in these cases you want to show the details value instead of details id.
+#Controlling the text on a breadcrumb (dynamic)
+There are links that looks like this ```details/:id```
+in these cases you want to show the details value instead of details/:id.
 to do that you can listen to routing data changes, and update the label from the component code by updating the heroNameObservable.
-```$xslt
- let heroNameObservable = new BehaviorSubject<string>("hero name");
- this.route.data.subscribe(routeData=>{
-       const breadcrumb: Breadcrumb = {
-         label: heroNameObservable
-       };
-       routeData[BREADCRUMB_DATA_KEY] = breadcrumb
-     });
+
+##Using breadcrumb resolver.
+
+  For all paths that are not leafs the user should create a resolver that updates the breadcrumb
+  The route configuration should look like this:
+   ```
+    const routes: Routes = [
+      {
+        path: 'dashboard',
+        resolve:{breadcrumb:MyBreadcrumbResolver}},
+     }
+  ```
+  and the resolver implementation should look like this:
+  
+  ```
+import {Breadcrumb} from "ng2-navigator/breadcrumb-model";  
+@Injectable()
+export class MyBreadcrumbResolver implements Resolve<Breadcrumb> {
+    resolve(route: ActivatedRouteSnapshot, state: RouterStateSnapshot):Observable<Breadcrumb>|Breadcrumb{
+    
+       // you can use here any service you need , note that you can also return Observable<Breadcrumb>|
+        return {
+          label:"my breadcrumb label"
+          .
+          .
+          .
+        };
+    }
+}
 ```
+##Using breadcrumb in a component
+ Sometimes in a leaf component there is a need to change the breadcrumb lable according to changed data.
+ you can do this ny getting a reference to the breadcrumb and updating its information.
+ 
+ * Note that in this example we use the fact that the label can be Observable, so by changing the Observable value we can change the breadcrumb value. 
+```
+ ngOnInit(){
+      let heroNameObservable = new BehaviorSubject<string>("hero name");
+     this.route.data.subscribe(routeData=>{
+           routeData[BREADCRUMB_DATA_KEY].label = heroNameObservable
+         });
+   }
+```
+
+
+#The inherited resolver behavior (dynamic)
+ You may note that resolvers are inherited when no component is used in the routing definition.
+ look at the example below
+ 
+ ```
+    {
+      path: 'parent',resolve:{breadcrumb:Myresolver},
+        children: [{path: 'child', component: MyComponent}]
+    }
+```
+  if you try to change the breadcrumb information  MyComponent then you actually are changing the breadcrumb of the parent too. 
+  To solve this problem you can change the child definition like this
+  ```
+    {
+      path: 'parent',resolve:{breadcrumb:Myresolver},
+        children: [{path: 'child', component: MyComponent, resolve: {breadcrumb: BreadcrumbDynamicResolver}}]
+    }
+```
+
+  BreadcrumbDynamicResolver will create a new empty breadcrumb definition for MyComponent, so now changing breadcrumb in MyComponent will change only its breadcrumb. 
+
+#The inherited resolver behavior (static)
+ In case you have static data on your routing definition you can use 
+ ```
+     {
+       path: 'parent',resolve:{breadcrumb:Myresolver},
+         children: [
+            {path: 'child',
+                    data: {breadcrumb: {label: "My breadcrumb label"}}
+                    component: MyComponent, 
+                    resolve: {breadcrumb: BreadcrumbResolver}}]
+     }
+```
+  BreadcrumbResolver will create a new empty breadcrumb definition for MyComponent and copy the static data into it.
+  This also fix the inherited resolver issue.  
 
 #Setting forward routing
-You can let let the router have a function that shows the forward links
-```$xslt
+You can let let the router have a function that shows the forward links.
+dropDown.getItems is a function that returns BreadcrumbDropDownItem[] |  Observable<BreadcrumbDropDownItem[]>.
+ 
+ this way you can return forward items.
+ 
+```
 this.route.data.subscribe(data=>{
-      const breadcrumb: Breadcrumb = {
-        label: "My Heroes",
-        dropDown: {getItems: this.buildBreadcrumbDropDownData.bind(this)}
-      };
-      data[BREADCRUMB_DATA_KEY] = breadcrumb
+      data[BREADCRUMB_DATA_KEY].dropDown.getItems = this.buildBreadcrumbDropDownData.bind(this);
     });
     
-  buildBreadcrumbDropDownData():BreadcrumbDropDownItem[]{
-    let breadcrumbDropDownDatas = [];
-    let routeURL: string = this.getBaseUrlRecursive(this.route);
-    this.heroes.forEach(hero=>{
-      let breadcrumbDropDownData: BreadcrumbDropDownItem = {
-        label: hero.name,
-        url: `detail/${hero.id}`,
-      };
-      breadcrumbDropDownDatas.push(breadcrumbDropDownData);
-    });
-    return breadcrumbDropDownDatas;
-  }
-
 ```
 
 
-the whole breadcrumb model looks like this.
-```$xslt
+#The breadcrumb model.
+```
 
 export interface Breadcrumb {
   label: string|Observable<string>;
@@ -187,6 +246,7 @@ export interface BreadcrumbDropDownItem {
   url: string;
   icon?: string;
   params?: Params;
+  disabled?: boolean
 }
 
 export interface BreadcrumbRoute {
@@ -194,6 +254,7 @@ export interface BreadcrumbRoute {
   url: string;
   params: Params;
 }
+
 ```
 
 

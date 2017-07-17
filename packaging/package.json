@@ -1,6 +1,6 @@
 {
   "name": "ng2-navigator",
-  "version": "0.0.17",
+  "version": "0.0.18",
   "description": "use as breadcrumb and as an optional navigator for angular 2",
   "main": "index.js",
   "scripts": {

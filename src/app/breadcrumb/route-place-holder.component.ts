@@ -19,8 +19,8 @@ export class RoutePlaceHolderComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.activatedRoute.data.subscribe((data: {resolvedBreadcrumb: Breadcrumb, BREADCRUMB_DATA_KEY: any}) => {
-      data[BREADCRUMB_DATA_KEY] = data.resolvedBreadcrumb;
+    this.activatedRoute.data.subscribe((data: {breadcrumb: Breadcrumb}) => {
+      data[BREADCRUMB_DATA_KEY] = data.breadcrumb;
     });
   }
 

@@ -6,13 +6,16 @@ import {AppComponent} from "./app.component";
 import {RouterModule, Routes} from "@angular/router";
 import {DemoComponent} from "./demo/demo.component";
 import {BreadcrumbModule} from "./breadcrumb/breadcrumb.module";
+import {UsersComponent} from "./demo/users.component";
+import {BreadcrumbResolver} from "./breadcrumb/breadcrumb.resolver";
+import {UserDetailComponent} from "./demo/user-detail.component";
+import {BreadcrumbDynamicResolver} from "./breadcrumb/BreadcrumbDynamicResolver";
 
 
 const community_routes: Routes = [
   {path: '', redirectTo: 'products', pathMatch: 'full'},
   {
     path: 'products',
-    //component: DemoComponent,
     data: {
       breadcrumb: {
         label: "Products",
@@ -61,15 +64,23 @@ const community_routes: Routes = [
       {path: "product2", component: DemoComponent, data: {breadcrumb: {label: "product2", icon:"fa fa-globe"}}},
       {path: "product3", component: DemoComponent, data: {breadcrumb: {label: "product3", icon:"fa fa-globe"}}},
       {path: "product4", component: DemoComponent, data: {breadcrumb: {label: "product4", icon:"fa fa-globe"}}}
-    ]
+    ],
+  },
+  {
+    path: "users", resolve: {breadcrumb: BreadcrumbResolver}, data: {breadcrumb: {label: "Users"}},
+    children: [
+      {path: "", component: UsersComponent,},
+      {path: "details/:id", component: UserDetailComponent, resolve: {breadcrumb: BreadcrumbDynamicResolver}}
 
+    ]
   }
+
 ];
 
 @NgModule({
   declarations: [
     AppComponent,
-    DemoComponent,
+    DemoComponent, UsersComponent, UserDetailComponent
   ],
   imports: [
     BrowserModule,

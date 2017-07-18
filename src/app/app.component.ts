@@ -18,7 +18,10 @@ export class AppComponent {
       icon: "fa fa-home"
     ,
     dropDown:{
-      items:[{label:"SSSS",url:"dddd"}]
+      items:[
+        {label:"Products",url:"products"},
+        {label:"Users",url:"users"},
+        ]
     }
   }
 }

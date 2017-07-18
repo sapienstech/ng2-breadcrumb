@@ -179,21 +179,22 @@ export class MyBreadcrumbResolver implements Resolve<Breadcrumb> {
  look at the example below
  
  ```
-    {
-      path: 'parent',resolve:{breadcrumb:Myresolver},
-        children: [{path: 'child', component: MyComponent}]
-    }
+    path: "users", resolve: {breadcrumb: BreadcrumbResolver}, data: {breadcrumb: {label: "Users"}},
+    children: [
+      {path: "", component: UsersComponent,},
+      {path: "details/:id", component: UserDetailComponent}
+
 ```
-  if you try to change the breadcrumb information  MyComponent then you actually are changing the breadcrumb of the parent too. 
+  if you try to change the breadcrumb information  UserDetailComponent then you actually are changing the breadcrumb of the parent(users) too. 
   To solve this problem you can change the child definition like this
   ```
-    {
-      path: 'parent',resolve:{breadcrumb:Myresolver},
-        children: [{path: 'child', component: MyComponent, resolve: {breadcrumb: BreadcrumbDynamicResolver}}]
-    }
+    path: "users", resolve: {breadcrumb: BreadcrumbResolver}, data: {breadcrumb: {label: "Users"}},
+    children: [
+      {path: "", component: UsersComponent,},
+      {path: "details/:id", component: UserDetailComponent, resolve: {breadcrumb: BreadcrumbDynamicResolver}}
 ```
 
-  BreadcrumbDynamicResolver will create a new empty breadcrumb definition for MyComponent, so now changing breadcrumb in MyComponent will change only its breadcrumb. 
+  BreadcrumbDynamicResolver will create a new empty breadcrumb definition for UserDetailComponent, so now changing breadcrumb in UserDetailComponent will change only its breadcrumb (and not its parent). 
 
 #The inherited resolver behavior (static)
  In case you have static data on your routing definition you can use 

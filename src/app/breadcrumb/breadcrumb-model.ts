@@ -3,6 +3,7 @@ import {Params} from "@angular/router";
 import {Observable} from "rxjs/Observable";
 
 export interface Breadcrumb {
+  class?: string;
   label: string|Observable<string>;
   icon?: string;
   hide?: boolean

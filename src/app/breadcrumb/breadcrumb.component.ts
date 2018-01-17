@@ -10,7 +10,7 @@ import {Observable} from "rxjs/Observable";
   styleUrls: ["breadcrumb.component.css"],
   template: `
 
-<div class="breadcrumb">
+<div [class]="'breadcrumb ' + class">
 
     <div *ngFor="let route of breadcrumbRoutes; let inx = index; let isLast=last" class="breadcrumb-holder">
         <a [routerLink]="[route.url]" class="breadcrumb-link">
@@ -26,6 +26,8 @@ import {Observable} from "rxjs/Observable";
 `
 })
 export class BreadcrumbComponent implements OnInit {
+
+  class: string;
 
   @Input()
   set homeBreadcrumb(breadcrumb: Breadcrumb) {
@@ -65,6 +67,12 @@ export class BreadcrumbComponent implements OnInit {
       this.breadcrumbRoutes.push(this.homeBreadcrumbRoute);
       this.breadcrumbRoutes.push(...this.breadcrumbService.getBreadcrumbs(this.activatedRoute.root)
         .filter(breadcrumb => !breadcrumb.breadcrumb.hide));
+
+      this.class =
+        this.breadcrumbRoutes
+        .map(b => b.breadcrumb.class)
+        .filter(c => !!c)
+        .join(' ');
     });
   }
 }

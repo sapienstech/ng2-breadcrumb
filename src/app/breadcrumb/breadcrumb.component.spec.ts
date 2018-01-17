@@ -99,6 +99,12 @@ describe("breadcrumbComponent", () => {
         pos++;
       });
 
+      it('should append route classes to breadcrumb root element', () => {
+        const classes = expect(fixture.debugElement.query(By.css('.breadcrumb')).classes);
+        classes.toContain(breadcrumbAppendedClass0);
+        classes.toContain(breadcrumbAppendedClass1);
+      });
+
     });
     it('should have breadcrumbDropDown popup and bind to breadcrumbDropDown', () => {
       let breadcrumbPopups = fixture.debugElement.queryAll(By.directive(DcnBreadcrumbPopupStub));
@@ -115,6 +121,8 @@ describe("breadcrumbComponent", () => {
     });
   });
 
+  const breadcrumbAppendedClass0 = `spec-class0`;
+  const breadcrumbAppendedClass1 = `spec-class1`;
   function buildBreadcrumbs(url: string, visible: boolean, params = undefined): BreadcrumbRoute {
     return {
       breadcrumb: {
@@ -122,6 +130,7 @@ describe("breadcrumbComponent", () => {
         icon: url + "_icon",
         dropDown: {popupTitle: "aaa"},
         hide: visible,
+        class: `${breadcrumbAppendedClass0} ${breadcrumbAppendedClass1}`
       },
       params: params,
       url: url

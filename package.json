@@ -1,6 +1,6 @@
 {
   "name": "navigator",
-  "version": "0.0.15",
+  "version": "0.0.19",
   "license": "MIT",
   "scripts": {
     "ng": "ng",
@@ -11,9 +11,8 @@
     "e2e": "ng e2e",
     "make-comp": "tsc  && gulp less",
     "publish-dist": "rm -rf node_modules/ && rm -rf dist/ && npm install && npm run make-comp && npm publish dist/out-tsc/src/app/breadcrumb",
-    "clean-cmd" :"if exist node_modules rmdir /s /q node_modules && if exist dist rmdir /s /q dist",
+    "clean-cmd": "if exist node_modules rmdir /s /q node_modules && if exist dist rmdir /s /q dist",
     "publish-dist-cmd": "npm run clean-cmd && npm install && npm run make-comp && npm publish dist/out-tsc/src/app/breadcrumb"
-
   },
   "private": true,
   "dependencies": {
@@ -44,7 +43,6 @@
     "gulp-rename": "^1.2.2",
     "gulp-replace": "^0.5.4",
     "gulp-typescript": "^3.1.4",
-
     "jasmine-core": "~2.5.2",
     "jasmine-spec-reporter": "~3.2.0",
     "karma": "~1.4.1",

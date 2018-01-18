@@ -2,7 +2,7 @@ import {Component, OnInit, Input} from "@angular/core";
 import {Router, ActivatedRoute, NavigationEnd} from "@angular/router";
 import {BreadcrumbService} from "./breadcrumb.service";
 import {BreadcrumbRoute, Breadcrumb} from "./breadcrumb-model";
-import {Observable} from "rxjs/Observable";
+import {Observable} from "rxjs/observable";
 
 @Component({
   moduleId: "" + module.id,
@@ -64,7 +64,6 @@ export class BreadcrumbComponent implements OnInit {
   ngOnInit() {
     this.router.events.filter(event => event instanceof NavigationEnd).subscribe(event => {
       this.breadcrumbRoutes=[];
-      if(!this.homeBreadcrumbRoute.breadcrumb.hide)
       this.breadcrumbRoutes.push(this.homeBreadcrumbRoute);
       this.breadcrumbRoutes.push(...this.breadcrumbService.getBreadcrumbs(this.activatedRoute.root)
         .filter(breadcrumb => !breadcrumb.breadcrumb.hide));

@@ -12,15 +12,17 @@ import {Observable} from "rxjs/Observable";
 
 <div class="breadcrumb">
 
-    <div *ngFor="let route of breadcrumbRoutes; let inx = index; let isLast=last" class="breadcrumb-holder">
-        <a [routerLink]="[route.url]" class="breadcrumb-link">
-            <i *ngIf="route.breadcrumb.icon && inx==0" class="{{route.breadcrumb.icon}} home-icon"></i>
-            <i *ngIf="route.breadcrumb.icon && inx!=0" class="{{route.breadcrumb.icon}} icon link-icon" ></i>
-            <span *ngIf="!isString(route.breadcrumb.label)">{{route.breadcrumb.label |async}}</span>
-            <span *ngIf="isString(route.breadcrumb.label)">{{route.breadcrumb.label}}</span>
-        </a>
-        <dcn-breadcrumb-popup [isLast]="isLast" [breadcrumbDropDown]="route.breadcrumb.dropDown"></dcn-breadcrumb-popup>
+  <ng-container *ngFor="let route of breadcrumbRoutes; let inx = index; let isLast=last" >
+    <div *ngIf="!route.breadcrumb.hide" class="breadcrumb-holder">
+      <a [routerLink]="[route.url]" class="breadcrumb-link">
+        <i *ngIf="route.breadcrumb.icon && inx==0" class="{{route.breadcrumb.icon}} home-icon"></i>
+        <i *ngIf="route.breadcrumb.icon && inx!=0" class="{{route.breadcrumb.icon}} icon link-icon" ></i>
+        <span *ngIf="!isString(route.breadcrumb.label)">{{route.breadcrumb.label |async}}</span>
+        <span *ngIf="isString(route.breadcrumb.label)">{{route.breadcrumb.label}}</span>
+      </a>
+      <dcn-breadcrumb-popup [isLast]="isLast" [breadcrumbDropDown]="route.breadcrumb.dropDown"></dcn-breadcrumb-popup>
     </div>
+  </ng-container>
 </div>
 
 `
@@ -62,6 +64,7 @@ export class BreadcrumbComponent implements OnInit {
   ngOnInit() {
     this.router.events.filter(event => event instanceof NavigationEnd).subscribe(event => {
       this.breadcrumbRoutes=[];
+      if(!this.homeBreadcrumbRoute.breadcrumb.hide)
       this.breadcrumbRoutes.push(this.homeBreadcrumbRoute);
       this.breadcrumbRoutes.push(...this.breadcrumbService.getBreadcrumbs(this.activatedRoute.root)
         .filter(breadcrumb => !breadcrumb.breadcrumb.hide));

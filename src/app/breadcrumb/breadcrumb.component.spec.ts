@@ -40,7 +40,7 @@ describe("breadcrumbComponent", () => {
       spyOnProperty(component, 'hasRoutes', 'get');
     });
     it(`should be true when breadcrumbRoutes have a route`, () => {
-      component.breadcrumbRoutes = [{hide: true}];
+      component.breadcrumbRoutes = [{hide: false}];
       expect(component.hasRoutes).toBe(true);
     });
     it(`should be false when has NO shown routes`, () => {

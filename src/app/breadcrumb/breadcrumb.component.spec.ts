@@ -37,19 +37,18 @@ describe("breadcrumbComponent", () => {
 
     beforeEach(() => {
       component = new BreadcrumbComponent(null, null, null);
-      spyOnProperty(component, 'hasRoutes', 'get');
     });
     it(`should be true when breadcrumbRoutes have a route`, () => {
       component.breadcrumbRoutes = [{hide: false}];
-      expect(component.hasRoutes).toBe(true);
+      expect(component.calculateHasRoutes()).toBe(true);
     });
     it(`should be false when has NO shown routes`, () => {
       component.breadcrumbRoutes = [];
-      expect(component.hasRoutes).toBe(false);
+      expect(component.calculateHasRoutes()).toBe(false);
     });
     it(`should be false when has only a route with 'hide = true'`, () => {
       component.breadcrumbRoutes = [{hide: true}];
-      expect(component.hasRoutes).toBe(false);
+      expect(component.calculateHasRoutes()).toBe(false);
     });
   });
 

@@ -32,24 +32,31 @@ describe("breadcrumbComponent", () => {
     });
   }));
 
-  describe(`when hasRoutes`, () => {
+  describe(`when breadcrumb hasRoutes indicator`, () => {
     let component;
 
     beforeEach(() => {
       component = new BreadcrumbComponent(null, null, null);
     });
-    it(`should be true when breadcrumbRoutes have a route`, () => {
-      component.breadcrumbRoutes = [{breadcrumb: {hide: false}}];
-      expect(component.calculateHasRoutes()).toBe(true);
+    describe(`when having a visible breadcrumb`, () => {
+      it(`should be true when breadcrumbRoutes have a route`, () => {
+        component.breadcrumbRoutes = [{breadcrumb: {hide: false}}];
+        expect(component.calculateHasRoutes()).toBe(true);
+      });
     });
-    it(`should be false when has NO shown routes`, () => {
-      component.breadcrumbRoutes = [];
-      expect(component.calculateHasRoutes()).toBe(false);
+    describe(`when having no breadcrumbs`, () => {
+      it(`should be false when has NO shown routes`, () => {
+        component.breadcrumbRoutes = [];
+        expect(component.calculateHasRoutes()).toBe(false);
+      });
     });
-    it(`should be false when has only a route with 'hide = true'`, () => {
-      component.breadcrumbRoutes = [{breadcrumb: {hide: true}}];
-      expect(component.calculateHasRoutes()).toBe(false);
+    describe(`when having only 1 breadcrumb with 'hide = true'`, () => {
+      it(`should be false`, () => {
+        component.breadcrumbRoutes = [{breadcrumb: {hide: true}}];
+        expect(component.calculateHasRoutes()).toBe(false);
+      });
     });
+
   });
 
   describe('when navigation has ended', () => {

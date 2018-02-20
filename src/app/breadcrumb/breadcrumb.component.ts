@@ -42,7 +42,7 @@ export class BreadcrumbComponent implements OnInit {
   }
 
   get hasRoutes(): boolean {
-    return this.breadcrumbRoutes && this.breadcrumbRoutes.length > 0;
+    return this.breadcrumbRoutes && this.breadcrumbRoutes.length > 0 && this.breadcrumbRoutes.find(route => !route.hide) !== undefined;
   }
 
   public breadcrumbRoutes: BreadcrumbRoute[];

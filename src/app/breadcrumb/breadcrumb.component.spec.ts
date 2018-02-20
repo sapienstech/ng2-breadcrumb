@@ -32,6 +32,26 @@ describe("breadcrumbComponent", () => {
     });
   }));
 
+  describe(`when hasRoutes`, () => {
+    let component;
+
+    beforeEach(() => {
+      component = new BreadcrumbComponent(null, null, null);
+      spyOnProperty(component, 'hasRoutes', 'get');
+    });
+    it(`should be true when breadcrumbRoutes have a route`, () => {
+      component.breadcrumbRoutes = [{hide: true}];
+      expect(component.hasRoutes).toBe(true);
+    });
+    it(`should be false when has NO shown routes`, () => {
+      component.breadcrumbRoutes = [];
+      expect(component.hasRoutes).toBe(false);
+    });
+    it(`should be false when has only a route with 'hide = true'`, () => {
+      component.breadcrumbRoutes = [{hide: true}];
+      expect(component.hasRoutes).toBe(false);
+    });
+  });
 
   describe('when navigation has ended', () => {
     let fixture;

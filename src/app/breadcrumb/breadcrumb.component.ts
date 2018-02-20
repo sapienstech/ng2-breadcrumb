@@ -71,6 +71,6 @@ export class BreadcrumbComponent implements OnInit {
   }
 
   private calculateHasRoutes(){
-    return this.breadcrumbRoutes && this.breadcrumbRoutes.length > 0 && this.breadcrumbRoutes.find(route => !route.hide) !== undefined
+    return this.breadcrumbRoutes && this.breadcrumbRoutes.length > 0 && this.breadcrumbRoutes.find(route => !route.breadcrumb.hide) !== undefined
   }
 }

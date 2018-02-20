@@ -39,7 +39,7 @@ describe("breadcrumbComponent", () => {
       component = new BreadcrumbComponent(null, null, null);
     });
     it(`should be true when breadcrumbRoutes have a route`, () => {
-      component.breadcrumbRoutes = [{hide: false}];
+      component.breadcrumbRoutes = [{breadcrumb: {hide: false}}];
       expect(component.calculateHasRoutes()).toBe(true);
     });
     it(`should be false when has NO shown routes`, () => {
@@ -47,7 +47,7 @@ describe("breadcrumbComponent", () => {
       expect(component.calculateHasRoutes()).toBe(false);
     });
     it(`should be false when has only a route with 'hide = true'`, () => {
-      component.breadcrumbRoutes = [{hide: true}];
+      component.breadcrumbRoutes = [{breadcrumb: {hide: true}}];
       expect(component.calculateHasRoutes()).toBe(false);
     });
   });

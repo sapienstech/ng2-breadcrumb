@@ -42,7 +42,7 @@ export class BreadcrumbComponent implements OnInit {
   }
 
   get hasRoutes(): boolean {
-    return this.breadcrumbRoutes && this.breadcrumbRoutes.length > 0;
+    return this.calculateHasRoutes();
   }
 
   public breadcrumbRoutes: BreadcrumbRoute[];
@@ -68,5 +68,9 @@ export class BreadcrumbComponent implements OnInit {
       this.breadcrumbRoutes.push(...this.breadcrumbService.getBreadcrumbs(this.activatedRoute.root)
         .filter(breadcrumb => !breadcrumb.breadcrumb.hide));
     });
+  }
+
+  private calculateHasRoutes(){
+    return this.breadcrumbRoutes && this.breadcrumbRoutes.length > 0 && this.breadcrumbRoutes.find(route => !route.breadcrumb.hide) !== undefined
   }
 }

@@ -112,6 +112,35 @@ describe("breadcrumbComponent", () => {
 
     }));
 
+    describe(`when showing breadcrumb`, ()=>{
+      let breadcrumbComponent;
+
+      beforeEach(async(()=>{
+        detectChanges(fixture).then(()=>{
+          breadcrumbComponent = fixture.debugElement.query(By.directive(BreadcrumbComponent));
+          breadcrumbComponent.hideWhenNothingToShow = true;
+        });
+      }));
+      describe(`when having routes`, ()=>{
+        beforeEach(async(()=>{
+          breadcrumbComponent.breadcrumbRoutes = [{breadcrumb: {hide: false}}];
+          detectChanges(fixture);
+        }));
+        it(`should show breadcrumb`, async(()=>{
+          expect(breadcrumbComponent.query(By.css('.breadcrumb'))).toBeTruthy();
+        }));
+      });
+      describe(`when having NO routes`, ()=>{
+        beforeEach(async(()=>{
+          breadcrumbComponent.breadcrumbRoutes = [];
+          detectChanges(fixture);
+        }));
+        it(`should NOT show breadcrumb`, async(()=>{
+          expect(breadcrumbComponent.query(By.css('.breadcrumb'))).toBeFalsy();
+        }));
+      });
+    });
+
     it('should have 4 links', () => {
       expect(links.length).toBe(4, 'should have 4 links');
     });

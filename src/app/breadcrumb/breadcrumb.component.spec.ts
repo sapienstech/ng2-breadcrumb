@@ -58,6 +58,8 @@ describe("breadcrumbComponent", () => {
     });
   });
   describe(`when hiding Breadcrumb when nothing to show`, () => {
+    let component;
+
     beforeEach(() => {
       component = new BreadcrumbComponent(null, null, null);
       component.hideWhenNothingToShow = true;

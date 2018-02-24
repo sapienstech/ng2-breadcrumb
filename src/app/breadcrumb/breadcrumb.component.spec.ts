@@ -13,7 +13,7 @@ import {BreadcrumbService} from "./breadcrumb.service";
 import {BreadcrumbRoute, BreadcrumbDropDown} from "./breadcrumb-model";
 
 
-describe("breadcrumbComponent", () => {  
+describe("breadcrumbComponent", () => {
   let router;
   beforeEach(async(() => {
     TestBed.configureTestingModule({
@@ -56,9 +56,29 @@ describe("breadcrumbComponent", () => {
         expect(component.calculateHasRoutes()).toBe(false);
       });
     });
-
   });
-
+  describe(`when hiding Breadcrumb when nothing to show`, () => {
+    beforeEach(() => {
+      component = new BreadcrumbComponent(null, null, null);
+      component.hideWhenNothingToShow = true;
+    });
+    describe(`when breadcrumb have routes`, () => {
+      beforeEach(() => {
+        component.breadcrumbRoutes = [{breadcrumb: {hide: false}}];
+      });
+      it(`should NOT hide panel`, () => {
+        expect(component.hideBreaedcrumb).toBe(false);
+      });
+    });
+    describe(`when breadcrumb have NO routes`, () => {
+      beforeEach(() => {
+        component.breadcrumbRoutes = [];
+      });
+      it(`should hide panel`, () => {
+        expect(component.hideBreaedcrumb).toBe(true);
+      });
+    });
+  });
   describe('when navigation has ended', () => {
     let fixture;
     let links;

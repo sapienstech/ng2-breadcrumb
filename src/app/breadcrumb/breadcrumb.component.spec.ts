@@ -68,16 +68,16 @@ describe("breadcrumbComponent", () => {
       beforeEach(() => {
         component.breadcrumbRoutes = [{breadcrumb: {hide: false}}];
       });
-      it(`should NOT hide panel`, () => {
-        expect(component.showBreaedcrumb).toBe(false);
+      it(`should show panel`, () => {
+        expect(component.showBreadcrumb).toBe(true);
       });
     });
     describe(`when breadcrumb have NO routes`, () => {
       beforeEach(() => {
         component.breadcrumbRoutes = [];
       });
-      it(`should hide panel`, () => {
-        expect(component.showBreaedcrumb).toBe(true);
+      it(`should NOT show panel`, () => {
+        expect(component.showBreadcrumb).toBe(false);
       });
     });
   });

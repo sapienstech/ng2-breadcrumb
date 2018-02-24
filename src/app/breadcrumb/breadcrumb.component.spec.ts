@@ -116,7 +116,7 @@ describe("breadcrumbComponent", () => {
       let breadcrumbComponent;
 
       beforeEach(async(()=>{
-        fixture.detectChanges().then(()=>{
+        fixture.autoDetectChanges().then(()=>{
           breadcrumbComponent = fixture.debugElement.query(By.directive(BreadcrumbComponent));
           breadcrumbComponent.hideWhenNothingToShow = true;
         });
@@ -124,7 +124,7 @@ describe("breadcrumbComponent", () => {
       describe(`when having routes`, ()=>{
         beforeEach(async(()=>{
           breadcrumbComponent.breadcrumbRoutes = [{breadcrumb: {hide: false}}];
-          fixture.detectChanges()
+          fixture.autoDetectChanges();
         }));
         it(`should show breadcrumb`, async(()=>{
           expect(breadcrumbComponent.query(By.css('.breadcrumb'))).toBeTruthy();
@@ -133,7 +133,7 @@ describe("breadcrumbComponent", () => {
       describe(`when having NO routes`, ()=>{
         beforeEach(async(()=>{
           breadcrumbComponent.breadcrumbRoutes = [];
-          fixture.detectChanges();
+          fixture.autoDetectChanges();
         }));
         it(`should NOT show breadcrumb`, async(()=>{
           expect(breadcrumbComponent.query(By.css('.breadcrumb'))).toBeFalsy();

@@ -10,7 +10,7 @@ import {Observable} from "rxjs/Observable";
   styleUrls: ["breadcrumb.component.css"],
   template: `
  
-<div *ngIf="!hideBreaedcrumb" class="breadcrumb">
+<div *ngIf="showBreaedcrumb" class="breadcrumb">
 
   <ng-container *ngFor="let route of breadcrumbRoutes; let inx = index; let isLast=last" >
     <div *ngIf="!route.breadcrumb.hide" class="breadcrumb-holder">
@@ -45,8 +45,8 @@ export class BreadcrumbComponent implements OnInit {
     return typeof val == "string";
   }
 
-  get hideBreaedcrumb(){
-    return this.hideWhenNothingToShow && !this.hasRoutes;
+  get showBreaedcrumb(){
+    return this.hideWhenNothingToShow && !this.hasRoutes ? false : true;
   }
 
   get hasRoutes(): boolean {

@@ -69,7 +69,7 @@ describe("breadcrumbComponent", () => {
         component.breadcrumbRoutes = [{breadcrumb: {hide: false}}];
       });
       it(`should NOT hide panel`, () => {
-        expect(component.hideBreaedcrumb).toBe(false);
+        expect(component.showBreaedcrumb).toBe(false);
       });
     });
     describe(`when breadcrumb have NO routes`, () => {
@@ -77,7 +77,7 @@ describe("breadcrumbComponent", () => {
         component.breadcrumbRoutes = [];
       });
       it(`should hide panel`, () => {
-        expect(component.hideBreaedcrumb).toBe(true);
+        expect(component.showBreaedcrumb).toBe(true);
       });
     });
   });

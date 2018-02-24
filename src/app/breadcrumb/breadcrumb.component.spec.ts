@@ -116,10 +116,8 @@ describe("breadcrumbComponent", () => {
       let breadcrumbComponent;
 
       beforeEach(async(()=>{
-        fixture.autoDetectChanges().then(()=>{
           breadcrumbComponent = fixture.debugElement.query(By.directive(BreadcrumbComponent));
           breadcrumbComponent.hideWhenNothingToShow = true;
-        });
       }));
       describe(`when having routes`, ()=>{
         beforeEach(async(()=>{

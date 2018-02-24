@@ -13,7 +13,7 @@ import {BreadcrumbService} from "./breadcrumb.service";
 import {BreadcrumbRoute, BreadcrumbDropDown} from "./breadcrumb-model";
 
 
-describe("breadcrumbComponent", () => {
+describe("breadcrumbComponent", () => {  
   let router;
   beforeEach(async(() => {
     TestBed.configureTestingModule({

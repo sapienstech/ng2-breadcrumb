@@ -56,21 +56,45 @@ describe("breadcrumbComponent", () => {
         expect(component.calculateHasRoutes()).toBe(false);
       });
     });
-
   });
+  describe(`when hiding Breadcrumb when nothing to show`, () => {
+    let component;
 
+    beforeEach(() => {
+      component = new BreadcrumbComponent(null, null, null);
+      component.hideWhenNothingToShow = true;
+    });
+    describe(`when breadcrumb have routes`, () => {
+      beforeEach(() => {
+        component.breadcrumbRoutes = [{breadcrumb: {hide: false}}];
+      });
+      it(`should NOT show panel`, () => {
+        expect(component.hideBreadcrumb).toBe(false);
+      });
+    });
+    describe(`when breadcrumb have NO routes`, () => {
+      beforeEach(() => {
+        component.breadcrumbRoutes = [];
+      });
+      it(`should hide panel`, () => {
+        expect(component.hideBreadcrumb).toBe(true);
+      });
+    });
+  });
   describe('when navigation has ended', () => {
-    let fixture;
-    let links;
-    let linkParam;
-    let inputBreadcrumbs: BreadcrumbRoute[];
-    let visibleBreadcrumbs: BreadcrumbRoute[];
+    let fixture,
+      links,
+      linkParam,
+      inputBreadcrumbs: BreadcrumbRoute[],
+      visibleBreadcrumbs: BreadcrumbRoute[],
+      breadcrumbService;
+
     beforeEach(async(() => {
       TestBed.compileComponents().then(() => {
         fixture = TestBed.createComponent(RoutingComponent);
         router = TestBed.get(Router);
 
-        let breadcrumbService = TestBed.get(BreadcrumbService);
+        breadcrumbService = TestBed.get(BreadcrumbService);
         linkParam = {id: 8};
         inputBreadcrumbs = [
           buildBreadcrumbs("url1", undefined),
@@ -87,8 +111,62 @@ describe("breadcrumbComponent", () => {
         links = linkDes
           .map(de => de.injector.get(RouterLinkStubDirective) as RouterLinkStubDirective);
       });
-
     }));
+
+    describe(`when rendering Breadcrumb panel`, () => {
+      let breadcrumbComponent;
+
+      beforeEach(async(() => {
+        fixture.autoDetectChanges();
+        fixture.whenStable().then(() => {
+          breadcrumbComponent = fixture.debugElement.query(By.directive(BreadcrumbComponent)).componentInstance;
+        });
+      }));
+
+      describe(`when should always be shown (default behaviour)`, () => {
+        describe(`when having routes`, () => {
+          beforeEach(async(() => {
+            breadcrumbComponent.breadcrumbRoutes = [{breadcrumb: {hide: false}}];
+            fixture.autoDetectChanges();
+          }));
+          it(`should show breadcrumb`, async(() => {
+            expect(fixture.debugElement.query(By.css('.breadcrumb'))).toBeTruthy();
+          }));
+        });
+        describe(`when having NO routes`, () => {
+          beforeEach(async(() => {
+            breadcrumbComponent.breadcrumbRoutes = [];
+            fixture.autoDetectChanges();
+          }));
+          it(`should show breadcrumb`, async(() => {
+            expect(fixture.debugElement.query(By.css('.breadcrumb'))).toBeTruthy();
+          }));
+        });
+      });
+      describe(`when should shown if NOT empty`, () => {
+        beforeEach(async(() => {
+          breadcrumbComponent.hideWhenNothingToShow = true;
+        }));
+        describe(`when having routes`, () => {
+          beforeEach(async(() => {
+            breadcrumbComponent.breadcrumbRoutes = [{breadcrumb: {hide: false}}];
+            fixture.autoDetectChanges();
+          }));
+          it(`should show breadcrumb`, async(() => {
+            expect(fixture.debugElement.query(By.css('.breadcrumb'))).toBeTruthy();
+          }));
+        });
+        describe(`when having NO routes`, () => {
+          beforeEach(async(() => {
+            breadcrumbComponent.breadcrumbRoutes = [];
+            fixture.autoDetectChanges();
+          }));
+          it(`should NOT show breadcrumb`, async(() => {
+            expect(fixture.debugElement.query(By.css('.breadcrumb'))).toBeFalsy();
+          }));
+        });
+      });
+    });
 
     it('should have 4 links', () => {
       expect(links.length).toBe(4, 'should have 4 links');
@@ -111,7 +189,7 @@ describe("breadcrumbComponent", () => {
     it('should have icon for Home link', () => {
       let pos = 0;
       let aElement = fixture.debugElement.queryAll(el => el.name === "a")[0];
-      expect(aElement .nativeElement.innerHTML.indexOf("fa fa-home home-icon")).toBeGreaterThan(-1);
+      expect(aElement.nativeElement.innerHTML.indexOf("fa fa-home home-icon")).toBeGreaterThan(-1);
     });
 
     it('should have text and icon for dynamic links', () => {
@@ -132,9 +210,9 @@ describe("breadcrumbComponent", () => {
       let pos = 0;
       breadcrumbPopups
         .map(cmp => {
-          if(pos >0){
+          if (pos > 0) {
             let popup = cmp.componentInstance as DcnBreadcrumbPopupStub;
-            expect(popup.breadcrumbDropDown).toBe(visibleBreadcrumbs[pos-1].breadcrumb.dropDown);
+            expect(popup.breadcrumbDropDown).toBe(visibleBreadcrumbs[pos - 1].breadcrumb.dropDown);
           }
           pos++;
         });
@@ -163,6 +241,7 @@ describe("breadcrumbComponent", () => {
   `
 })
 class RoutingComponent {
+  shouldHide = false;
 }
 
 @Component({

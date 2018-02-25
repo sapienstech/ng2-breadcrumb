@@ -68,31 +68,33 @@ describe("breadcrumbComponent", () => {
       beforeEach(() => {
         component.breadcrumbRoutes = [{breadcrumb: {hide: false}}];
       });
-      it(`should show panel`, () => {
-        expect(component.showBreadcrumb).toBe(true);
+      it(`should NOT show panel`, () => {
+        expect(component.hideBreadcrumb).toBe(false);
       });
     });
     describe(`when breadcrumb have NO routes`, () => {
       beforeEach(() => {
         component.breadcrumbRoutes = [];
       });
-      it(`should NOT show panel`, () => {
-        expect(component.showBreadcrumb).toBe(false);
+      it(`should hide panel`, () => {
+        expect(component.hideBreadcrumb).toBe(true);
       });
     });
   });
   describe('when navigation has ended', () => {
-    let fixture;
-    let links;
-    let linkParam;
-    let inputBreadcrumbs: BreadcrumbRoute[];
-    let visibleBreadcrumbs: BreadcrumbRoute[];
+    let fixture,
+      links,
+      linkParam,
+      inputBreadcrumbs: BreadcrumbRoute[],
+      visibleBreadcrumbs: BreadcrumbRoute[],
+      breadcrumbService;
+
     beforeEach(async(() => {
       TestBed.compileComponents().then(() => {
         fixture = TestBed.createComponent(RoutingComponent);
         router = TestBed.get(Router);
 
-        let breadcrumbService = TestBed.get(BreadcrumbService);
+        breadcrumbService = TestBed.get(BreadcrumbService);
         linkParam = {id: 8};
         inputBreadcrumbs = [
           buildBreadcrumbs("url1", undefined),
@@ -109,15 +111,16 @@ describe("breadcrumbComponent", () => {
         links = linkDes
           .map(de => de.injector.get(RouterLinkStubDirective) as RouterLinkStubDirective);
       });
-
     }));
 
     describe(`when showing breadcrumb`, ()=>{
       let breadcrumbComponent;
 
       beforeEach(async(()=>{
-          breadcrumbComponent = fixture.debugElement.query(By.directive(BreadcrumbComponent));
-          breadcrumbComponent.hideWhenNothingToShow = true;
+        fixture.autoDetectChanges();
+        fixture.whenStable().then(() => {
+          breadcrumbComponent = fixture.debugElement.query(By.directive(BreadcrumbComponent)).componentInstance;
+        });
       }));
       describe(`when having routes`, ()=>{
         beforeEach(async(()=>{
@@ -125,7 +128,7 @@ describe("breadcrumbComponent", () => {
           fixture.autoDetectChanges();
         }));
         it(`should show breadcrumb`, async(()=>{
-          expect(breadcrumbComponent.query(By.css('.breadcrumb'))).toBeTruthy();
+          expect(fixture.debugElement.query(By.css('.breadcrumb'))).toBeTruthy();
         }));
       });
       describe(`when having NO routes`, ()=>{
@@ -134,7 +137,7 @@ describe("breadcrumbComponent", () => {
           fixture.autoDetectChanges();
         }));
         it(`should NOT show breadcrumb`, async(()=>{
-          expect(breadcrumbComponent.query(By.css('.breadcrumb'))).toBeFalsy();
+          expect(fixture.debugElement.query(By.css('.breadcrumb'))).toBeFalsy();
         }));
       });
     });
@@ -207,11 +210,12 @@ describe("breadcrumbComponent", () => {
 //region test components
 @Component({
   template: `
-    <dcn-breadcrumb></dcn-breadcrumb>
+    <dcn-breadcrumb [hideWhenNothingToShow]="true"></dcn-breadcrumb>
     <router-outlet></router-outlet>
   `
 })
 class RoutingComponent {
+  shouldHide = false;
 }
 
 @Component({

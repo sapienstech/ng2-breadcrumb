@@ -113,32 +113,58 @@ describe("breadcrumbComponent", () => {
       });
     }));
 
-    describe(`when showing breadcrumb`, ()=>{
+    describe(`when rendering Breadcrumb panel`, () => {
       let breadcrumbComponent;
 
-      beforeEach(async(()=>{
+      beforeEach(async(() => {
         fixture.autoDetectChanges();
         fixture.whenStable().then(() => {
           breadcrumbComponent = fixture.debugElement.query(By.directive(BreadcrumbComponent)).componentInstance;
         });
       }));
-      describe(`when having routes`, ()=>{
-        beforeEach(async(()=>{
-          breadcrumbComponent.breadcrumbRoutes = [{breadcrumb: {hide: false}}];
-          fixture.autoDetectChanges();
-        }));
-        it(`should show breadcrumb`, async(()=>{
-          expect(fixture.debugElement.query(By.css('.breadcrumb'))).toBeTruthy();
-        }));
+
+      describe(`when should always be shown (default behaviour)`, () => {
+        describe(`when having routes`, () => {
+          beforeEach(async(() => {
+            breadcrumbComponent.breadcrumbRoutes = [{breadcrumb: {hide: false}}];
+            fixture.autoDetectChanges();
+          }));
+          it(`should show breadcrumb`, async(() => {
+            expect(fixture.debugElement.query(By.css('.breadcrumb'))).toBeTruthy();
+          }));
+        });
+        describe(`when having NO routes`, () => {
+          beforeEach(async(() => {
+            breadcrumbComponent.breadcrumbRoutes = [];
+            fixture.autoDetectChanges();
+          }));
+          it(`should show breadcrumb`, async(() => {
+            expect(fixture.debugElement.query(By.css('.breadcrumb'))).toBeTruthy();
+          }));
+        });
       });
-      describe(`when having NO routes`, ()=>{
-        beforeEach(async(()=>{
-          breadcrumbComponent.breadcrumbRoutes = [];
-          fixture.autoDetectChanges();
+      describe(`when should shown if NOT empty`, () => {
+        beforeEach(async(() => {
+          breadcrumbComponent.hideWhenNothingToShow = true;
         }));
-        it(`should NOT show breadcrumb`, async(()=>{
-          expect(fixture.debugElement.query(By.css('.breadcrumb'))).toBeFalsy();
-        }));
+        describe(`when having routes`, () => {
+          beforeEach(async(() => {
+            breadcrumbComponent.breadcrumbRoutes = [{breadcrumb: {hide: false}}];
+            fixture.autoDetectChanges();
+          }));
+          it(`should show breadcrumb`, async(() => {
+            expect(fixture.debugElement.query(By.css('.breadcrumb'))).toBeTruthy();
+          }));
+        });
+        describe(`when having NO routes`, () => {
+          beforeEach(async(() => {
+            breadcrumbComponent.breadcrumbRoutes = [];
+            fixture.autoDetectChanges();
+          }));
+          it(`should NOT show breadcrumb`, async(() => {
+            expect(fixture.debugElement.query(By.css('.breadcrumb'))).toBeFalsy();
+          }));
+        });
       });
     });
 
@@ -163,7 +189,7 @@ describe("breadcrumbComponent", () => {
     it('should have icon for Home link', () => {
       let pos = 0;
       let aElement = fixture.debugElement.queryAll(el => el.name === "a")[0];
-      expect(aElement .nativeElement.innerHTML.indexOf("fa fa-home home-icon")).toBeGreaterThan(-1);
+      expect(aElement.nativeElement.innerHTML.indexOf("fa fa-home home-icon")).toBeGreaterThan(-1);
     });
 
     it('should have text and icon for dynamic links', () => {
@@ -184,9 +210,9 @@ describe("breadcrumbComponent", () => {
       let pos = 0;
       breadcrumbPopups
         .map(cmp => {
-          if(pos >0){
+          if (pos > 0) {
             let popup = cmp.componentInstance as DcnBreadcrumbPopupStub;
-            expect(popup.breadcrumbDropDown).toBe(visibleBreadcrumbs[pos-1].breadcrumb.dropDown);
+            expect(popup.breadcrumbDropDown).toBe(visibleBreadcrumbs[pos - 1].breadcrumb.dropDown);
           }
           pos++;
         });
@@ -210,7 +236,7 @@ describe("breadcrumbComponent", () => {
 //region test components
 @Component({
   template: `
-    <dcn-breadcrumb [hideWhenNothingToShow]="true"></dcn-breadcrumb>
+    <dcn-breadcrumb></dcn-breadcrumb>
     <router-outlet></router-outlet>
   `
 })

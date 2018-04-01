@@ -1,3 +1,6 @@
+## DEPRECATED!
+### Use https://github.com/sapienstech/angular-breadcrumb instead
+
 # Navigator
 **breadcrumb component**
  ```
